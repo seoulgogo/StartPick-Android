@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="150dp">
+
+    <TextView
+        android:id="@+id/rv_test1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안난안ㄴ안나여"
+        />
+
+    <TextView
+        android:id="@+id/rv_test2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="hihh"
+        />
+
+</RelativeLayout>

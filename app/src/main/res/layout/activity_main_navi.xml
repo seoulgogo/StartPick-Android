@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:paddingVertical="8dp">
+
+    <LinearLayout
+        android:id="@+id/activity_main_navi_home_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/activity_main_navi_iv_home"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@mipmap/icn_home_on" />
+
+        <TextView
+            android:id="@+id/activity_main_navi_txt_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="홈"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_main_navi_rank_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/activity_main_navi_iv_rank"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@mipmap/icn_home_on" />
+
+        <TextView
+            android:id="@+id/activity_main_navi_txt_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="구인"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_main_navi_vote_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/activity_main_navi_iv_vote"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@mipmap/icn_home_on" />
+
+        <TextView
+            android:id="@+id/activity_main_navi_txt_vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="지원"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_main_navi_community_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/activity_main_navi_iv_community"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@mipmap/icn_home_on" />
+
+        <TextView
+            android:id="@+id/activity_main_navi_txt_community"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="지도"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_main_navi_mypage_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/activity_main_navi_iv_mypage"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@mipmap/icn_home_on" />
+
+        <TextView
+            android:id="@+id/activity_main_navi_txt_mypage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="MY"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>
