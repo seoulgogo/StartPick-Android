@@ -7,14 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.smartpick.R
-import com.seoulapp.smartpick.adapter.TestAdapter
-import com.seoulapp.smartpick.data.TestData
+import com.seoulapp.smartpick.adapter.InfoHomeAdapter
+import com.seoulapp.smartpick.data.InfoHomefragData
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
     private lateinit var rootView: View
-    lateinit var testViewAdapter : TestAdapter
+    lateinit var testViewAdapter : InfoHomeAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -27,27 +27,34 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         setRecyclerView()
+        //setNewRecyclerView()
+        //setPostRecyclerView()
     }
 
     fun setRecyclerView() {
-        var testDataList: ArrayList<TestData> = ArrayList()
-        testDataList.add(TestData("테스트입니당11", "11"))
-        testDataList.add(TestData("테스트입니당22", "22"))
-        testDataList.add(TestData("테스트입니당33", "33"))
-        testDataList.add(TestData("테스트입니당44", "44"))
-        testDataList.add(TestData("테스트입니당55", "55"))
-        testDataList.add(TestData("테스트입니당66", "66"))
-        testDataList.add(TestData("테스트입니당77", "77"))
-        testDataList.add(TestData("테스트입니당88", "88"))
-        testDataList.add(TestData("테스트입니당99", "99"))
-        testDataList.add(TestData("테스트입니당1010", "1010"))
+        var testDataList: ArrayList<InfoHomefragData> = ArrayList()
+        testDataList.add(InfoHomefragData("http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD","SNS 콘텐츠 크리에이터1", "서울시창업지원센터","콘텐츠"))
+        testDataList.add(InfoHomefragData("http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD","SNS 콘텐츠 크리에이터2", "서울시창업지원센터","콘텐츠"))
+        testDataList.add(InfoHomefragData("http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD","SNS 콘텐츠 크리에이터3", "서울시창업지원센터","콘텐츠"))
+        testDataList.add(InfoHomefragData("http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD","SNS 콘텐츠 크리에이터4", "서울시창업지원센터","콘텐츠"))
+        testDataList.add(InfoHomefragData("http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD","SNS 콘텐츠 크리에이터5", "서울시창업지원센터","콘텐츠"))
+        testDataList.add(InfoHomefragData("http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD","SNS 콘텐츠 크리에이터6", "서울시창업지원센터","콘텐츠"))
+        testDataList.add(InfoHomefragData("http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD","SNS 콘텐츠 크리에이터7", "서울시창업지원센터","콘텐츠"))
 
 
-        testViewAdapter = TestAdapter(activity!!, testDataList)
-        rv_text_home_frag.adapter = testViewAdapter
-        rv_text_home_frag.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+        testViewAdapter = InfoHomeAdapter(activity!!, testDataList)
+        //맞춤형
+        rv_information_home_frag.adapter = testViewAdapter
+        rv_information_home_frag.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+        //방금올라온
+        rv_new_info_home_frag.adapter = testViewAdapter
+        rv_new_info_home_frag.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+
+        //인기
+        rv_realtime_info_home_frag.adapter = testViewAdapter
+        rv_realtime_info_home_frag.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
     }
-
 }
 

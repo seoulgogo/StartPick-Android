@@ -1,19 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.HomeFragment">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_text_home_frag"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        >
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <!--배너-->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#000000" />
+
+            <!--1번째 recyclerview-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="16dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="진하은님을 위한 맞춤형 공고"
+                    android:textColor="#212529"
+                    android:textSize="16sp"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_information_home_frag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="12dp"
+                    >
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <!--2번째 recyclerview-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="16dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="실시간 인기 공고"
+                    android:textColor="#212529"
+                    android:textSize="16sp"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_realtime_info_home_frag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="12dp"
+                    >
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <!--3번째 recyclerview-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="16dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="방금 올라온 공고"
+                    android:textColor="#212529"
+                    android:textSize="16sp"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_new_info_home_frag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="12dp"
+                    >
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
 
 
-    </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
 
-</RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>
