@@ -18,7 +18,7 @@
             android:id="@+id/activity_main_navi_iv_home"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@mipmap/icn_home_on" />
+            android:src="@drawable/tab_home" />
 
         <TextView
             android:id="@+id/activity_main_navi_txt_home"
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="구인"
+            android:text="구인구직"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="지원"
+            android:text="지원사업"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="지도"
+            android:text="시설대관"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -117,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="MY"
+            android:text="마이페이지"
             android:textSize="12sp" />
     </LinearLayout>
 </LinearLayout>
