@@ -7,31 +7,39 @@
     tools:context=".ui.JobFragment">
 
     <!--title LinearLayout-->
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/fragment_job_title_container"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        android:weightSum="10"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/fragment_job_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="76dp"
-            android:textSize="12sp"
-            tools:text="구인구직"
-            />
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="match_parent"
+            android:text="구인구직"
+            android:textSize="17sp"
+            android:textColor="#212529"
+            android:paddingStart="72dp"
+            android:gravity="center_vertical"/>
 
         <!--search-->
         <ImageView
             android:id="@+id/fragment_job_title_iv_search"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:paddingEnd="12dp"
-            android:layout_alignParentEnd="true"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+
             android:src="@drawable/ic_search"
             />
-    </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_below="@+id/fragment_job_title_container"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cdcdcd"/>
 
     <!--check LinearLayout-->
     <LinearLayout
@@ -41,24 +49,21 @@
         android:layout_below="@+id/fragment_job_title_container"
         android:orientation="horizontal">
 
-        <!--분류인데 일단 이미지로 박아둠-->
-        <TextView
-            android:id="@+id/fragment_job_check_startup"
+        <Spinner
+            android:id="@+id/spinner_startupDivide_frg_job"
             android:layout_width="117dp"
             android:layout_height="30dp"
+            android:entries="@array/startup_array"
             android:layout_marginLeft="16dp"
             android:layout_gravity="center_vertical"
-            android:background="#E6E6E6"
-            android:gravity="center_vertical|center_horizontal"
-            android:text="스타트업 분야"
-            />
-        <TextView
-            android:id="@+id/fragment_job_check_detail"
+            android:background="#E6E6E6"/>
+
+        <Spinner
+            android:id="@+id/spinner_rollDivide_frg_job"
             android:layout_width="62dp"
             android:layout_height="30dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_marginLeft="10dp"
-            android:text="직군"
+            android:entries="@array/roll_array"
+            android:layout_marginLeft="16dp"
             android:layout_gravity="center_vertical"
             android:background="#E6E6E6"/>
     </LinearLayout>
@@ -71,24 +76,20 @@
         android:layout_height="40dp"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="290dp"
+            android:layout_height="match_parent"
             android:textSize="12sp"
             android:textColor="#212529"
-            android:layout_marginLeft="16dp"
-            android:layout_gravity="center_vertical|center_horizontal"
+            android:paddingStart="16dp"
+            android:gravity="center_vertical"
             android:text="전체 128개"/>
-        <View
-            android:layout_width="284dp"
-            android:layout_height="match_parent"/>
-        <!--인기순 버튼 일단 텍스트뷰로 나타냄-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="#212529"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:text="인기순"/>
+        <Spinner
+            android:id="@+id/sipnner_order_frg_job"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:entries="@array/order_array"
+            android:layout_gravity="center_vertical"
+            />
     </LinearLayout>
 
     <!--recyclerview LinearLayout-->

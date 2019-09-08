@@ -1,24 +1,19 @@
 package com.seoulapp.smartpick.ui
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.AdapterView
 import com.seoulapp.smartpick.R
 import com.seoulapp.smartpick.adapter.JobTestAdapter
-import com.seoulapp.smartpick.adapter.TestAdapter
 import com.seoulapp.smartpick.data.JobTestData
-import com.seoulapp.smartpick.data.TestData
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_job.*
 
 
-class JobFragment : Fragment() {
+class JobFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private lateinit var rootView: View
     lateinit var jobViewTestAdpapter : JobTestAdapter
@@ -37,6 +32,17 @@ class JobFragment : Fragment() {
         setRecyclerView()
     }
 
+    /* 스피너 관련 함수 */
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        // 선택되었을 때 이벤트 여기에 작성하기
+    }
+
+    /* 스피너 관련 함수 */
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+
+    }
+
+    /* 리사이클러 뷰 설정 */
     fun setRecyclerView() {
         var testDataList: ArrayList<JobTestData> = ArrayList()
         testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 1", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
@@ -55,5 +61,7 @@ class JobFragment : Fragment() {
         fragment_job_recyclerview.adapter = jobViewTestAdpapter
         fragment_job_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
+
     }
+
 }
