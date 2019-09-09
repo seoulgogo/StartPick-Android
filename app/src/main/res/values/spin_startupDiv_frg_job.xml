@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="startup_array">
+        <item>스타트업 분야 ▼</item>
+        <item>데이터1</item>
+        <item>데이터2</item>
+        <item>데이터3</item>
+        <item>데이터4</item>
+        <item>데이터5</item>
+    </string-array>
+</resources>

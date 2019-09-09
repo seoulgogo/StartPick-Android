@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="order_array">
+        <item>인기순</item>
+        <item>인기순 2</item>
+    </string-array>
+</resources>
