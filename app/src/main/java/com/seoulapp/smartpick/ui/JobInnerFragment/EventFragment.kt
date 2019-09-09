@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.smartpick.R
 
-class EducationFragment : Fragment() {
+class EventFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.frag_education_support_inner, container, false)!!
+        return inflater.inflate(R.layout.frag_event_support_inner, container, false)!!
     }
 }

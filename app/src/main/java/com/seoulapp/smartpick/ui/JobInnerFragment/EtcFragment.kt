@@ -8,18 +8,7 @@ import android.view.ViewGroup
 import com.seoulapp.smartpick.R
 
 class EtcFragment : Fragment() {
-    private lateinit var rootView: View
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        rootView = inflater.inflate(R.layout.fragment_home, container, false)
-
-        return rootView
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        //setRecyclerView()
+        return inflater.inflate(R.layout.frag_etc_support_inner, container, false)!!
     }
 }

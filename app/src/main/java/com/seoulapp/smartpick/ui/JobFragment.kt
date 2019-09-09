@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import com.seoulapp.smartpick.R
-import com.seoulapp.smartpick.adapter.JobTestAdapter
+import com.seoulapp.smartpick.adapter.JobAdapter
 import com.seoulapp.smartpick.data.JobTestData
 import kotlinx.android.synthetic.main.fragment_job.*
 
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.fragment_job.*
 class JobFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private lateinit var rootView: View
-    lateinit var jobViewTestAdpapter : JobTestAdapter
+    lateinit var jobViewTestAdpapter : JobAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -57,7 +57,7 @@ class JobFragment : Fragment(), AdapterView.OnItemSelectedListener {
         testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 10", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
 
 
-        jobViewTestAdpapter = JobTestAdapter(activity!!, testDataList)
+        jobViewTestAdpapter = JobAdapter(activity!!, testDataList)
         fragment_job_recyclerview.adapter = jobViewTestAdpapter
         fragment_job_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
