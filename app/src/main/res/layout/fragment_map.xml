@@ -5,9 +5,87 @@
     android:layout_height="match_parent"
     tools:context=".ui.MapFragment">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="지도" />
+        android:layout_height="match_parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="16dp"
+            >
+
+            <!--Toolbar-->
+            <RelativeLayout
+                android:id="@+id/rl_toolbar_map_frag"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
+
+                <!--title_map-->
+                <TextView
+                    android:id="@+id/tv_seoulstartupmap_map_frag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="서울창업지도"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
+
+                <!--btn search-->
+                <ImageView
+                    android:id="@+id/btn_search_map_frag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:paddingHorizontal="20dp"
+                    android:src="@drawable/search" />
+
+            </RelativeLayout>
+
+            <!--View-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#000000" />
+
+            <!--map-->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_horizontal"
+                android:text="지원기관을 테마로 기본적인 정보를 제공하는 창업지도입니다.
+정보를 보고 싶은 지역을 선택해주세요."
+                android:textColor="#212529"
+                android:textSize="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="#f4f4f4"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#212529"
+                    android:textSize="12sp"
+                    android:text="내 위치 중심"
+                    />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_seoul_startup_info_map_frag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
