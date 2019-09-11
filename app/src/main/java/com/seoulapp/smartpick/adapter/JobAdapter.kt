@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.seoulapp.smartpick.R
-import com.seoulapp.smartpick.data.JobTestData
+import com.seoulapp.smartpick.data.JobData
 
-class JobAdapter(private val ctx : Context, private val dataList : ArrayList<JobTestData>) :
+class JobAdapter(private val ctx : Context, private val dataList : ArrayList<JobData>) :
         RecyclerView.Adapter<JobAdapter.Holder>() {
 
 

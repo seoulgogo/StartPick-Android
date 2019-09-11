@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import com.seoulapp.smartpick.R
 import com.seoulapp.smartpick.adapter.JobAdapter
-import com.seoulapp.smartpick.data.JobTestData
+import com.seoulapp.smartpick.data.JobData
 import kotlinx.android.synthetic.main.fragment_job.*
 
 
@@ -44,17 +44,17 @@ class JobFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     /* 리사이클러 뷰 설정 */
     fun setRecyclerView() {
-        var testDataList: ArrayList<JobTestData> = ArrayList()
-        testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 1", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
-        testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 2", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
-        testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 3", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
-        testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 4", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
-        testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 5", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
-        testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 6", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
-        testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 7", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
-        testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 8", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
-        testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 9", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
-        testDataList.add(JobTestData("SNS 콘텐츠 크리에이터 10", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
+        var testDataList: ArrayList<JobData> = ArrayList()
+        testDataList.add(JobData("SNS 콘텐츠 크리에이터 1", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
+        testDataList.add(JobData("SNS 콘텐츠 크리에이터 2", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
+        testDataList.add(JobData("SNS 콘텐츠 크리에이터 3", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
+        testDataList.add(JobData("SNS 콘텐츠 크리에이터 4", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
+        testDataList.add(JobData("SNS 콘텐츠 크리에이터 5", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
+        testDataList.add(JobData("SNS 콘텐츠 크리에이터 6", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
+        testDataList.add(JobData("SNS 콘텐츠 크리에이터 7", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
+        testDataList.add(JobData("SNS 콘텐츠 크리에이터 8", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
+        testDataList.add(JobData("SNS 콘텐츠 크리에이터 9", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
+        testDataList.add(JobData("SNS 콘텐츠 크리에이터 10", "서울시창업지원센터", "콘텐츠", "저희 회사는 모두가 의견을 자유롭게 내는 수평적인 조직 구조입니다."))
 
 
         jobViewTestAdpapter = JobAdapter(activity!!, testDataList)
