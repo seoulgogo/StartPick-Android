@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.seoulapp.smartpick.R
-import com.seoulapp.smartpick.data.JobTestData
+import com.seoulapp.smartpick.data.JobData
 
-class JobTestAdapter(private val ctx : Context, private val dataList : ArrayList<JobTestData>) :
-        RecyclerView.Adapter<JobTestAdapter.Holder>() {
+class JobAdapter(private val ctx : Context, private val dataList : ArrayList<JobData>) :
+        RecyclerView.Adapter<JobAdapter.Holder>() {
 
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {

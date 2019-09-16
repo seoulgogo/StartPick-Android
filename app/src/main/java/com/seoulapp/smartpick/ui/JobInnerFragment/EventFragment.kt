@@ -11,7 +11,7 @@ import com.seoulapp.smartpick.adapter.SupportAdapter
 import com.seoulapp.smartpick.data.SupportData
 import kotlinx.android.synthetic.main.frag_total_support_inner.*
 
-class CommercialFragment : Fragment() {
+class EventFragment : Fragment() {
     lateinit var supportAdapter : SupportAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_supportinner_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고"
+            android:textSize="14sp"
+            android:textColor="#212529"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_supportinner_center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="고용노동부"
+                android:textSize="12sp"
+                android:textColor="#212529"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"/>
+            <TextView
+                android:id="@+id/tv_supportinner_date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="~19.09.09"
+                android:textSize="12sp"
+                android:textColor="#22b573"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dee2e6"/>
+    </LinearLayout>
+
+</RelativeLayout>
