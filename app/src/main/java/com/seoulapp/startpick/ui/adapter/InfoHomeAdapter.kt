@@ -1,4 +1,4 @@
-package com.seoulapp.smartpick.ui.adapter
+package com.seoulapp.startpick.ui.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.seoulapp.smartpick.R
-import com.seoulapp.smartpick.data.InfoHomefragData
+import com.seoulapp.startpick.R
+import com.seoulapp.startpick.data.InfoHomefragData
 
 class InfoHomeAdapter(private val ctx : Context, private val dataList : ArrayList<InfoHomefragData>) : RecyclerView.Adapter<InfoHomeAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {

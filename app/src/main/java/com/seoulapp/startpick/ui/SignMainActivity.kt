@@ -1,8 +1,8 @@
-package com.seoulapp.smartpick.ui
+package com.seoulapp.startpick.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.seoulapp.smartpick.R
+import com.seoulapp.startpick.R
 import kotlinx.android.synthetic.main.activity_sign_main.*
 
 class SignMainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.seoulapp.smartpick.ui
+package com.seoulapp.startpick.ui
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,9 +6,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.seoulapp.smartpick.R
-import com.seoulapp.smartpick.ui.adapter.InfoHomeAdapter
-import com.seoulapp.smartpick.data.InfoHomefragData
+import com.seoulapp.startpick.R
+import com.seoulapp.startpick.ui.adapter.InfoHomeAdapter
+import com.seoulapp.startpick.data.InfoHomefragData
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {

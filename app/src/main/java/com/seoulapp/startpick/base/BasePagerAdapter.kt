@@ -1,4 +1,4 @@
-package com.seoulapp.smartpick.base
+package com.seoulapp.startpick.base
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

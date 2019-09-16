@@ -1,4 +1,4 @@
-package com.seoulapp.smartpick.ui.view
+package com.seoulapp.startpick.ui.view
 
 import android.content.Context
 import android.support.v4.view.ViewPager

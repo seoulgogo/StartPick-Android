@@ -1,24 +1,22 @@
-package com.seoulapp.smartpick.ui
+package com.seoulapp.startpick.ui
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.seoulapp.smartpick.R
+import com.seoulapp.startpick.R
 
 
-class SupportBusinessFragment : Fragment() {
+class MypageFragment : Fragment() {
 
     private lateinit var rootView: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        rootView =  inflater.inflate(R.layout.fragment_support_business, container, false)
+        rootView = inflater.inflate(R.layout.fragment_mypage, container, false)
 
         return rootView
     }

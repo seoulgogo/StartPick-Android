@@ -1,4 +1,4 @@
-package com.seoulapp.smartpick.data
+package com.seoulapp.startpick.data
 
 data class InfoMapfragData(
         var title : String,

@@ -1,4 +1,4 @@
-package com.seoulapp.smartpick;
+package com.seoulapp.startpick;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

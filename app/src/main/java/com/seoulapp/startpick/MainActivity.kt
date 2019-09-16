@@ -1,12 +1,12 @@
-package com.seoulapp.smartpick
+package com.seoulapp.startpick
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
-import com.seoulapp.smartpick.base.BasePagerAdapter
-import com.seoulapp.smartpick.ui.*
+import com.seoulapp.startpick.base.BasePagerAdapter
+import com.seoulapp.startpick.ui.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
