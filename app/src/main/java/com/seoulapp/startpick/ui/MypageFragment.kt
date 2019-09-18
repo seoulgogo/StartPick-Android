@@ -5,14 +5,16 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.seoulapp.startpick.R
+
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 
-import com.seoulapp.startpick.R
 import com.seoulapp.startpick.base.BasePagerAdapter
 import com.seoulapp.startpick.ui.adapter.MypagenaviAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
+
 
 
 class MypageFragment : Fragment() {
@@ -23,6 +25,7 @@ class MypageFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_mypage, container, false)
+
 
         //configureMainTab()
 

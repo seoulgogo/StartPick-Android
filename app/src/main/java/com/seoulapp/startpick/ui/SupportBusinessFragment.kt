@@ -5,8 +5,10 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.seoulapp.smartpick.adapter.TabViewPagerAdapter
-import com.seoulapp.smartpick.ui.JobInnerFragment.*
+
+import com.seoulapp.startpick.R
+import com.seoulapp.startpick.adapter.TabViewPagerAdapter
+import com.seoulapp.startpick.ui.SupportInnerFragment.*
 import com.seoulapp.startpick.R
 import kotlinx.android.synthetic.main.fragment_support_business.*
 

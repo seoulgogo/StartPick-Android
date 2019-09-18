@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
-import com.seoulapp.startpick.ui.adapter.InfoHomeAdapter
+
 import com.seoulapp.startpick.data.InfoHomefragData
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -27,6 +27,10 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         setRecyclerView()
+
+        //setNewRecyclerView()
+        //setPostRecyclerView()
+
     }
 
     fun setRecyclerView() {

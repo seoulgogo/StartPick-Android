@@ -1,4 +1,4 @@
-package com.seoulapp.smartpick.ui.JobInnerFragment
+package com.seoulapp.startpick.ui.SupportInnerFragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -6,12 +6,12 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.seoulapp.smartpick.R
-import com.seoulapp.smartpick.adapter.SupportAdapter
-import com.seoulapp.smartpick.data.SupportData
+import com.seoulapp.startpick.R
+import com.seoulapp.startpick.adapter.SupportAdapter
+import com.seoulapp.startpick.data.SupportData
 import kotlinx.android.synthetic.main.frag_total_support_inner.*
 
-class ConsultingFragment : Fragment() {
+class EducationFragment : Fragment() {
     lateinit var supportAdapter : SupportAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

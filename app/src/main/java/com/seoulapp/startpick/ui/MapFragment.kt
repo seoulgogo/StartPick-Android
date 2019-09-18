@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.data.InfoMapfragData
 import com.seoulapp.startpick.ui.adapter.InfoMapAdapter
@@ -16,13 +15,13 @@ import kotlinx.android.synthetic.main.fragment_map.*
 class MapFragment : Fragment() {
 
     private lateinit var rootView: View
+
     lateinit var mapAdapter: InfoMapAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_map, container, false)
-
 
         return rootView
     }
