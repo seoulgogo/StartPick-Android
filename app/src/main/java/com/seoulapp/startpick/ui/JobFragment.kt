@@ -1,6 +1,6 @@
 package com.seoulapp.startpick.ui
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
+
 import com.seoulapp.startpick.adapter.JobAdapter
 import com.seoulapp.startpick.data.JobData
 import kotlinx.android.synthetic.main.fragment_job.*
@@ -31,11 +32,15 @@ class JobFragment : Fragment() {
 
         setRecyclerView()
         floatingBtn()
+
     }
+
+
 
     /* 리사이클러 뷰 설정 */
     fun setRecyclerView() {
         var testDataList: ArrayList<JobData> = ArrayList()
+
         testDataList.add(JobData("SNS 콘텐츠 크리에이터 1", "서울시창업지원센터", "콘텐츠"))
         testDataList.add(JobData("SNS 콘텐츠 크리에이터 2", "서울시창업지원센터", "콘텐츠"))
         testDataList.add(JobData("SNS 콘텐츠 크리에이터 3", "서울시창업지원센터", "콘텐츠"))
@@ -45,12 +50,12 @@ class JobFragment : Fragment() {
         testDataList.add(JobData("SNS 콘텐츠 크리에이터 7", "서울시창업지원센터", "콘텐츠"))
         testDataList.add(JobData("SNS 콘텐츠 크리에이터 8", "서울시창업지원센터", "콘텐츠"))
         testDataList.add(JobData("SNS 콘텐츠 크리에이터 9", "서울시창업지원센터", "콘텐츠"))
-        testDataList.add(JobData("SNS 콘텐츠 크리에이터 10", "서울시창업지원센터", "콘텐츠"))
 
 
         jobViewTestAdpapter = JobAdapter(activity!!, testDataList)
         fragment_job_recyclerview.adapter = jobViewTestAdpapter
         fragment_job_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
 
     }
 
@@ -61,6 +66,7 @@ class JobFragment : Fragment() {
             var intent = Intent(this.context, WriteActivity::class.java)
             startActivity(intent)
         }
+
     }
 
 }
