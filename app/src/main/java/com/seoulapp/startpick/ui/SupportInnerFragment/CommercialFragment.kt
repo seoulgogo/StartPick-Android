@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.seoulapp.startpick.R
 import com.seoulapp.startpick.adapter.SupportAdapter
+import com.seoulapp.startpick.R
 import com.seoulapp.startpick.data.SupportData
 import kotlinx.android.synthetic.main.frag_total_support_inner.*
 

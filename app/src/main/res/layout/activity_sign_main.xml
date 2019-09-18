@@ -26,6 +26,7 @@
         />
 
     <RelativeLayout
+        android:id="@+id/btn_intent_sign_up"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="124dp"

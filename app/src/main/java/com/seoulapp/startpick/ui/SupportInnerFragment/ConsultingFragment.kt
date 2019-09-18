@@ -11,6 +11,7 @@ import com.seoulapp.startpick.adapter.SupportAdapter
 import com.seoulapp.startpick.data.SupportData
 import kotlinx.android.synthetic.main.frag_total_support_inner.*
 
+
 class ConsultingFragment : Fragment() {
     lateinit var supportAdapter : SupportAdapter
 

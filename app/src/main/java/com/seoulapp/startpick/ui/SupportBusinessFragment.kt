@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.adapter.TabViewPagerAdapter
 import com.seoulapp.startpick.ui.SupportInnerFragment.*
-import com.seoulapp.startpick.R
 import kotlinx.android.synthetic.main.fragment_support_business.*
 
 

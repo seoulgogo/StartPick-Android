@@ -1,6 +1,7 @@
 package com.seoulapp.startpick.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -32,10 +33,7 @@ class JobFragment : Fragment() {
 
         setRecyclerView()
         floatingBtn()
-
     }
-
-
 
     /* 리사이클러 뷰 설정 */
     fun setRecyclerView() {
@@ -51,22 +49,18 @@ class JobFragment : Fragment() {
         testDataList.add(JobData("SNS 콘텐츠 크리에이터 8", "서울시창업지원센터", "콘텐츠"))
         testDataList.add(JobData("SNS 콘텐츠 크리에이터 9", "서울시창업지원센터", "콘텐츠"))
 
-
         jobViewTestAdpapter = JobAdapter(activity!!, testDataList)
         fragment_job_recyclerview.adapter = jobViewTestAdpapter
         fragment_job_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
-
     }
 
     /* 플로팅 이미지 설정 */
-    fun floatingBtn(){
+    fun floatingBtn() {
         // 글쓰기 버튼 클릭 리스너
         iv_write.setOnClickListener {
             var intent = Intent(this.context, WriteActivity::class.java)
             startActivity(intent)
         }
-
     }
-
 }
