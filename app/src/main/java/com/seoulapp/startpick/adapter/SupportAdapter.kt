@@ -1,15 +1,13 @@
-package com.seoulapp.smartpick.adapter
+package com.seoulapp.startpick.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import com.seoulapp.smartpick.data.SupportData
 import com.seoulapp.startpick.R
-import org.w3c.dom.Text
+import com.seoulapp.startpick.data.SupportData
 
 class SupportAdapter(private val ctx : Context, private val dataList : ArrayList<SupportData>) : RecyclerView.Adapter<SupportAdapter.ViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): SupportAdapter.ViewHolder {

@@ -15,10 +15,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity" />
         <activity android:name=".ui.LoginActivity"/>
         <activity android:name=".ui.SignupActivity" />
+        <activity android:name="com.seoulapp.startpick.ui.WriteActivity"></activity>
+
         <activity android:name=".ui.SignMainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
