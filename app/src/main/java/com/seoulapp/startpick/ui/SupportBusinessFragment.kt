@@ -5,16 +5,10 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-<<<<<<< HEAD:app/src/main/java/com/seoulapp/startpick/ui/SupportBusinessFragment.kt
-import com.seoulapp.startpick.R
-=======
-import com.seoulapp.smartpick.R
 import com.seoulapp.smartpick.adapter.TabViewPagerAdapter
-
 import com.seoulapp.smartpick.ui.JobInnerFragment.*
+import com.seoulapp.startpick.R
 import kotlinx.android.synthetic.main.fragment_support_business.*
->>>>>>> 4965e088f1d5f6f7f87b68c6d8b1bdf0d3bb14e7:app/src/main/java/com/seoulapp/smartpick/ui/SupportBusinessFragment.kt
 
 
 class SupportBusinessFragment : Fragment() {
