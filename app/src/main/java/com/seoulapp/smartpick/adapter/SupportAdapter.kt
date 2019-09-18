@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.seoulapp.smartpick.R
 import com.seoulapp.smartpick.data.SupportData
+import com.seoulapp.startpick.R
 import org.w3c.dom.Text
 
 class SupportAdapter(private val ctx : Context, private val dataList : ArrayList<SupportData>) : RecyclerView.Adapter<SupportAdapter.ViewHolder>() {

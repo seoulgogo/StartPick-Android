@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.seoulapp.smartpick.R
 import com.seoulapp.smartpick.data.JobData
+import com.seoulapp.startpick.R
 
 class JobAdapter(private val ctx : Context, private val dataList : ArrayList<JobData>) :
         RecyclerView.Adapter<JobAdapter.Holder>() {

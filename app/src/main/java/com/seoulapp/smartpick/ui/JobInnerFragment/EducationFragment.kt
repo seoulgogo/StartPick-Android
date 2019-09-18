@@ -6,9 +6,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.seoulapp.smartpick.R
 import com.seoulapp.smartpick.adapter.SupportAdapter
 import com.seoulapp.smartpick.data.SupportData
+import com.seoulapp.startpick.R
 import kotlinx.android.synthetic.main.frag_total_support_inner.*
 
 class EducationFragment : Fragment() {

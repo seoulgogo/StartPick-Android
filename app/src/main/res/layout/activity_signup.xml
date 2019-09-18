@@ -1,211 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ui.SignupActivity">
 
-    <!--Toolbar-->
-    <RelativeLayout
-        android:id="@+id/rl_toolbar_map_frag"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="48dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:src="@drawable/search" />
-
-        <!--title_map-->
-        <TextView
-            android:id="@+id/tv_seoulstartupmap_map_frag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="회원가입"
-            android:textColor="#212529"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
-
-    <!--View-->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#000000" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="이메일"
-            android:textColor="#212529"
-            android:textSize="16sp" />
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColorHint="#868e96"
-            android:textSize="16sp"
-            android:hint="example@gmail.com"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="비밀번호"
-            android:textColor="#212529"
-            android:textSize="16sp" />
+            <!--Toolbar-->
+            <RelativeLayout
+                android:id="@+id/rl_toolbar_map_frag"
+                android:layout_width="match_parent"
+                android:layout_height="48dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="#868e96"
-            android:layout_marginTop="4dp"
-            android:textSize="16sp"
-            android:hint="영문, 숫자 혼합 6자 이상"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="이름"
-            android:textColor="#212529"
-            android:textSize="16sp" />
+                <ImageView
+                    android:id="@+id/btn_back_signup_act"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:paddingHorizontal="16dp"
+                    android:src="@drawable/search" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="#868e96"
-            android:layout_marginTop="4dp"
-            android:textSize="16sp"
-            android:hint="실명을 입력해주세요."
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="휴대폰 번호"
-            android:textColor="#212529"
-            android:textSize="16sp" />
+                <!--title_map-->
+                <TextView
+                    android:id="@+id/tv_seoulstartupmap_map_frag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="회원가입"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="#868e96"
-            android:layout_marginTop="4dp"
-            android:textSize="16sp"
-            android:hint="‘-’ 구분없이 입력해주세요."
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="생년월일"
-            android:textColor="#212529"
-            android:textSize="16sp" />
+            </RelativeLayout>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="#868e96"
-            android:layout_marginTop="4dp"
-            android:textSize="16sp"
-            android:hint="YYYY년 MM월 DD일"
-            />
+            <!--View-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#dee2e6" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="성별"
-            android:textColor="#212529"
-            android:textSize="16sp" />
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="horizontal"
-            >
-
-            <RadioButton
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#212529"
-                android:text="여성"
-                />
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical">
 
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#212529"
-                android:layout_marginLeft="24dp"
-                android:text="남성"
-                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="이메일"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
 
-        </RadioGroup>
+                <EditText
+                    android:id="@+id/et_email_signup_act"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:hint="example@gmail.com"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="#868e96"
+                    android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="직무"
-            android:textColor="#212529"
-            android:textSize="16sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="비밀번호"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
 
-        <com.isapanah.awesomespinner.AwesomeSpinner
-            android:id="@+id/awesomeSpinner_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            app:spinnerDirection="ltr"
-            app:spinnerHint="직무를 선택해주세요."
-            >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:hint="영문, 숫자 혼합 6자 이상"
+                    android:inputType="textPassword"
+                    android:textColorHint="#868e96"
+                    android:textSize="16sp" />
 
-        </com.isapanah.awesomespinner.AwesomeSpinner>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="이름"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="#868e96"
-            android:textSize="12sp"
-            android:text="*직무는 마이페이지에서 변경할 수 있습니다."
-            />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:hint="실명을 입력해주세요."
+                    android:inputType="text"
+                    android:textColorHint="#868e96"
+                    android:textSize="16sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/loginbtn_disable_box"
-            >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="휴대폰 번호"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:textSize="18sp"
-                android:textColor="#FFFFFF"
-                android:text="회원가입 완료"
-                />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:hint="‘-’ 구분없이 입력해주세요."
+                    android:inputType="number"
+                    android:textColorHint="#868e96"
+                    android:textSize="16sp" />
 
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:inputType="number"
+                    android:text="생년월일"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
 
-    </LinearLayout>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:hint="YYYY년 MM월 DD일"
+                    android:textColorHint="#868e96"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="성별"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="여성"
+                        android:textColor="#212529"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="24dp"
+                        android:text="남성"
+                        android:textColor="#212529"
+                        android:textSize="16sp" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="직무"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
+
+                <com.isapanah.awesomespinner.AwesomeSpinner
+                    android:id="@+id/awesomeSpinner_spinner2"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    app:spinnerDirection="ltr"
+                    app:spinnerHint="직무를 선택해주세요." />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="*직무는 마이페이지에서 변경할 수 있습니다."
+                    android:textColor="#868e96"
+                    android:textSize="12sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginBottom="24dp
+"
+                    android:background="@drawable/loginbtn_disable_box">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="회원가입 완료"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>
