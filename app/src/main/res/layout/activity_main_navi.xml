@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="구인구직"
+            android:text="함께해요"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="시설대관"
+            android:text="장소"
             android:textSize="12sp" />
     </LinearLayout>
 
