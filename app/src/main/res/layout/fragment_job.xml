@@ -68,11 +68,11 @@
     <ImageView
         android:id="@+id/iv_write"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/icon_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="#22b573"
         />
 
 

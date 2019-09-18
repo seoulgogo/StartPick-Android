@@ -15,8 +15,6 @@ import android.widget.Toast
 
 class SignupActivity : AppCompatActivity() {
 
-    var spinnerLTR:AwesomeSpinner? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
