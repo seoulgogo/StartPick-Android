@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linear_total"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:weightSum="10"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:text="총 6,712건"
+            android:textSize="12sp"
+            android:textColor="#212529"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"/>
+        <!--스피너로 바꿔야함-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:text="등록일 순"
+            android:textSize="12sp"
+            android:textColor="#212529"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_total"
+        android:layout_below="@+id/linear_total"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

@@ -3,11 +3,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.SupportBusinessFragment">
 
     <TextView
+        android:id="@+id/tv_title_frg_support"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="사업지원" />
+        android:layout_height="48dp"
+        android:text="지원사업"
+        android:textSize="16sp"
+        android:textColor="#212529"
+        android:gravity="center_vertical|center_horizontal"/>
 
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout_frag_support"
+        android:layout_below="@+id/tv_title_frg_support"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:tabSelectedTextColor="#22b573"
+        app:tabMode="scrollable"
+        app:tabTextColor="#212529"
+        app:tabIndicatorColor="#22b573"
+        app:tabIndicatorFullWidth="false"
+        app:tabRippleColor="#22b573"
+        app:tabGravity="center"
+        >
+
+    </android.support.design.widget.TabLayout>
+
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpg_frag_support"
+        android:layout_below="@+id/tablayout_frag_support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v4.view.ViewPager>
 </RelativeLayout>
