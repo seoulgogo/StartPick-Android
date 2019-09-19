@@ -23,7 +23,7 @@ class SignMainActivity : AppCompatActivity() {
         }
 
         btn_intent_login.setOnClickListener {
-            startActivity<MainActivity>()
+            startActivity<LoginActivity>()
         }
     }
 }

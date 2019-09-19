@@ -15,10 +15,10 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="16dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="16dp"
-            android:src="@drawable/search" />
+            android:src="@drawable/icon_back_arrow" />
 
         <!--title_map-->
         <TextView
@@ -35,8 +35,8 @@
     <!--View-->
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#000000" />
+        android:layout_height="1dp"
+        android:background="#dee2e6" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,6 +55,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
             android:layout_marginTop="4dp"
             android:textColorHint="#868e96"
             android:textSize="16sp"
@@ -72,6 +73,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:textColorHint="#868e96"
             android:layout_marginTop="4dp"
             android:textSize="16sp"
@@ -79,6 +81,7 @@
             />
 
         <RelativeLayout
+            android:id="@+id/btn_login_act"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginTop="64dp"

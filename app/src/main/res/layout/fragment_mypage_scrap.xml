@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <!--<android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/btn_selector_myapge_scrap_fg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/maincolor"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:text="구인구직"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/btn_selector_business_myapge_scrap_fg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/mypage_scrap_selector_box"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="14sp"
+                        android:textColor="@color/maincolor"
+                        android:text="지원사업"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_mypage_scrap_fg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+               />
+
+        </LinearLayout>
+<!--
+
+    </android.support.v4.widget.NestedScrollView>
+-->
+
+</LinearLayout>
