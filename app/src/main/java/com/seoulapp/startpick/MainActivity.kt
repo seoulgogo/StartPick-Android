@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.LinearLayout
 import com.seoulapp.startpick.base.BasePagerAdapter
 import com.seoulapp.startpick.ui.*
+import com.seoulapp.startpick.ui.mypage.MypageFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

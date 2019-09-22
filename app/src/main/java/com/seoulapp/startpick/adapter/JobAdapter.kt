@@ -15,12 +15,10 @@ import com.seoulapp.startpick.ui.WithDetailActivity
 class JobAdapter(private val ctx : Context, private val dataList : ArrayList<JobData>) :
         RecyclerView.Adapter<JobAdapter.Holder>() {
 
-
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx)!!.inflate(R.layout.item_job_fragment, viewGroup, false)
         return Holder(view)
     }
-
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.content_title.text = dataList[position].title

@@ -79,6 +79,55 @@
                     android:textSize="18sp"
                     android:textColor="#22b573"/>
             </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="모집직무 선택해주세요 스피너 달아야함"
+            android:gravity="center_vertical"/>
+
+        <View
+            android:id="@+id/v_line1"
+            android:layout_below="@+id/linear_write"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dee2e6"
+            />
+
+        <!-- 모집 내용  -->
+        <LinearLayout
+            android:id="@+id/linear_recruit_content"
+            android:layout_below="@+id/v_line1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingBottom="16dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="모집내용"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#212529"
+                android:gravity="center_vertical"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="모집직무"
+                    android:textSize="16sp"
+                    android:textColor="#212529"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="*"
+                    android:textSize="18sp"
+                    android:textColor="#22b573"/>
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"

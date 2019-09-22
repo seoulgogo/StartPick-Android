@@ -13,14 +13,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="16dp"
             >
 
             <!--Toolbar-->
             <RelativeLayout
                 android:id="@+id/rl_toolbar_map_frag"
                 android:layout_width="match_parent"
-                android:layout_height="48dp">
+                android:layout_height="48dp"
+                android:paddingLeft="16dp">
 
                 <!--title_map-->
                 <TextView
@@ -48,7 +48,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#000000" />
+                android:background="#dee2e6" />
 
             <!--map-->
             <ImageView
