@@ -15,6 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.WithFilter"></activity>
+        <activity android:name=".ui.WithDetailActivity" />
         <activity android:name=".ui.mypage.MyapageResumeActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".ui.LoginActivity" />
