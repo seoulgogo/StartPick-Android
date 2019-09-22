@@ -7,21 +7,30 @@
     tools:context=".ui.JobFragment">
 
     <!--title LinearLayout-->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/fragment_job_title_container"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:orientation="horizontal">
+
         <TextView
             android:id="@+id/fragment_job_title_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal"
             android:text="함께해요"
-            android:textSize="17sp"
             android:textColor="#212529"
-            android:gravity="center_vertical|center_horizontal"/>
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/search"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <View
         android:layout_below="@+id/fragment_job_title_container"
@@ -36,16 +45,66 @@
         android:id="@+id/fragment_job_counting_container"
         android:layout_below="@+id/fragment_job_title_container"
         android:layout_width="match_parent"
+        android:weightSum="10"
         android:layout_height="48dp"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="290dp"
+            android:layout_width="0dp"
+            android:layout_weight="6"
             android:layout_height="match_parent"
-            android:textSize="12sp"
+            android:text="전체 128개"
+            android:textSize="14sp"
             android:textColor="#212529"
             android:paddingStart="16dp"
-            android:gravity="center_vertical"
-            android:text="전체 128개"/>
+            android:gravity="center_vertical" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|right"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/btn_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_border"
+                android:layout_marginEnd="8dp"
+                android:padding="6dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:src="@drawable/icon_filter" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="필터"
+                    android:textColor="#212529"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/round_border"
+                android:padding="6dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="6dp"
+                    android:src="@drawable/icon_array"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="최신순"
+                    android:textSize="12sp"
+                    android:textColor="#212529"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <!--recyclerview LinearLayout-->
@@ -68,11 +127,11 @@
     <ImageView
         android:id="@+id/iv_write"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/icon_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="#22b573"
         />
 
 
