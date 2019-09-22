@@ -18,6 +18,10 @@ import org.jetbrains.anko.startActivity
 
 class SignupActivity : AppCompatActivity() {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 60df2c52ea415936f0b90caf9271ab74c443edd0
     var et_email: Boolean = false
     var et_pw: Boolean = false
     var et_name: Boolean = false
