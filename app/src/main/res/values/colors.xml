@@ -6,5 +6,6 @@
     <color name="white">#FFFFFF</color>
     <color name="maincolor">#22b573</color>
     <color name="coloreditnormal">#868e96</color>
+    <color name="notSelected">#acacac</color>
 
 </resources>

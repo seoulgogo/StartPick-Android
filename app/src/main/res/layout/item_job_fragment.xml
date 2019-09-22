@@ -54,6 +54,7 @@
                 android:layout_height="match_parent"
                 android:background="#e6e6e6"/>
             <ImageView
+                android:id="@+id/iv_check"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
