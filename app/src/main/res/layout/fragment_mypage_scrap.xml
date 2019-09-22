@@ -11,16 +11,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
-            android:layout_marginHorizontal="16dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="34dp"
+                android:layout_marginHorizontal="16dp"
                 android:orientation="horizontal">
 
                 <RelativeLayout
-                    android:id="@+id/btn_selector_myapge_scrap_fg"
+                    android:id="@+id/btn_selector_job_myapge_scrap_fg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -28,14 +28,15 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/maincolor"/>
+                        android:background="@drawable/mypage_scrap_selector_box"/>
 
                     <TextView
+                        android:id="@+id/tv_selector_job_myapge_scrap_fg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:textSize="14sp"
-                        android:textColor="@color/white"
+                        android:textColor="@color/maincolor"
                         android:text="구인구직"/>
 
                 </RelativeLayout>
@@ -52,6 +53,7 @@
                         android:background="@drawable/mypage_scrap_selector_box"/>
 
                     <TextView
+                        android:id="@+id/tv_selector_business_myapge_scrap_fg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"

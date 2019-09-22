@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/ll_mypage_resume_act"
     tools:context=".ui.mypage.MyapageResumeActivity">
 
 
@@ -69,10 +70,12 @@
                     android:orientation="horizontal">
 
                     <RelativeLayout
+                        android:id="@+id/rl_profile_mypage_resume_act"
                         android:layout_width="70dp"
                         android:layout_height="70dp">
 
                         <ImageView
+                            android:id="@+id/img_profile_mypage_resume_act"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/icon_profile" />
@@ -164,6 +167,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/et_phone_mypage_resume_act"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="‘-’ 구분없이 입력해주세요."
@@ -192,6 +196,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/et_resume_theme_mypage_resume_act"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="이력서 제목을 입력해주세요."
@@ -227,20 +232,21 @@
                         android:textSize="16sp" />
 
                     <ImageView
-                        android:id="@+id/btn_"
+                        android:id="@+id/btn_open_major_mypage_resum_act"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/under_arrow" />
+                        android:src="@drawable/btn_under_up_arraow" />
                 </RelativeLayout>
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="전공을 입력해주세요."
-                    android:inputType="phone"
+                    android:inputType="text"
                     android:textColorHint="#868e96"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -273,133 +279,141 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/under_arrow" />
+                        android:src="@drawable/btn_under_up_arraow" />
+
                 </RelativeLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="회사명"
-                    android:textColor="#212529"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="회사명을 입력해주세요."
-                    android:inputType="phone"
-                    android:textColorHint="#868e96"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="재직기간"
-                    android:textColor="#212529"
-                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                    <LinearLayout
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_marginTop="16dp"
+                        android:text="회사명"
+                        android:textColor="#212529"
+                        android:textSize="16sp" />
 
-                        <EditText
-                            android:layout_width="90dp"
-                            android:layout_height="40dp"
-                            android:background="@drawable/edittext_background_box"
-                            android:hint="년도"
-                            android:inputType="number"
-                            android:paddingLeft="8dp"
-                            android:textColorHint="#868e96"
-                            android:textSize="16sp" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="회사명을 입력해주세요."
+                        android:inputType="text"
+                        android:textColorHint="#868e96"
+                        android:textSize="16sp" />
 
-                        <EditText
-                            android:layout_width="52dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/edittext_background_box"
-                            android:hint="월"
-                            android:inputType="number"
-                            android:paddingLeft="8dp"
-                            android:textColorHint="#868e96"
-                            android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="재직기간"
+                        android:textColor="#212529"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:layout_width="90dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/edittext_background_box"
+                                android:hint="년도"
+                                android:inputType="number"
+                                android:paddingLeft="8dp"
+                                android:textColorHint="#868e96"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="52dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:background="@drawable/edittext_background_box"
+                                android:hint="월"
+                                android:inputType="number"
+                                android:paddingLeft="8dp"
+                                android:textColorHint="#868e96"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="~"
+                            android:textColor="#212529"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:layout_width="90dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:background="@drawable/edittext_background_box"
+                                android:hint="년도"
+                                android:inputType="number"
+                                android:paddingLeft="8dp"
+                                android:textColorHint="#868e96"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="52dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:background="@drawable/edittext_background_box"
+                                android:hint="월"
+                                android:inputType="number"
+                                android:paddingLeft="8dp"
+                                android:textColorHint="#868e96"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="~"
+                        android:layout_marginTop="16dp"
+                        android:text="담당업무"
                         android:textColor="#212529"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
 
-                    <LinearLayout
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/edittext_background_box"
+                        android:hint="담당업무를 입력해주세요."
+                        android:paddingLeft="8dp"
+                        android:textAlignment="viewStart"
+                        android:textColorHint="#868e96"
+                        android:textSize="16sp" />
+
+
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <EditText
-                            android:layout_width="90dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/edittext_background_box"
-                            android:hint="년도"
-                            android:inputType="number"
-                            android:paddingLeft="8dp"
-                            android:textColorHint="#868e96"
-                            android:textSize="16sp" />
-
-                        <EditText
-                            android:layout_width="52dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/edittext_background_box"
-                            android:hint="월"
-                            android:inputType="number"
-                            android:paddingLeft="8dp"
-                            android:textColorHint="#868e96"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:src="@drawable/btn_add_career" />
 
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="담당업무"
-                    android:textColor="#212529"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edittext_background_box"
-                    android:hint="담당업무를 입력해주세요."
-                    android:paddingLeft="8dp"
-                    android:textAlignment="viewStart"
-                    android:textColorHint="#868e96"
-                    android:textSize="16sp" />
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="24dp"
-                    android:src="@drawable/btn_add_career" />
-
             </LinearLayout>
 
             <View
@@ -431,132 +445,140 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/under_arrow" />
+                        android:src="@drawable/btn_under_up_arraow" />
                 </RelativeLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="활동명"
-                    android:textColor="#212529"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="활동명을 입력해주세요."
-                    android:inputType="text"
-                    android:textColorHint="#868e96"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="활동기간"
-                    android:textColor="#212529"
-                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                    <LinearLayout
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_marginTop="16dp"
+                        android:text="활동명"
+                        android:textColor="#212529"
+                        android:textSize="16sp" />
 
-                        <EditText
-                            android:layout_width="90dp"
-                            android:layout_height="40dp"
-                            android:background="@drawable/edittext_background_box"
-                            android:hint="년도"
-                            android:inputType="number"
-                            android:paddingLeft="8dp"
-                            android:textColorHint="#868e96"
-                            android:textSize="16sp" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="활동명을 입력해주세요."
+                        android:inputType="text"
+                        android:textColorHint="#868e96"
+                        android:textSize="16sp" />
 
-                        <EditText
-                            android:layout_width="52dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/edittext_background_box"
-                            android:hint="월"
-                            android:inputType="number"
-                            android:paddingLeft="8dp"
-                            android:textColorHint="#868e96"
-                            android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="활동기간"
+                        android:textColor="#212529"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:layout_width="90dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/edittext_background_box"
+                                android:hint="년도"
+                                android:inputType="number"
+                                android:paddingLeft="8dp"
+                                android:textColorHint="#868e96"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="52dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:background="@drawable/edittext_background_box"
+                                android:hint="월"
+                                android:inputType="number"
+                                android:paddingLeft="8dp"
+                                android:textColorHint="#868e96"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="~"
+                            android:textColor="#212529"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <EditText
+                                android:layout_width="90dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:background="@drawable/edittext_background_box"
+                                android:hint="년도"
+                                android:inputType="number"
+                                android:paddingLeft="8dp"
+                                android:textColorHint="#868e96"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="52dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="8dp"
+                                android:background="@drawable/edittext_background_box"
+                                android:hint="월"
+                                android:inputType="number"
+                                android:paddingLeft="8dp"
+                                android:textColorHint="#868e96"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="~"
+                        android:layout_marginTop="16dp"
+                        android:text="활동내용"
                         android:textColor="#212529"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
 
-                    <LinearLayout
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/edittext_background_box"
+                        android:hint="활동내용을 입력해주세요."
+                        android:paddingLeft="8dp"
+                        android:textAlignment="viewStart"
+                        android:textColorHint="#868e96"
+                        android:textSize="16sp" />
+
+
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <EditText
-                            android:layout_width="90dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/edittext_background_box"
-                            android:hint="년도"
-                            android:inputType="number"
-                            android:paddingLeft="8dp"
-                            android:textColorHint="#868e96"
-                            android:textSize="16sp" />
-
-                        <EditText
-                            android:layout_width="52dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="8dp"
-                            android:background="@drawable/edittext_background_box"
-                            android:hint="월"
-                            android:inputType="number"
-                            android:paddingLeft="8dp"
-                            android:textColorHint="#868e96"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:src="@drawable/btn_add_career" />
 
                 </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="활동내용"
-                    android:textColor="#212529"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/edittext_background_box"
-                    android:hint="활동내용을 입력해주세요."
-                    android:paddingLeft="8dp"
-                    android:textAlignment="viewStart"
-                    android:textColorHint="#868e96"
-                    android:textSize="16sp" />
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="24dp"
-                    android:src="@drawable/btn_add_career" />
 
             </LinearLayout>
 
@@ -589,7 +611,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/under_arrow" />
+                        android:src="@drawable/btn_under_up_arraow" />
 
                 </RelativeLayout>
 
@@ -602,7 +624,8 @@
                     android:paddingLeft="8dp"
                     android:textAlignment="viewStart"
                     android:textColorHint="#868e96"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -635,32 +658,41 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:src="@drawable/under_arrow" />
+                        android:src="@drawable/btn_under_up_arraow" />
 
                 </RelativeLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="작업물 등 더 보여주고 싶은 부분이 있다면 url을 남겨주세요."
-                    android:textColor="#212529"
-                    android:textSize="12sp" />
-
-                <EditText
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="http://"
-                    android:inputType="textEmailAddress"
-                    android:textColorHint="#868e96"
-                    android:textSize="16sp" />
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="작업물 등 더 보여주고 싶은 부분이 있다면 url을 남겨주세요."
+                        android:textColor="#212529"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="http://"
+                        android:inputType="textEmailAddress"
+                        android:textColorHint="#868e96"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/btn_store_mypage_resume_act"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="48dp"
-                android:background="@color/maincolor">
+                android:background="#8C8C8C">
 
                 <TextView
                     android:layout_width="wrap_content"
