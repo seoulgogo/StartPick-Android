@@ -31,8 +31,9 @@ class JobFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        setRecyclerView()
-        floatingBtn()
+        setRecyclerView() // 리사이클러뷰 데이터 세팅
+        floatingBtn() // 글쓰기 버튼 세팅
+        filterClick() // 필터 버튼 세팅
     }
 
     /* 리사이클러 뷰 설정 */
@@ -60,6 +61,13 @@ class JobFragment : Fragment() {
         // 글쓰기 버튼 클릭 리스너
         iv_write.setOnClickListener {
             var intent = Intent(this.context, WriteActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    fun filterClick(){
+        btn_filter.setOnClickListener {
+            var intent = Intent(this.context, WithFilter::class.java)
             startActivity(intent)
         }
     }
