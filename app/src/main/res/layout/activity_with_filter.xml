@@ -531,10 +531,11 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/btn_adapt"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:background="#22b573"
+        android:background="#8c8c8c"
         android:text="적용하기"
         android:textColor="#FFFFFF"
         android:gravity="center_vertical|center_horizontal"
