@@ -7,7 +7,7 @@
     android:paddingVertical="8dp">
 
     <LinearLayout
-        android:id="@+id/activity_main_navi_home_container"
+        android:id="@+id/ll_home_main_navi_act"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -15,22 +15,23 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/activity_main_navi_iv_home"
+            android:id="@+id/img_home_main_navi_act"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@drawable/tab_home" />
+            android:src="@drawable/btn_icon_hom_click" />
 
         <TextView
-            android:id="@+id/activity_main_navi_txt_home"
+            android:id="@+id/tv_home_main_navi_act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:text="홈"
+            android:textColor="@drawable/main_navigation_text_color"
             android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/activity_main_navi_rank_container"
+        android:id="@+id/ll_with_main_navi_act"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -38,22 +39,23 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/activity_main_navi_iv_rank"
+            android:id="@+id/img_with_main_navi_act"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@mipmap/icn_home_on" />
+            android:src="@drawable/btn_icon_with_click" />
 
         <TextView
-            android:id="@+id/activity_main_navi_txt_rank"
+            android:id="@+id/tv_with_main_navi_act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
+            android:textColor="@drawable/main_navigation_text_color"
             android:text="함께해요"
             android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/activity_main_navi_vote_container"
+        android:id="@+id/ll_support_main_navi_act"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -61,22 +63,23 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/activity_main_navi_iv_vote"
+            android:id="@+id/img_support_main_navi_act"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@mipmap/icn_home_on" />
+            android:src="@drawable/btn_icon_support_click" />
 
         <TextView
-            android:id="@+id/activity_main_navi_txt_vote"
+            android:id="@+id/tv_support_main_navi_act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
+            android:textColor="@drawable/main_navigation_text_color"
             android:text="지원사업"
             android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/activity_main_navi_community_container"
+        android:id="@+id/ll_place_main_navi_act"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -84,22 +87,23 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/activity_main_navi_iv_community"
+            android:id="@+id/img_place_main_navi_act"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@mipmap/icn_home_on" />
+            android:src="@drawable/btn_icon_place_click" />
 
         <TextView
-            android:id="@+id/activity_main_navi_txt_community"
+            android:id="@+id/tv_place_main_navi_act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
+            android:textColor="@drawable/main_navigation_text_color"
             android:text="장소"
             android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/activity_main_navi_mypage_container"
+        android:id="@+id/ll_mypage_main_navi_act"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -107,15 +111,16 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/activity_main_navi_iv_mypage"
+            android:id="@+id/img_mypage_main_navi_act"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:background="@mipmap/icn_home_on" />
+            android:background="@drawable/btn_icon_mypage_click" />
 
         <TextView
-            android:id="@+id/activity_main_navi_txt_mypage"
+            android:id="@+id/tv_mypage_main_navi_act"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@drawable/main_navigation_text_color"
             android:layout_marginTop="2dp"
             android:text="마이페이지"
             android:textSize="12sp" />

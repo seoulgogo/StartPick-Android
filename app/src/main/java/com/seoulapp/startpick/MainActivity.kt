@@ -34,15 +34,15 @@ class MainActivity : AppCompatActivity() {
                     LayoutInflater.from(this@MainActivity).inflate(R.layout.activity_main_navi, null, false)
             setupWithViewPager(activity_main_vp_container)
             getTabAt(0)!!.customView =
-                    navigationLayout.findViewById(R.id.activity_main_navi_home_container) as LinearLayout
+                    navigationLayout.findViewById(R.id.ll_home_main_navi_act) as LinearLayout
             getTabAt(1)!!.customView =
-                    navigationLayout.findViewById(R.id.activity_main_navi_rank_container) as LinearLayout
+                    navigationLayout.findViewById(R.id.ll_with_main_navi_act) as LinearLayout
             getTabAt(2)!!.customView =
-                    navigationLayout.findViewById(R.id.activity_main_navi_vote_container) as LinearLayout
+                    navigationLayout.findViewById(R.id.ll_support_main_navi_act) as LinearLayout
             getTabAt(3)!!.customView =
-                    navigationLayout.findViewById(R.id.activity_main_navi_community_container) as LinearLayout
+                    navigationLayout.findViewById(R.id.ll_place_main_navi_act) as LinearLayout
             getTabAt(4)!!.customView =
-                    navigationLayout.findViewById(R.id.activity_main_navi_mypage_container) as LinearLayout
+                    navigationLayout.findViewById(R.id.ll_mypage_main_navi_act) as LinearLayout
         }
     }
 

@@ -232,7 +232,7 @@
                         android:textSize="16sp" />
 
                     <ImageView
-                        android:id="@+id/btn_open_major_mypage_resum_act"
+                        android:id="@+id/btn_open_major_mypage_resume_act"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -240,6 +240,7 @@
                 </RelativeLayout>
 
                 <EditText
+                    android:id="@+id/et_major_mypage_resume_act"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="전공을 입력해주세요."
@@ -276,6 +277,7 @@
                         android:textSize="16sp" />
 
                     <ImageView
+                        android:id="@+id/btn_career_mypage_resume_act"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -284,6 +286,7 @@
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_career_mypage_resume_act"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -442,6 +445,7 @@
                         android:textSize="16sp" />
 
                     <ImageView
+                        android:id="@+id/btn_active_mypage_resume_act"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -449,6 +453,7 @@
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_active_mypage_resume_act"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -608,6 +613,7 @@
                         android:textSize="16sp" />
 
                     <ImageView
+                        android:id="@+id/btn_introduce_mypage_resume_act"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -616,6 +622,7 @@
                 </RelativeLayout>
 
                 <EditText
+                    android:id="@+id/et_introduce_mypage_resume_act"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:layout_marginTop="4dp"
@@ -655,6 +662,7 @@
                         android:textSize="16sp" />
 
                     <ImageView
+                        android:id="@+id/btn_link_mypage_resume_act"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -663,6 +671,7 @@
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:id="@+id/et_link_mypage_resume_act"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"

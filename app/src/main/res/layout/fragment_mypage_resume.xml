@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이력서뷰"
-        />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_mypage_resume_fg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
     <ImageView
         android:id="@+id/btn_write_resume_mypage_fg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="8dp"
-        android:paddingEnd="16dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/icon_add"/>
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:src="@drawable/icon_add" />
 
 </RelativeLayout>

@@ -18,7 +18,6 @@ import org.jetbrains.anko.startActivity
 
 class SignupActivity : AppCompatActivity() {
 
-
     var et_email: Boolean = false
     var et_pw: Boolean = false
     var et_name: Boolean = false
@@ -242,6 +241,7 @@ class SignupActivity : AppCompatActivity() {
             btn_sex = false
 
     }
+
 
     fun spinner() {
 

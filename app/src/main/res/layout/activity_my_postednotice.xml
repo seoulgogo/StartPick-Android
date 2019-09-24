@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--Toolbar-->
+    <RelativeLayout
+        android:id="@+id/rl_toolbar_my_postednotice_act"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:id="@+id/img_back_btn_mypostednotice_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="16dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_back_arrow" />
+
+        <!--title_map-->
+        <TextView
+            android:id="@+id/tv_my_postednotice_act"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="내가 올린 공고"
+            android:textColor="#212529"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <!--View-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dee2e6" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_my_postednotice_act"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

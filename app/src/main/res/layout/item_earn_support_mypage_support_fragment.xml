@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_container_support_mp_fg"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_resume_title_support_mp_fg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#212529"
+            android:text="이력서제목"/>
+
+        <TextView
+            android:id="@+id/tv_resume_name_support_mp_fg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textSize="14sp"
+            android:textColor="#212529"
+            android:text="지원자 이름"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_profile_recyclerview_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/icon_profile"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dee2e6"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/img_profile_recyclerview_item"
+        />
+
+</RelativeLayout>
