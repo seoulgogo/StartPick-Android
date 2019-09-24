@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".ui.mypage.MypageFragment">
 
     <!--Toolbar-->
@@ -128,6 +130,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/img_my_uploadnotice_mypage_frg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -145,18 +148,17 @@
                 <android.support.design.widget.TabLayout
                     android:id="@+id/tl_mypage_fragment"
                     android:layout_width="match_parent"
-                    android:layout_height="58dp"
+                    android:layout_height="wrap_content"
                     app:tabIndicatorColor="@color/maincolor"
                     app:tabSelectedTextColor="@color/maincolor" />
 
                 <com.seoulapp.startpick.ui.view.NoneSwipeViewPager
                     android:id="@+id/vp_noswipe_mypage_fragment"
                     android:layout_width="match_parent"
-                    android:layout_height="800dp"
-                    android:layout_marginTop="16dp" />
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp" />
 
             </LinearLayout>
-
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

@@ -18,7 +18,6 @@ import android.view.inputmethod.InputMethodManager
 import com.bumptech.glide.Glide
 import com.seoulapp.startpick.R
 import kotlinx.android.synthetic.main.activity_myapage_resume.*
-import kotlinx.android.synthetic.main.activity_signup.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -40,6 +39,11 @@ class MyapageResumeActivity : AppCompatActivity() {
     var next_btn_activation = false
 
     var btn_major_arrow = false
+    var btn_carrer_arrow = false
+    var btn_active_arrow = false
+    var btn_introduce = false
+    var btn_link_arrow = false
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,20 +75,96 @@ class MyapageResumeActivity : AppCompatActivity() {
             keyboardDown(ll_mypage_resume_act)
         }
 
-        btn_open_major_mypage_resum_act.setOnClickListener{
+        //전공
+        btn_open_major_mypage_resume_act.setOnClickListener{
             if(btn_major_arrow)
             {
                 btn_major_arrow = false
-                btn_open_major_mypage_resum_act.isSelected = false
+                btn_open_major_mypage_resume_act.isSelected = false
+                et_major_mypage_resume_act.visibility = View.GONE
             }
             else{
                 btn_major_arrow = true
-                btn_open_major_mypage_resum_act.isSelected = true
+                btn_open_major_mypage_resume_act.isSelected = true
+                et_major_mypage_resume_act.visibility = View.VISIBLE
             }
-
         }
 
+        //경력
+        btn_career_mypage_resume_act.setOnClickListener {
+            if(btn_carrer_arrow)
+            {
+                btn_carrer_arrow = false
+                btn_career_mypage_resume_act.isSelected = false
+                ll_career_mypage_resume_act.visibility = View.GONE
+            }
+            else{
+                btn_carrer_arrow = true
+                btn_career_mypage_resume_act.isSelected = true
+                ll_career_mypage_resume_act.visibility = View.VISIBLE
+            }
+        }
 
+        //활동및기타
+        btn_active_mypage_resume_act.setOnClickListener {
+            if(btn_active_arrow)
+            {
+                btn_active_arrow = false
+                btn_active_mypage_resume_act.isSelected = false
+                ll_active_mypage_resume_act.visibility = View.GONE
+            }
+            else{
+                btn_active_arrow = true
+                btn_active_mypage_resume_act.isSelected = true
+                ll_active_mypage_resume_act.visibility = View.VISIBLE
+            }
+        }
+
+        //자기소개
+        btn_introduce_mypage_resume_act.setOnClickListener {
+            if(btn_introduce)
+            {
+                btn_introduce = false
+                btn_introduce_mypage_resume_act.isSelected = false
+                et_introduce_mypage_resume_act.visibility = View.GONE
+            }
+            else{
+                btn_introduce = true
+                btn_introduce_mypage_resume_act.isSelected = true
+                et_introduce_mypage_resume_act.visibility = View.VISIBLE
+            }
+        }
+
+        //링크
+        btn_link_mypage_resume_act.setOnClickListener {
+            if(btn_link_arrow)
+            {
+                btn_link_arrow = false
+                btn_link_mypage_resume_act.isSelected = false
+                et_link_mypage_resume_act.visibility = View.GONE
+            }
+            else{
+                btn_link_arrow = true
+                btn_link_mypage_resume_act.isSelected = true
+                et_link_mypage_resume_act.visibility = View.VISIBLE
+            }
+        }
+
+    }
+
+    private fun test(id : View, btn_flag : Boolean, view : View ) {
+
+            if(btn_flag)
+            {
+                //btn_flag = false
+                id.isSelected = false
+                view.visibility = View.GONE
+            }
+            else{
+                //btn_flag = true
+                id.isSelected = true
+                view.visibility = View.VISIBLE
+            }
     }
 
     private fun editText() {

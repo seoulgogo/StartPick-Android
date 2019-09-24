@@ -22,6 +22,7 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.support.v4.startActivity
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
@@ -76,6 +77,10 @@ class MypageFragment : Fragment() {
     private fun setOnClickListener(){
         rl_profile_mypage_fg.setOnClickListener {
             requestReadExternalStoragePermission()
+        }
+
+        img_my_uploadnotice_mypage_frg.setOnClickListener {
+            startActivity<MyPostedNoticeActivity>()
         }
 
 
