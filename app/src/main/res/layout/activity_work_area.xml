@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:text="필터"
+            android:text="근무지역"
             android:textColor="#212529"
             android:textSize="16sp" />
 
@@ -26,19 +26,7 @@
             android:src="@drawable/icon_back_arrow"
             android:layout_marginStart="16dp"
             android:layout_centerVertical="true"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="초기화"
-            android:textSize="14sp"
-            android:textColor="#212529"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"/>
-
-
-   </RelativeLayout>
+    </RelativeLayout>
 
     <View
         android:id="@+id/view_line"
@@ -66,7 +54,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="스타트업 분야"
+                android:text="근무지역"
                 android:textSize="16sp"
                 android:textColor="#212529"
                 android:textStyle="bold"/>
@@ -82,7 +70,7 @@
                     android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
-                    android:text="전체"
+                    android:text="강남구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -94,7 +82,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="IT"
+                    android:text="강동구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -107,7 +95,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="여행"
+                    android:text="강북구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -119,7 +107,7 @@
                     android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginStart="5dp"
-                    android:text="교육"
+                    android:text="강서구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -141,7 +129,7 @@
                     android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
-                    android:text="금융"
+                    android:text="관악구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -154,7 +142,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="보안"
+                    android:text="광진구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -167,7 +155,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="교통"
+                    android:text="구로구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -179,7 +167,7 @@
                     android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginStart="5dp"
-                    android:text="건설"
+                    android:text="금천구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -200,7 +188,7 @@
                     android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
-                    android:text="게임"
+                    android:text="노원구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -213,7 +201,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="부동산"
+                    android:text="도봉구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -226,7 +214,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="친환경"
+                    android:text="동대문구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -238,7 +226,7 @@
                     android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginStart="5dp"
-                    android:text="헬스케어"
+                    android:text="동작구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -259,7 +247,7 @@
                     android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
-                    android:text="사회봉사"
+                    android:text="마포구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -272,7 +260,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="자연과학"
+                    android:text="서대문구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -285,7 +273,7 @@
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="전자제품"
+                    android:text="서초구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -297,7 +285,7 @@
                     android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginStart="5dp"
-                    android:text="물류/유통"
+                    android:text="성동구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -309,16 +297,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:weightSum="9"
+                android:weightSum="8"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
                 <TextView
                     android:id="@+id/tv_17"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
-                    android:text="광고/마케팅"
+                    android:text="성북구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -327,11 +315,11 @@
                 <TextView
                     android:id="@+id/tv_18"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="농/축/수산업"
+                    android:text="송파구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
@@ -340,83 +328,90 @@
                 <TextView
                     android:id="@+id/tv_19"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="엔터테인먼트"
+                    android:text="양천구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
                     android:background="@drawable/round_border"
                     />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="9"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
                 <TextView
                     android:id="@+id/tv_20"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
-                    android:text="바이오/의료"
+                    android:layout_marginStart="5dp"
+                    android:text="영등포구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
                     android:background="@drawable/round_border"
                     />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="8"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
                 <TextView
                     android:id="@+id/tv_21"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="용산구"
+                    android:textSize="14sp"
+                    android:textColor="#212529"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:background="@drawable/round_border"
+                    />
+                <TextView
+                    android:id="@+id/tv_22"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="기타"
+                    android:text="은평구"
+                    android:textSize="14sp"
+                    android:textColor="#212529"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:background="@drawable/round_border"
+                    />
+                <TextView
+                    android:id="@+id/tv_23"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="종로구"
+                    android:textSize="14sp"
+                    android:textColor="#212529"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:background="@drawable/round_border"
+                    />
+                <TextView
+                    android:id="@+id/tv_24"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="중구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
                     android:background="@drawable/round_border"
                     />
             </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
 
-    <View
-        android:id="@+id/view_bold"
-        android:layout_below="@+id/linear_startup"
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:background="#f1f3f5"/>
-
-    <!-- 직무 -->
-    <LinearLayout
-        android:id="@+id/linear_job"
-        android:layout_below="@+id/view_bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="직무"
-                android:textSize="16sp"
-                android:textColor="#212529"
-                android:textStyle="bold"
-                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -424,114 +419,22 @@
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/tv_25"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
-                    android:text="전체"
-                    android:textSize="14sp"
-                    android:textColor="#212529"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:background="@drawable/round_border"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginStart="5dp"
-                    android:text="개발"
-                    android:textSize="14sp"
-                    android:textColor="#212529"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:background="@drawable/round_border"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginStart="5dp"
-                    android:text="기획"
-                    android:textSize="14sp"
-                    android:textColor="#212529"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:background="@drawable/round_border"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="5dp"
-                    android:text="디자인"
-                    android:textSize="14sp"
-                    android:textColor="#212529"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:background="@drawable/round_border"
-
-                    />
-            </LinearLayout>
-
-            <!-- 두 번째 줄 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="8"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="5dp"
-                    android:text="마케팅"
-                    android:textSize="14sp"
-                    android:textColor="#212529"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:background="@drawable/round_border"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginStart="5dp"
-                    android:text="미디어"
-                    android:textSize="14sp"
-                    android:textColor="#212529"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:background="@drawable/round_border"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginStart="5dp"
-                    android:text="영업"
-                    android:textSize="14sp"
-                    android:textColor="#212529"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:background="@drawable/round_border"
-                    />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="5dp"
-                    android:text="기타"
+                    android:text="중랑구"
                     android:textSize="14sp"
                     android:textColor="#212529"
                     android:gravity="center_horizontal|center_vertical"
                     android:background="@drawable/round_border"
                     />
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/btn_adapt"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
