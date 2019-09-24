@@ -13,6 +13,8 @@ import com.seoulapp.startpick.R
 import com.seoulapp.startpick.adapter.JobAdapter
 import com.seoulapp.startpick.data.JobData
 import kotlinx.android.synthetic.main.fragment_job.*
+import kotlinx.android.synthetic.main.item_job_fragment.*
+import kotlinx.android.synthetic.main.item_job_fragment.view.*
 
 
 class JobFragment : Fragment() {
@@ -34,6 +36,7 @@ class JobFragment : Fragment() {
         setRecyclerView() // 리사이클러뷰 데이터 세팅
         floatingBtn() // 글쓰기 버튼 세팅
         filterClick() // 필터 버튼 세팅
+
     }
 
     /* 리사이클러 뷰 설정 */
@@ -54,6 +57,7 @@ class JobFragment : Fragment() {
         fragment_job_recyclerview.adapter = jobViewTestAdpapter
         fragment_job_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
+
     }
 
     /* 플로팅 이미지 설정 */
@@ -65,10 +69,15 @@ class JobFragment : Fragment() {
         }
     }
 
+    /* 필터 버튼 클릭 이벤트 */
     fun filterClick(){
         btn_filter.setOnClickListener {
             var intent = Intent(this.context, WithFilter::class.java)
             startActivity(intent)
         }
     }
+
+
 }
+
+
