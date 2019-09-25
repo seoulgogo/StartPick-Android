@@ -32,6 +32,14 @@
             android:textColor="#212529"
             android:textSize="16sp" />
 
+        <ImageView
+            android:id="@+id/img_delete_mypage_resume_act"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="16dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_delete"/>
+
     </RelativeLayout>
 
     <!--View-->

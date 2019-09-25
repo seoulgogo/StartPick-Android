@@ -42,6 +42,37 @@ class MapFragment : Fragment() {
 
     //var REQUIRED_PERMISSIONS = Array<String>(2) {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}
 
+    //지도버튼 --> 배열로 집어 넣어버리는 건 어떻게 생각하시져?
+    var btn_gangseo = 0
+    var btn_yangcheon = 0
+    var btn_guro = 0
+    var btn_yeongdeungpo= 0
+    var btn_geumcheon = 0
+    var btn_dongjak = 0
+    var btn_gwanak = 0
+    var btn_seocho = 0
+    var btn_gangnam = 0
+    var btn_songpa = 0
+    var btn_gangdong = 0
+    var btn_mapo = 0
+    var btn_seodamun = 0
+    var btn_eunpyeong = 0
+    var btn_jongno = 0
+    var btn_yongsan = 0
+    var btn_junggu = 0
+    var btn_seongdong = 0
+    var btn_seongbuk = 0
+    var btn_gangbuk = 0
+    var btn_dongdaemun = 0
+    var btn_gwangjin = 0
+    var btn_jungnang = 0
+    var btn_nowon = 0
+    var btn_dobon = 0
+
+    var MapBtnArray : ArrayList<Int> = arrayListOf(btn_gangseo, btn_yangcheon, btn_guro, btn_yeongdeungpo,btn_geumcheon
+            ,btn_dongjak,btn_gwanak,btn_seocho,btn_gangnam, btn_songpa, btn_gangdong,btn_mapo, btn_seodamun,btn_eunpyeong,
+            btn_jongno, btn_yongsan,btn_junggu, btn_seongdong,btn_seongbuk, btn_gangbuk, btn_dongdaemun, btn_gwangjin,
+            btn_jungnang,btn_nowon,btn_dobon)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -56,15 +87,48 @@ class MapFragment : Fragment() {
         setRecyclerView()
         //spinner()
 
+        mapsetOnClick()
         setOnClickListener()
     }
 
+
     fun setOnClickListener() {
+
         tv_address_dnleh_map_fragment.setOnClickListener {
 
             //GetUserLocation()
             requestReadUserLocationPermission()
         }
+    }
+
+    fun mapsetOnClick(){
+
+        btn_map_page_spot_gangseo.setOnClickListener {
+            mapFlag(btn_map_page_spot_gangseo, btn_gangseo)
+            //나머지 버튼들은 비활성화..! --> 배열로 집어 넣었으니 그거 생각해서 해보면 될듯
+        }
+
+
+
+
+    }
+
+    private fun mapFlag(id : View, btn_flag : Int) {
+
+        var flag = btn_flag
+
+        if(flag==1)
+        {
+            flag = 0
+            id.isSelected = false
+        }
+        else{
+            flag = 1
+            id.isSelected = true
+        }
+
+        //나머지 btn_flag는 모두 비활성화 되도록 해야함....
+
     }
 
     //위치 권한 확인
