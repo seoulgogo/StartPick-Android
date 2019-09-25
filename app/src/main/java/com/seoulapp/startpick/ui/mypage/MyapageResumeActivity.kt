@@ -45,7 +45,6 @@ class MyapageResumeActivity : AppCompatActivity() {
     var btn_link_arrow = false
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_myapage_resume)
@@ -56,6 +55,11 @@ class MyapageResumeActivity : AppCompatActivity() {
 
     fun setOnClickListener() {
         btn_back_mypage_resume_act.setOnClickListener {
+            finish()
+        }
+
+        img_delete_mypage_resume_act.setOnClickListener {
+            //##삭제 통신
             finish()
         }
 
@@ -137,7 +141,9 @@ class MyapageResumeActivity : AppCompatActivity() {
 
         //링크
         btn_link_mypage_resume_act.setOnClickListener {
-            if(btn_link_arrow)
+            //##이거 되는지 확인하기!!!!
+            test(btn_link_mypage_resume_act, btn_link_arrow, et_link_mypage_resume_act)
+            /*if(btn_link_arrow)
             {
                 btn_link_arrow = false
                 btn_link_mypage_resume_act.isSelected = false
@@ -147,21 +153,23 @@ class MyapageResumeActivity : AppCompatActivity() {
                 btn_link_arrow = true
                 btn_link_mypage_resume_act.isSelected = true
                 et_link_mypage_resume_act.visibility = View.VISIBLE
-            }
+            }*/
         }
 
     }
 
-    private fun test(id : View, btn_flag : Boolean, view : View ) {
+    private fun test(id : View, flag : Boolean, view : View ) {
+
+        var btn_flag = flag
 
             if(btn_flag)
             {
-                //btn_flag = false
+                btn_flag = false
                 id.isSelected = false
                 view.visibility = View.GONE
             }
             else{
-                //btn_flag = true
+                btn_flag = true
                 id.isSelected = true
                 view.visibility = View.VISIBLE
             }
