@@ -20,7 +20,7 @@ class WriteActivity : AppCompatActivity() {
 
         /* 근무지역 필터 클릭시 화면 전환 */
         workarea.setOnClickListener {
-            var intent = Intent(this, WorkArea::class.java)
+            var intent = Intent(this, WorkAreaActivity::class.java)
             startActivity(intent)
         }
     }

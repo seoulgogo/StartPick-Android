@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="white">#FFFFFF</color>
     <color name="maincolor">#22b573</color>
+    <color name="notAdapted">#8c8c8c</color>
     <color name="coloreditnormal">#868e96</color>
     <color name="notSelected">#acacac</color>
 

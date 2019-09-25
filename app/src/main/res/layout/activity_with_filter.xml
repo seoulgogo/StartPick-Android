@@ -28,6 +28,7 @@
             android:layout_centerVertical="true"/>
 
         <TextView
+            android:id="@+id/btn_init"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="초기화"
@@ -424,6 +425,7 @@
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/role_1"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="30dp"
@@ -435,6 +437,7 @@
                     android:background="@drawable/round_border"
                     />
                 <TextView
+                    android:id="@+id/role_2"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="30dp"
@@ -447,6 +450,7 @@
                     android:background="@drawable/round_border"
                     />
                 <TextView
+                    android:id="@+id/role_3"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="30dp"
@@ -459,6 +463,7 @@
                     android:background="@drawable/round_border"
                     />
                 <TextView
+                    android:id="@+id/role_4"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="30dp"
@@ -480,6 +485,7 @@
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/role_5"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="30dp"
@@ -491,6 +497,7 @@
                     android:background="@drawable/round_border"
                     />
                 <TextView
+                    android:id="@+id/role_6"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="30dp"
@@ -503,6 +510,7 @@
                     android:background="@drawable/round_border"
                     />
                 <TextView
+                    android:id="@+id/role_7"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="30dp"
@@ -515,6 +523,7 @@
                     android:background="@drawable/round_border"
                     />
                 <TextView
+                    android:id="@+id/role_8"
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="30dp"
