@@ -43,6 +43,10 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(getApplicationContext(), text + "의 입력이 잘못 되었습니다.", Toast.LENGTH_LONG).show()
             }
         }
+
+        btn_back_login_act.setOnClickListener {
+            finish()
+        }
     }
 
     private fun editText() {

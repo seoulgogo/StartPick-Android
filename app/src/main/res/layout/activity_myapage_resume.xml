@@ -82,7 +82,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp">
 
-                        <ImageView
+                        <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/img_profile_mypage_resume_act"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -241,8 +241,8 @@
 
                     <ImageView
                         android:id="@+id/btn_open_major_mypage_resume_act"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/btn_under_up_arraow" />
                 </RelativeLayout>
