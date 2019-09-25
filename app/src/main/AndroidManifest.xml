@@ -21,7 +21,7 @@
         android:appComponentFactory="whateverString"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.SupportDetailActivity"></activity>
-        <activity android:name=".ui.WorkArea" />
+        <activity android:name=".ui.WorkAreaActivity" />
         <activity android:name=".ui.WithFilter" />
         <activity android:name=".ui.WithDetailActivity" />
         <activity android:name=".ui.mypage.MyPostedNoticeActivity"/>
