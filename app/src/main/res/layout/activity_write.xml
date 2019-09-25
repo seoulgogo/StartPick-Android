@@ -268,13 +268,30 @@
                         android:textSize="18sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/workarea"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:text="근무지역 테스트"
-                    android:background="@drawable/round_border_gray"/>
+                <LinearLayout
+                    android:id="@+id/btn_worearea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/round_border_gray">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_place"
+                        android:layout_gravity="center_horizontal|center_vertical"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:text="근무지역을 선택해주세요."
+                        android:textSize="16sp"
+                        android:textColor="#868e96"
+                        />
+                </LinearLayout>
+
             </LinearLayout>
 
             <View
@@ -472,11 +489,29 @@
                         android:textSize="18sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical"
-                    android:text="분야 선택해주세요 스피너 달아야함" />
+                <LinearLayout
+                    android:id="@+id/btn_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:paddingRight="5dp"
+                    android:paddingLeft="5dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/round_border_gray">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_company"
+                        android:layout_gravity="center_horizontal|center_vertical"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:text="스타트업 분야"
+                        android:textSize="16sp"
+                        android:textColor="#868e96"
+                        />
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"

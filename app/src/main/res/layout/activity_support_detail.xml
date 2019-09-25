@@ -43,11 +43,15 @@
                 android:background="#dee2e6" />
 
             <LinearLayout
+                android:id="@+id/linear_title"
                 android:layout_below="@+id/v_line1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="16dp">
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,11 +72,151 @@
                     android:layout_marginBottom="5dp"
                     android:orientation="horizontal">
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:text="분류체계"
                         android:textSize="16sp"
                         android:textColor="#868e96"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="경영  >  컨설팅"
+                        android:textSize="16sp"
+                        android:textColor="#212529"/>
+                </LinearLayout>
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="인력  >  교육/훈련/연수"
+                    android:textSize="16sp"
+                    android:textColor="#212529"/>
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="신청기간"
+                        android:textSize="16sp"
+                        android:textColor="#868e96"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="예산 소진시까지"
+                        android:textSize="16sp"
+                        android:textColor="#212529"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_below="@+id/linear_title"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="#f1f3f5"/>
+
+            <LinearLayout
+                android:id="@+id/linear_content"
+                android:layout_below="@+id/linear_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="사업개요"
+                   android:textSize="16sp"
+                    android:textColor="#212529"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="서울시 사회적경제기업의 경영문제 해결 및 경영역량 강화를 위해 컨설팅, 전문 멘토링, 외부지원연계 멘토링을 지원해 드리는 사업입니다.
+
+☞ 서울시 소재 사회적경제조직
+
+☞ 현안해결형 컨설팅, 피어컨설팅, 전문 멘토링, 외부자원연계 멘토링 등 지원"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#dee2e6"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="분류체계"
+                        android:textSize="16sp"
+                        android:textColor="#868e96"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="경영  >  컨설팅"
+                        android:textSize="16sp"
+                        android:textColor="#212529"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="인력  >  교육/훈련/연수"
+                        android:textSize="16sp"
+                        android:textColor="#212529"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="신청기간"
+                        android:textSize="16sp"
+                        android:textColor="#868e96"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="예산 소진시까지"
+                        android:textSize="16sp"
+                        android:textColor="#212529"/>
                 </LinearLayout>
 
             </LinearLayout>

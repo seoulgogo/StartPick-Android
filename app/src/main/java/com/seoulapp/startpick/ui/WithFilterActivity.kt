@@ -34,7 +34,7 @@ import kotlinx.android.synthetic.main.activity_with_filter.tv_9
 import org.jetbrains.anko.textColor
 
 
-class WithFilter : AppCompatActivity() {
+class WithFilterActivity : AppCompatActivity() {
 
     var isStartupClickedArray : Array<Int> = Array(21, {0})
     var isRoleClickedArray : Array<Int> = Array(8, {0})

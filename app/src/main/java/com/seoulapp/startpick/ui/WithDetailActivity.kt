@@ -19,10 +19,9 @@ class WithDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_with_detail)
 
-        statusbarTransparency() // 상태바 투명
+        // statusbarTransparency() // 상태바 투명
         btn_back.setOnClickListener {
             finish()
-            overridePendingTransition(0, 0)
         }
 
 

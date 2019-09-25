@@ -14,24 +14,36 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <RelativeLayout
+                android:id="@+id/linear_write"
                 android:layout_width="match_parent"
-                android:layout_height="220dp">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/img_thumbnail"
-                    android:scaleType="fitXY"/>
+                android:layout_height="48dp"
+                android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/btn_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_back_arrow"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="50dp"
                     android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true" />
-            </RelativeLayout>
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/icon_back_arrow" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="공고 정보"
+                    android:textColor="#212529"
+                    android:textSize="16sp" />
+
+
+
+            </RelativeLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:src="@drawable/img_thumbnail"
+                android:scaleType="fitXY"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +55,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="UI 디자이너"
+                    android:text="UI 디자이너 (2명)"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="#212529" />
@@ -54,35 +66,12 @@
                     android:textColor="#212529"
                     android:textSize="14sp"
                     android:layout_marginTop="6dp"/>
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="모집 직무"
-                        android:textSize="14sp"
-                        android:textColor="#868e96"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="  |  "
-                        android:textSize="14sp"
-                        android:textColor="#868e96"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2"
-                        android:textSize="14sp"
-                        android:textColor="#868e96"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="명"
-                        android:textSize="14sp"
-                        android:textColor="#868e96"/>
-                </LinearLayout>
+                    android:text="스타트업 분야"
+                    android:textSize="14sp"
+                    android:textColor="#868e96"/>
 
             </LinearLayout>
             <View
