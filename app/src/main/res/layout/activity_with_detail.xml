@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.WithDetailActivity">
     
     <android.support.v4.widget.NestedScrollView
@@ -36,9 +37,19 @@
                     android:textColor="#212529"
                     android:textSize="16sp" />
 
-
+                <ImageView
+                    android:id="@+id/three_point"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:src="@drawable/icon_three_point" />
 
             </RelativeLayout>
+
+
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
