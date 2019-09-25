@@ -381,7 +381,7 @@ class WithFilter : AppCompatActivity() {
         tv_21.setOnClickListener {
             if(isStartupClickedArray[20] == -1) toastForUnchecked()
             else if(isStartupClickedArray[20] % 2 == 0){
-                isStartupActiveArray[20] = false
+                isStartupActiveArray[20] = true
                 tv_21.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_21.textColor = Color.parseColor(green)
                 isStartupClickedArray[20]++
