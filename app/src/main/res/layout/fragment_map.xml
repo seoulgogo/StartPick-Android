@@ -418,7 +418,7 @@
                 android:layout_marginTop="12dp"
                 android:text="지원기관을 테마로 기본적인 정보를 제공하는 창업지도입니다."
                 android:textColor="#212529"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -426,7 +426,7 @@
                 android:layout_gravity="center"
                 android:text="정보를 보고 싶은 지역을 선택해주세요."
                 android:textColor="#212529"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

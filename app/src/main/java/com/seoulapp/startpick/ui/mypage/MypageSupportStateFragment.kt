@@ -61,7 +61,7 @@ class MypageSupportStateFragment : Fragment() {
     //리사이클러뷰
     fun setRecyclerView() {
 
-        if(btn_selector_support){
+        if(btn_selector_support == false){
             var dataList: ArrayList<ReceivedSupportData> = ArrayList()
             dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
             dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))

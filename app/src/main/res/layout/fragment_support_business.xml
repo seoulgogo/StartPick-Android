@@ -13,7 +13,6 @@
         android:text="지원사업"
         android:textSize="17sp"
         android:textColor="#212529"
-        android:textStyle="bold"
         android:gravity="center_vertical|center_horizontal"/>
 
     <RelativeLayout
