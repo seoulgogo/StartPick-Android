@@ -25,6 +25,16 @@ import android.support.v4.app.ActivityCompat
 import android.support.design.widget.Snackbar
 import android.content.pm.PackageManager
 import android.support.v4.content.ContextCompat
+import android.util.Log
+import android.widget.ImageView
+import com.seoulapp.startpick.data.MapGetData
+import com.seoulapp.startpick.network.ApplicationController
+import com.seoulapp.startpick.network.NetworkService
+import com.seoulapp.startpick.network.get.GetMapPlaceAllResponse
+import kotlinx.android.synthetic.main.fragment_map.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MapFragment : Fragment() {
@@ -37,8 +47,14 @@ class MapFragment : Fragment() {
     var mylocation: Location? = null
     var address: String? = null
 
+    lateinit var id : ArrayList<View>
+
     private val PERMISSIONS_REQUEST_CODE = 100
     var needRequest = false
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
     //var REQUIRED_PERMISSIONS = Array<String>(2) {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}
 
@@ -46,7 +62,7 @@ class MapFragment : Fragment() {
     var btn_gangseo = 0
     var btn_yangcheon = 0
     var btn_guro = 0
-    var btn_yeongdeungpo= 0
+    var btn_yeongdeungpo = 0
     var btn_geumcheon = 0
     var btn_dongjak = 0
     var btn_gwanak = 0
@@ -69,14 +85,25 @@ class MapFragment : Fragment() {
     var btn_nowon = 0
     var btn_dobon = 0
 
-    var MapBtnArray : ArrayList<Int> = arrayListOf(btn_gangseo, btn_yangcheon, btn_guro, btn_yeongdeungpo,btn_geumcheon
-            ,btn_dongjak,btn_gwanak,btn_seocho,btn_gangnam, btn_songpa, btn_gangdong,btn_mapo, btn_seodamun,btn_eunpyeong,
-            btn_jongno, btn_yongsan,btn_junggu, btn_seongdong,btn_seongbuk, btn_gangbuk, btn_dongdaemun, btn_gwangjin,
-            btn_jungnang,btn_nowon,btn_dobon)
+    var MapBtnArray: ArrayList<Int> = arrayListOf(btn_gangseo, btn_yangcheon, btn_guro, btn_yeongdeungpo, btn_geumcheon
+            , btn_dongjak, btn_gwanak, btn_seocho, btn_gangnam, btn_songpa, btn_gangdong, btn_mapo, btn_seodamun, btn_eunpyeong,
+            btn_jongno, btn_yongsan, btn_junggu, btn_seongdong, btn_seongbuk, btn_gangbuk, btn_dongdaemun, btn_gwangjin,
+            btn_jungnang, btn_nowon, btn_dobon)
+
+
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_map, container, false)
+
+        id = arrayListOf(rootView.btn_map_page_spot_gangseo, rootView.btn_map_page_spot_yangcheon, rootView.btn_map_page_spot_guro, rootView.btn_map_page_spot_yeongdeungpo, rootView.btn_map_page_spot_geumcheon,
+                rootView.btn_map_page_spot_dongjak, rootView.btn_map_page_spot_gwanak, rootView.btn_map_page_spot_seocho, rootView.btn_map_page_spot_gangnam, rootView.btn_map_page_spot_songpa,
+                rootView.btn_map_page_spot_gangdong, rootView.btn_map_page_spot_mapo, rootView.btn_map_page_spot_seodaemun, rootView.btn_map_page_spot_eunpyeong,
+                rootView.btn_map_page_spot_jongro, rootView.btn_map_page_spot_yongsan, rootView.btn_map_page_spot_junggu, rootView.btn_map_page_spot_seongdong, rootView.btn_map_page_spot_seongbug, rootView.btn_map_page_spot_gangbug,
+                rootView.btn_map_page_spot_dongdaemun, rootView.btn_map_page_spot_gwangjin, rootView.btn_map_page_spot_junglang, rootView.btn_map_page_spot_nowon, rootView.btn_map_page_spot_dobong)
+
+
 
         return rootView
     }
@@ -84,13 +111,15 @@ class MapFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+
+
         setRecyclerView()
         //spinner()
 
         mapsetOnClick()
         setOnClickListener()
-    }
 
+    }
 
     fun setOnClickListener() {
 
@@ -99,36 +128,196 @@ class MapFragment : Fragment() {
             //GetUserLocation()
             requestReadUserLocationPermission()
         }
+
+        //강서
+        btn_map_page_spot_gangseo.setOnClickListener {
+            mapSelectorArray(0)
+        }
+
+        //양천
+        btn_map_page_spot_yangcheon.setOnClickListener {
+            mapSelectorArray(1)
+        }
+
+        //구로
+        btn_map_page_spot_guro.setOnClickListener {
+            mapSelectorArray(2)
+        }
+        //영등포
+        btn_map_page_spot_yeongdeungpo.setOnClickListener {
+            mapSelectorArray(3)
+        }
+
+        //금천
+        btn_map_page_spot_geumcheon.setOnClickListener {
+            mapSelectorArray(4)
+        }
+        //동작
+        btn_map_page_spot_dongjak.setOnClickListener {
+            mapSelectorArray(5)
+        }
+        //관악
+        btn_map_page_spot_gwanak.setOnClickListener {
+            mapSelectorArray(6)
+        }
+        //서초
+        btn_map_page_spot_seocho.setOnClickListener {
+            mapSelectorArray(7)
+        }
+        //강남
+        btn_map_page_spot_gangnam.setOnClickListener {
+            mapSelectorArray(8)
+        }
+        //송파
+        btn_map_page_spot_songpa.setOnClickListener {
+            mapSelectorArray(9)
+        }
+        //강동
+        btn_map_page_spot_gangdong.setOnClickListener {
+            mapSelectorArray(10)
+        }
+        //마포
+        btn_map_page_spot_mapo.setOnClickListener {
+            mapSelectorArray(11)
+        }
+        //서대문
+        btn_map_page_spot_seodaemun.setOnClickListener {
+            mapSelectorArray(12)
+        }
+        //은평
+        btn_map_page_spot_eunpyeong.setOnClickListener {
+            mapSelectorArray(13)
+        }
+        //종로
+        btn_map_page_spot_jongro.setOnClickListener {
+            mapSelectorArray(14)
+        }
+        //용산
+        btn_map_page_spot_yongsan.setOnClickListener {
+            mapSelectorArray(15)
+        }
+        //중구
+        btn_map_page_spot_junggu.setOnClickListener {
+            mapSelectorArray(16)
+        }
+        //성동
+        btn_map_page_spot_seongdong.setOnClickListener {
+            mapSelectorArray(17)
+        }
+        //성북
+        btn_map_page_spot_seongbug.setOnClickListener {
+            mapSelectorArray(18)
+        }
+        //강북
+        btn_map_page_spot_gangbug.setOnClickListener {
+            mapSelectorArray(19)
+        }
+        //동대문
+        btn_map_page_spot_dongdaemun.setOnClickListener {
+            mapSelectorArray(20)
+        }
+        //광진
+        btn_map_page_spot_gwangjin.setOnClickListener {
+            mapSelectorArray(21)
+        }
+        //중랑
+        btn_map_page_spot_junglang.setOnClickListener {
+            mapSelectorArray(22)
+        }
+        //노원
+        btn_map_page_spot_nowon.setOnClickListener {
+            mapSelectorArray(23)
+        }
+        //도봉
+        btn_map_page_spot_dobong.setOnClickListener {
+            mapSelectorArray(24)
+        }
     }
 
-    fun mapsetOnClick(){
+    fun mapSelectorArray(index : Int) {
+
+        if(MapBtnArray[index] == 0)
+        {
+            var i =0
+            for(i in 0..MapBtnArray.size-1)
+            {
+                //모두 비활성화 시키기
+                MapBtnArray[i] =0
+                id[i].isSelected = false
+            }
+            MapBtnArray[index] = 1
+            id[index].isSelected = true
+        }
+        else
+        {
+            MapBtnArray[index] = 0
+            id[index]?.isSelected = false
+        }
+    }
+
+    private fun getMapFragmentResponse() {
+
+        val getMapInfoResponse: Call<GetMapPlaceAllResponse> = networkService.getMapPlaceAll()
+
+        getMapInfoResponse.enqueue(object : Callback<GetMapPlaceAllResponse> {
+
+            override fun onFailure(call: Call<GetMapPlaceAllResponse>, t: Throwable) {
+                Log.e("지도 all list fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetMapPlaceAllResponse>, response: Response<GetMapPlaceAllResponse>
+            ) {
+
+                val temp: ArrayList<MapGetData> = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (temp.size > 0) {
+                    if (status == 200) {
+
+                        val position = mapAdapter.itemCount
+                        mapAdapter.dataList.addAll(temp)
+                        mapAdapter.notifyDataSetChanged()
+
+                    }
+                }
+
+                Log.v("TAGG : size1 ", temp.size.toString())
+
+            }
+        })
+    }
+
+    fun setRecyclerView() {
+        var dataList: ArrayList<MapGetData> = ArrayList()
+
+        mapAdapter = InfoMapAdapter(activity!!, dataList)
+        rv_seoul_startup_info_map_frag.adapter = mapAdapter
+        rv_seoul_startup_info_map_frag.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+        getMapFragmentResponse()
+
+    }
+
+    fun mapsetOnClick() {
 
         btn_map_page_spot_gangseo.setOnClickListener {
             mapFlag(btn_map_page_spot_gangseo, btn_gangseo)
             //나머지 버튼들은 비활성화..! --> 배열로 집어 넣었으니 그거 생각해서 해보면 될듯
         }
-
-
-
-
     }
 
-    private fun mapFlag(id : View, btn_flag : Int) {
+    private fun mapFlag(id: View, btn_flag: Int) {
 
         var flag = btn_flag
 
-        if(flag==1)
-        {
+        if (flag == 1) {
             flag = 0
             id.isSelected = false
-        }
-        else{
+        } else {
             flag = 1
             id.isSelected = true
         }
-
         //나머지 btn_flag는 모두 비활성화 되도록 해야함....
-
     }
 
     //위치 권한 확인
@@ -138,9 +327,10 @@ class MapFragment : Fragment() {
         ) {
             if (shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)
             ) {
-            } else { requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                    My_LOCATION_REQUEST_CODE
-            )
+            } else {
+                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                        My_LOCATION_REQUEST_CODE
+                )
             }
         } else {
             GetUserLocation()
@@ -238,7 +428,7 @@ class MapFragment : Fragment() {
                     mylocation?.longitude ?: (-1).toDouble(),
                     1
             )[0].getAddressLine(0)
-            Toast.makeText(context, "위도는!"+mylocation?.latitude.toString() + "경도는!" + mylocation?.longitude.toString(), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "위도는!" + mylocation?.latitude.toString() + "경도는!" + mylocation?.longitude.toString(), Toast.LENGTH_LONG).show()
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -282,21 +472,5 @@ class MapFragment : Fragment() {
                 })
     }*/
 
-    fun setRecyclerView() {
-        var mapInfoData: ArrayList<InfoMapfragData> = ArrayList()
 
-        mapInfoData.add(InfoMapfragData("DMC 창업센터", "시창업센터", "서울시 노원구 공릉동 맞춰ㅏ라!", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD", "02-31628-1111", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD"))
-        mapInfoData.add(InfoMapfragData("DMC 창업센터", "시창업센터", "서울시 노원구 공릉동 맞춰ㅏ라!", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD", "02-31628-1111", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD"))
-        mapInfoData.add(InfoMapfragData("DMC 창업센터", "시창업센터", "서울시 노원구 공릉동 맞춰ㅏ라!", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD", "02-31628-1111", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD"))
-        mapInfoData.add(InfoMapfragData("DMC 창업센터", "시창업센터", "서울시 노원구 공릉동 맞춰ㅏ라!", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD", "02-31628-1111", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD"))
-        mapInfoData.add(InfoMapfragData("DMC 창업센터", "시창업센터", "서울시 노원구 공릉동 맞춰ㅏ라!", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD", "02-31628-1111", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD"))
-        mapInfoData.add(InfoMapfragData("DMC 창업센터", "시창업센터", "서울시 노원구 공릉동 맞춰ㅏ라!", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD", "02-31628-1111", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD"))
-        mapInfoData.add(InfoMapfragData("DMC 창업센터", "시창업센터", "서울시 노원구 공릉동 맞춰ㅏ라!", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD", "02-31628-1111", "http://cfile210.uf.daum.net/image/99E847425AFAF95F2B35AD"))
-
-        mapAdapter = InfoMapAdapter(activity!!, mapInfoData)
-        //맞춤형
-        rv_seoul_startup_info_map_frag.adapter = mapAdapter
-        rv_seoul_startup_info_map_frag.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-
-    }
 }
