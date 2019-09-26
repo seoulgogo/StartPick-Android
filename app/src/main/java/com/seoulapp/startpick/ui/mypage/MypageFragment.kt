@@ -87,7 +87,7 @@ class MypageFragment : Fragment() {
     }
 
     //저장소 권한 확인
-    private fun requestReadExternalStoragePermission() {
+    fun requestReadExternalStoragePermission() {
 
         if (ContextCompat.checkSelfPermission(ctx, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
         ) {

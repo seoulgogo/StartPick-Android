@@ -15,8 +15,7 @@ import com.seoulapp.startpick.ui.WithDetailActivity
 
 
 
-class JobAdapter(private val ctx : Context, private val dataList : ArrayList<JobData>) :
-        RecyclerView.Adapter<JobAdapter.Holder>() {
+class JobAdapter(private val ctx : Context, private val dataList : ArrayList<JobData>) : RecyclerView.Adapter<JobAdapter.Holder>() {
 
     var isClicked = false
 
@@ -39,11 +38,11 @@ class JobAdapter(private val ctx : Context, private val dataList : ArrayList<Job
         // 근데 이거 아님 이상함 두번 눌러야 체크 켜짐,,
         holder.iv_check.setOnClickListener {
             if(isClicked == false) {
-                holder.iv_check.setImageResource(R.drawable.check_icon_active)
+                holder.iv_check.isSelected = true
                 isClicked = true
             }
             else {
-                holder.iv_check.setImageResource(R.drawable.check_icon_inactive)
+                holder.iv_check.isSelected = false
                 isClicked = false
             }
         }

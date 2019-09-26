@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:orientation="vertical"
     tools:context=".ui.mypage.MypageFragment">
 
     <!--Toolbar-->
@@ -41,9 +41,10 @@
         android:layout_height="1dp"
         android:background="#dee2e6" />
 
-    <android.support.v4.widget.NestedScrollView
+    <com.amar.library.ui.StickyScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:stickyHeader="@+id/tl_mypage_fragment">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -138,28 +139,30 @@
 
             </RelativeLayout>
 
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tl_mypage_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:tabIndicatorColor="@color/maincolor"
+                app:tabSelectedTextColor="@color/maincolor" />
+
+            <com.seoulapp.startpick.ui.view.NoneSwipeViewPager
+                android:id="@+id/vp_noswipe_mypage_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp" />
+
+
             <LinearLayout
                 android:id="@+id/ll_mypage_tablayout_frag"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="32dp"
                 android:orientation="vertical">
 
-                <android.support.design.widget.TabLayout
-                    android:id="@+id/tl_mypage_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:tabIndicatorColor="@color/maincolor"
-                    app:tabSelectedTextColor="@color/maincolor" />
-
-                <com.seoulapp.startpick.ui.view.NoneSwipeViewPager
-                    android:id="@+id/vp_noswipe_mypage_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="16dp" />
 
             </LinearLayout>
 
         </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </com.amar.library.ui.StickyScrollView>
 </LinearLayout>

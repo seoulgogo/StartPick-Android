@@ -10,8 +10,9 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.data.InfoMapfragData
+import com.seoulapp.startpick.data.MapGetData
 
-class InfoMapAdapter(private val ctx: Context, private val dataList: ArrayList<InfoMapfragData>) : RecyclerView.Adapter<InfoMapAdapter.Holder>() {
+class InfoMapAdapter(val ctx: Context, val dataList: ArrayList<MapGetData>) : RecyclerView.Adapter<InfoMapAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewtype: Int): Holder {
         val view: View = LayoutInflater.from(ctx)!!.inflate(R.layout.item_info_map_frag, viewGroup, false)
         return Holder(view)
@@ -21,12 +22,16 @@ class InfoMapAdapter(private val ctx: Context, private val dataList: ArrayList<I
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         //glide
-        Glide.with(ctx).load(dataList[position].image).into(holder.Image)
-        holder.support_center.text =  dataList[position].title.toString()
-        holder.center_name.text = dataList[position].center_name.toString()
+        Glide.with(ctx).load(dataList[position].s3).into(holder.Image)
+        holder.support_center.text =  dataList[position].agency.toString()
+        holder.center_name.text = dataList[position].theme.toString()
         holder.address.text = dataList[position].address.toString()
         holder.url.text = dataList[position].url.toString()
         holder.phone.text = dataList[position].phone
+
+        if(dataList[position].url.toString() == null){
+            holder.url.text = "url 없음"
+        }
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
