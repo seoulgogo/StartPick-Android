@@ -14,23 +14,29 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="7"
+            android:layout_weight="9"
             android:text="총 6,712건"
             android:textSize="12sp"
             android:textColor="#212529"
             android:gravity="center_vertical"
             android:paddingStart="16dp"/>
-        <!--스피너로 바꿔야함-->
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:text="등록일 순"
-            android:textSize="12sp"
-            android:textColor="#212529"
-            android:gravity="center_vertical"
-            android:paddingStart="16dp"
-            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_border_gray"
+            android:padding="6dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icon_array"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="등록일순"/>
+        </LinearLayout>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
