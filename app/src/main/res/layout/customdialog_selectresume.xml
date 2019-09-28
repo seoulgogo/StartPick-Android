@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="359dp">
+    
+    <RelativeLayout
+        android:id="@+id/rlDialogselectTitle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이력서 선택"
+            android:textSize="16sp"
+            android:textColor="#212529"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_x"/>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/bar"
+        android:layout_below="@+id/rlDialogselectTitle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bar"/>
+    
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_below="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="250dp">
+        <!-- 여기 해야함 -->
+    </android.support.v4.widget.NestedScrollView>
+    
+    <TextView
+        android:layout_below="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:text="지원 완료"
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:gravity="center_vertical|center_horizontal"
+        android:background="@color/maincolor" />
+
+</RelativeLayout>
