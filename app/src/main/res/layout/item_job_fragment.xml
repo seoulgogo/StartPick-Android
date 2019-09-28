@@ -37,7 +37,7 @@
                 android:layout_marginTop="8dp"
                 android:text="서울시창업지원센터"/>
             <TextView
-                android:id="@+id/item_job_fragment_detail_tv"
+                android:id="@+id/tvWithusItem_Job"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"

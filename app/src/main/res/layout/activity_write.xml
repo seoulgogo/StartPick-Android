@@ -119,6 +119,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/etWithusWriteDetailjob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="구체적인 포지션을 적어주세요. ex) UI디자이너"
@@ -214,6 +215,7 @@
                     android:weightSum="14"
                     android:orientation="horizontal">
                     <EditText
+                        android:id="@+id/etWithusWriteSalary"
                         android:layout_width="0dp"
                         android:layout_weight="13"
                         android:layout_height="wrap_content"
@@ -239,6 +241,7 @@
                     android:orientation="horizontal">
 
                     <CheckBox
+                        android:id="@+id/etWithusWriteNego"
                         android:layout_width="25dp"
                         android:layout_height="20dp" />
 
@@ -340,6 +343,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/etWithusWriteDetailMaintask"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
@@ -374,6 +378,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
+                        android:id="@+id/etWithusWriteIntro"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
@@ -475,6 +480,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/etWithusWriteCompanynm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="회사명을 입력해주세요."
@@ -554,6 +560,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/etWithusWriteDetailManagernm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="담당자 이름을 입력해주세요."
@@ -585,6 +592,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/etWithusWriteDetailPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="'-' 구분없이 입력해주세요."
@@ -616,6 +624,7 @@
                 </LinearLayout>
 
                 <EditText
+                    android:id="@+id/etWithusWriteDetailEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="example@gmail.com"
@@ -634,6 +643,7 @@
 
 
     <TextView
+        android:id="@+id/btn_complete"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
