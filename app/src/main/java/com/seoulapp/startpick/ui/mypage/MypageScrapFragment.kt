@@ -11,10 +11,17 @@ import android.widget.Toast
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.adapter.WithRecyAdapter
 import com.seoulapp.startpick.adapter.SupportAdapter
+<<<<<<< HEAD
 import com.seoulapp.startpick.data.SupportItemData
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetSupportTabResponse
+=======
+import com.seoulapp.startpick.data.JobData
+import com.seoulapp.startpick.data.SupportData
+import com.seoulapp.startpick.network.ApplicationController
+import com.seoulapp.startpick.network.NetworkService
+>>>>>>> a807bb99effbcd4d06726cf4a3c3339d8f8ca99b
 import kotlinx.android.synthetic.main.fragment_mypage_scrap.*
 import org.jetbrains.anko.textColorResource
 import retrofit2.Call

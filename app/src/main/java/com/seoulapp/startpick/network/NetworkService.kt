@@ -1,6 +1,10 @@
 package com.seoulapp.startpick.network
 
 import com.google.gson.JsonObject
+<<<<<<< HEAD
+=======
+
+>>>>>>> a807bb99effbcd4d06726cf4a3c3339d8f8ca99b
 import com.seoulapp.startpick.network.get.GetMainNewOrderResponse
 import com.seoulapp.startpick.network.get.GetMapPlaceAllResponse
 import com.seoulapp.startpick.network.get.GetMypageUserInfoResponse
