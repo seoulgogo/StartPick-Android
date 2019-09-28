@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".ui.StartupDivActivity"></activity>
+        <activity android:name=".ui.WebViewActivity"></activity>
+        <activity android:name=".ui.StartupDivActivity" />
         <activity android:name=".ui.SupportDetailActivity" />
         <activity android:name=".ui.WorkAreaActivity" />
         <activity android:name=".ui.WithFilterActivity" />
@@ -42,6 +43,5 @@
             </intent-filter>
         </activity>
     </application>
-
 
 </manifest>

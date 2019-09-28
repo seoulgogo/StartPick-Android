@@ -9,13 +9,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.seoulapp.startpick.R
-import com.seoulapp.startpick.data.JobData
+import com.seoulapp.startpick.data.WithusItemData
 import com.seoulapp.startpick.ui.WithDetailActivity
 
 
 
-class JobAdapter(private val ctx : Context, private val dataList : ArrayList<JobData>) : RecyclerView.Adapter<JobAdapter.Holder>() {
+class WithRecyAdapter(private val ctx : Context, val dataList : ArrayList<WithusItemData>) : RecyclerView.Adapter<WithRecyAdapter.Holder>() {
 
     var isClicked = false
 
@@ -25,13 +26,16 @@ class JobAdapter(private val ctx : Context, private val dataList : ArrayList<Job
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.content_title.text = dataList[position].title
-        holder.content_location.text = dataList[position].location
-        holder.content_detail.text = dataList[position].content
+        Glide.with(ctx).load(dataList[position].thumnail).into(holder.thumbnail)
+        holder.title.text = dataList[position].detailJob
+        holder.company.text = dataList[position].companyName
+       // holder.content_detail.text = dataList[position].withUs_idx
 
         /* 아이템 클릭 이벤트 */
         holder.item.setOnClickListener {
             var intent = Intent(ctx, WithDetailActivity::class.java)
+            intent.putExtra("withus_idx", dataList[position].withUs_idx)
+            intent.putExtra("withus_idx", dataList[position].withUs_idx)
             ctx.startActivity(intent)
         }
         /* 체크 버튼 클릭 이벤트 */
@@ -51,9 +55,9 @@ class JobAdapter(private val ctx : Context, private val dataList : ArrayList<Job
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var item = itemView as RelativeLayout
         var iv_check = itemView.findViewById(R.id.iv_check) as ImageView
-        var content_title = itemView.findViewById(R.id.item_job_fragment_title) as TextView
-        var content_location = itemView.findViewById(R.id.item_job_fragment_location) as TextView
-        var content_detail = itemView.findViewById(R.id.item_job_fragment_detail_tv) as TextView
+        var title = itemView.findViewById(R.id.item_job_fragment_title) as TextView
+        var company = itemView.findViewById(R.id.item_job_fragment_company) as TextView
+        var thumbnail = itemView.findViewById(R.id.withList_thumbnail) as ImageView
     }
 
     override fun getItemCount(): Int = dataList.size

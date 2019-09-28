@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.seoulapp.startpick.R
-import com.seoulapp.startpick.data.SupportData
+import com.seoulapp.startpick.data.SupportItemData
 import com.seoulapp.startpick.ui.SupportDetailActivity
 
-class SupportAdapter(private val ctx : Context, private val dataList : ArrayList<SupportData>) : RecyclerView.Adapter<SupportAdapter.ViewHolder>() {
+class SupportAdapter(private val ctx : Context, val dataList : ArrayList<SupportItemData>) : RecyclerView.Adapter<SupportAdapter.ViewHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): SupportAdapter.ViewHolder {
-        val view: View = LayoutInflater.from(ctx)!!.inflate(R.layout.item_support_inner, p0, false)
+        val view: View = LayoutInflater.from(ctx)!!.inflate(R.layout.item_support, p0, false)
         return ViewHolder(view)
     }
 
@@ -23,22 +23,22 @@ class SupportAdapter(private val ctx : Context, private val dataList : ArrayList
     }
 
     override fun onBindViewHolder(holder: SupportAdapter.ViewHolder, position: Int) {
-        holder.title_tv.text = dataList[position].title
-        holder.center_tv.text = dataList[position].center
-        holder.data_tv.text = dataList[position].date
+        holder.title.text = dataList[position].bsName
+        holder.agency.text = dataList[position].agency
+        holder.date.text = dataList[position].endDate
 
         /* 아이템 클릭 이벤트 */
         holder.item.setOnClickListener {
             var intent = Intent(ctx, SupportDetailActivity::class.java)
+            intent.putExtra("bs_idx", dataList[position].business_idx)
             ctx.startActivity(intent)
         }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var item = itemView as RelativeLayout
-        var title_tv = itemView.findViewById(R.id.tv_supportinner_title) as TextView
-        var center_tv = itemView.findViewById(R.id.tv_supportinner_center) as TextView
-        var data_tv = itemView.findViewById(R.id.tv_supportinner_date) as TextView
-
+        var title = itemView.findViewById(R.id.tv_supportinner_title) as TextView
+        var agency = itemView.findViewById(R.id.tv_supportinner_center) as TextView
+        var date = itemView.findViewById(R.id.tv_supportinner_date) as TextView
     }
 }

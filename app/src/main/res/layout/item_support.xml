@@ -34,10 +34,18 @@
                 android:textColor="#212529"
                 android:layout_marginEnd="16dp" />
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="~"
+                android:textSize="12sp"
+                android:textColor="#22b573"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp"/>
+            <TextView
                 android:id="@+id/tv_supportinner_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="~19.09.09"
+                android:text="19.09.09"
                 android:textSize="12sp"
                 android:textColor="#22b573"
                 android:gravity="center_vertical"

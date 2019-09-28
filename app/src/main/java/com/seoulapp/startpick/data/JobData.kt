@@ -5,4 +5,3 @@ data class JobData (
         val location : String,
         val content : String
 )
-

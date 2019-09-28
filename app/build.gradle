@@ -43,7 +43,7 @@ dependencies {
 
     //scollview
     implementation 'com.github.ksoichiro:android-observablescrollview:1.5.0'
-    compile 'com.github.amarjain07:StickyScrollView:1.0.2'
+    implementation 'com.github.amarjain07:StickyScrollView:1.0.2'
 
     //network
     implementation 'com.google.code.gson:gson:2.8.2'
