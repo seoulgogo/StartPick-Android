@@ -18,17 +18,21 @@ import android.view.inputmethod.InputMethodManager
 import com.seoulapp.startpick.R
 import com.isapanah.awesomespinner.AwesomeSpinner
 import android.widget.ArrayAdapter
+import android.widget.RadioGroup
 import kotlinx.android.synthetic.main.activity_signup.*
 import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.seoulapp.startpick.ui.mypage.MypageFragment
-import kotlinx.android.synthetic.main.fragment_mypage.*
+import com.seoulapp.startpick.db.SharedPreferenceController
+import com.seoulapp.startpick.network.ApplicationController
+import com.seoulapp.startpick.network.NetworkService
+import com.seoulapp.startpick.network.post.PostSignupResponse
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.jetbrains.anko.activityManager
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.support.v4.ctx
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
@@ -48,12 +52,21 @@ class SignupActivity : AppCompatActivity() {
 
     val My_READ_STORAGE_REQUEST_CODE = 88
     private val REQ_CODE_SELECT_IMAGE = 100
-    lateinit var selectedImageUri : Uri
+    lateinit var selectedImageUri: Uri
 
+    var email = ""
+    var pw = ""
+    var name = ""
+    var phone = ""
+    var birth = ""
+    var job_idx = -1
+    var gender = -1
 
-    private var imgs : MultipartBody.Part? = null
+    private var img: MultipartBody.Part? = null
 
-
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,12 +87,12 @@ class SignupActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val text = et_email_signup_act.text
+                email = et_email_signup_act.text.toString()
                 //e-mail form
                 val email_form = "^[_a-zA-Z0-9-\\.]+@[\\.a-zA-Z0-9-]+\\.[a-zA-Z]+$"
 
                 //email폼에 맞게 썼는지
-                if (text.matches(Regex(email_form))) {
+                if (email.matches(Regex(email_form))) {
                     et_email = true
                 } else {
                     et_email = false
@@ -114,10 +127,10 @@ class SignupActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val text = et_password_signup_act.text.toString()
+                pw = et_password_signup_act.text.toString()
                 val pw_form = "((?=.*\\d)(?=.*[a-zA-Z]).{6,20})"
 
-                if (text.length >= 8 && text.matches(Regex(pw_form))) {
+                if (pw.length >= 8 && pw.matches(Regex(pw_form))) {
                     et_pw = true
                 } else {
                     et_pw = false
@@ -153,9 +166,9 @@ class SignupActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val text = et_name_signup_act.text
+                val name = et_name_signup_act.text.toString()
 
-                if (text.length > 0) {
+                if (name.length > 0) {
                     et_name = true
                 } else {
                     et_name = false
@@ -189,9 +202,9 @@ class SignupActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val text = et_phone_signup_act.text
+                phone = et_phone_signup_act.text.toString()
 
-                if (text.length > 0) {
+                if (phone.length > 0) {
                     et_phone = true
                 } else {
                     et_phone = false
@@ -226,12 +239,12 @@ class SignupActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val text = et_birth_signup_act.text
+                birth = et_birth_signup_act.text.toString()
 
                 val birth_form = "^\\s*(\\d{4})(-|\\)|\\s)*(\\d{2})(-|\\s)*(\\d{2})\\s*$"
 
                 //email폼에 맞게 썼는지
-                if (text.matches(Regex(birth_form))) {
+                if (birth.matches(Regex(birth_form))) {
                     et_birth = true
                 } else {
                     et_birth = false
@@ -267,18 +280,43 @@ class SignupActivity : AppCompatActivity() {
         else
             btn_sex = false
 
-    }
+        rg_sex_signup_act.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener{
+            override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
+                var gender_text = checkedId.toString()
 
+                Toast.makeText(getApplicationContext(), gender_text, Toast.LENGTH_LONG).show()
+
+
+                if (gender_text == "2131362042") {
+                    gender = 1
+                    Log.v("TAGG", gender.toString())
+                }
+                else if(gender_text == "2131362041"){
+                    gender = 0
+                    Log.v("TAGG", gender.toString())
+                }else{
+                    btn_sex = false
+                    gender = -1
+                    Log.v("TAGG", gender.toString())
+                }
+
+            }
+
+        })
+    }
 
     fun spinner() {
 
         var spinner = findViewById(R.id.awesomeSpinner_spinner2) as AwesomeSpinner
 
         var spinnerArray = ArrayList<String>()
-        spinnerArray.add("기획자")
-        spinnerArray.add("개발자")
-        spinnerArray.add("디자이너")
-        spinnerArray.add("건축학자")
+        spinnerArray.add("개발")
+        spinnerArray.add("기획")
+        spinnerArray.add("디자인")
+        spinnerArray.add("마케팅")
+        spinnerArray.add("미디어")
+        spinnerArray.add("영업")
+        spinnerArray.add("기타")
 
         val categoriesAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray)
 
@@ -290,6 +328,9 @@ class SignupActivity : AppCompatActivity() {
      */
         spinner.setOnSpinnerItemClickListener(
                 AwesomeSpinner.onSpinnerItemClickListener { position, itemAtPosition ->
+
+                    job_idx = position+1
+
                     select_duty = true
 
                     if (select_duty) {
@@ -314,6 +355,7 @@ class SignupActivity : AppCompatActivity() {
     }
 
     fun setOnClickListener() {
+        //뒤로가기 버튼
         btn_back_signup_act.setOnClickListener {
             finish()
         }
@@ -322,21 +364,21 @@ class SignupActivity : AppCompatActivity() {
             keyboardDown(ll_signup_act)
         }
 
+        //이미지 넣기 버튼
         rl_profile_signup_act.setOnClickListener {
             requestReadExternalStoragePermission()
         }
-
-
+        //회원가입 완료버튼
         rl_btn_intent_signup_act.setOnClickListener {
 
             var text = ""
+            //Toast.makeText(getApplicationContext(), gender, Toast.LENGTH_LONG).show()
 
             if (next_btn_activation) {
 
-                //## 통신해야함
+                postSignupResponse()
 
-                finish()
-                startActivity<SignMainActivity>()
+
             } else {
 
                 if (!et_email)
@@ -360,6 +402,68 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
+    fun postSignupResponse() {
+
+      /*  var jsonObject = JSONObject()
+
+        //이미지
+        jsonObject.put("email", email)
+        jsonObject.put("pw", pw)
+        jsonObject.put("name", name)
+        jsonObject.put("name", name)
+        jsonObject.put("phone", phone)
+        jsonObject.put("birth", birth)
+        jsonObject.put("job_idx", job_idx)
+        jsonObject.put("gender", gender)
+
+        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject*/
+
+        Log.v("TAGG", gender.toString())
+        Log.v("TAGG", job_idx.toString())
+
+        Log.d("TAGG", "AAAA")
+        var email = RequestBody.create(MediaType.parse("text/plain"), "asdlkfj@gmail.com")
+        var pw = RequestBody.create(MediaType.parse("text/plain"), "1234")
+        var gender = RequestBody.create(MediaType.parse("text/plain"), "1234")
+        var job = RequestBody.create(MediaType.parse("text/plain"), "1")
+        var name = RequestBody.create(MediaType.parse("text/plain"), "유가희")
+        var birth = RequestBody.create(MediaType.parse("text/plain"), "19970402")
+        var phone = RequestBody.create(MediaType.parse("text/plain"), "01051721920")
+
+        val networkService = networkService.postSignUp(email,pw,name,phone,birth,job,gender,img)
+
+        Log.d("TAGG", "BBBB")
+
+        networkService.enqueue(object : Callback<PostSignupResponse> {
+            override fun onFailure(call: Call<PostSignupResponse>, t: Throwable) {
+                Log.e("Login error", "Error ", t)
+            }
+
+            override fun onResponse(call: Call<PostSignupResponse>, response: Response<PostSignupResponse>) {
+                Log.e("onResponse", response.message().toString())
+                if (response.isSuccessful) {
+                    Log.v("asdf","성공")
+                    Log.e("Login success", response.message().toString())
+                    response?.takeIf { it.isSuccessful }
+                            ?.body()
+                            ?.let {
+                                if (it.success == true) {
+                                    SharedPreferenceController.MY_JOB_IDX = job_idx
+                                    finish()
+                                    startActivity<SignMainActivity>()
+                                    Log.v("TAGG", it.message)
+                                }
+                            }
+                }else{
+                    Log.v("df", "실패 " +  response.message().toString())
+                    Log.v("df", response.code().toString())
+
+                    Log.e("onResponse", "onResponse but...")
+                }
+            }
+        })
+    }
+
     private fun keyboardDown(view: View) {
 
         val imm: InputMethodManager = applicationContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -374,9 +478,10 @@ class SignupActivity : AppCompatActivity() {
             if (shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE
                     )
             ) {
-            } else { requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                    My_READ_STORAGE_REQUEST_CODE
-            )
+            } else {
+                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                        My_READ_STORAGE_REQUEST_CODE
+                )
             }
         } else {
             showAlbum()
@@ -412,7 +517,7 @@ class SignupActivity : AppCompatActivity() {
                     Glide.with(this@SignupActivity)
                             .load(selectedImageUri)
                             .thumbnail(0.1f)
-                            .into(img_profile_mypage_fg)
+                            .into(img_profile_signup_act)
 
                     val options = BitmapFactory.Options()
 
@@ -430,7 +535,7 @@ class SignupActivity : AppCompatActivity() {
                     val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
                     val photo = File(selectedImageUri.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
 
-                    imgs = MultipartBody.Part.createFormData("imgs", photo.name, photoBody)
+                    img = MultipartBody.Part.createFormData("img", photo.name, photoBody)
 
                 }
             }

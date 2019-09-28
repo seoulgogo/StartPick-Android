@@ -9,6 +9,10 @@ import android.view.ViewGroup
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.adapter.WithRecyAdapter
 import com.seoulapp.startpick.adapter.SupportAdapter
+import com.seoulapp.startpick.data.JobData
+import com.seoulapp.startpick.data.SupportData
+import com.seoulapp.startpick.network.ApplicationController
+import com.seoulapp.startpick.network.NetworkService
 import kotlinx.android.synthetic.main.fragment_mypage_scrap.*
 import org.jetbrains.anko.textColorResource
 
@@ -17,6 +21,10 @@ class MypageScrapFragment : Fragment() {
     private lateinit var rootView: View
     lateinit var mypageScrapRecyclerViewAdapter : WithRecyAdapter
     lateinit var mypageSupportBusinessAdapter : SupportAdapter
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
     var btn_selector = true
 

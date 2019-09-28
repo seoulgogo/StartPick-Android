@@ -431,31 +431,40 @@
                 android:layout_height="36dp"
                 android:layout_marginTop="24dp"
                 android:background="#f4f4f4">
-                <!--
-                                <com.isapanah.awesomespinner.AwesomeSpinner
-                                    android:id="@+id/spinner_mylocation_map_fragment"
-                                    android:layout_width="92dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="16dp"
-                                    android:layout_centerVertical="true"
-                                    android:text="내 위치 중심"
-                                    android:textColor="#212529"
-                                    android:textSize="12sp" />-->
 
-                <TextView
-                    android:id="@+id/tv_address_dnleh_map_fragment"
+                <RelativeLayout
+                    android:id="@+id/rl_mylocation_map_fragment"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="내주소를 알고싶다!!" />
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/tv_address_dnleh_map_fragment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:text="내위치"
+                        android:textColor="@color/maincolor" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="4dp"
+                        android:layout_toRightOf="@+id/tv_address_dnleh_map_fragment"
+                        android:src="@drawable/icon_gps" />
+                </RelativeLayout>
 
                 <com.isapanah.awesomespinner.AwesomeSpinner
                     android:id="@+id/spinner_thema_map_fragment"
-                    android:layout_width="42dp"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
+                    app:spinnerDirection="ltr"
+                    app:spinnerHint="테마"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:layout_toRightOf="@+id/tv_address_dnleh_map_fragment"
-                    android:text="테마"
+                    android:layout_toRightOf="@+id/rl_mylocation_map_fragment"
                     android:textColor="#212529"
                     android:textSize="12sp" />
 

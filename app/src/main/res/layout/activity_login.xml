@@ -61,6 +61,7 @@
             android:textColorHint="#868e96"
             android:textSize="16sp"
             android:hint="example@gmail.com"
+            android:text="aaa@gmail.com"
             />
 
         <TextView
@@ -79,6 +80,7 @@
             android:textColorHint="#868e96"
             android:textSize="16sp"
             android:hint="영문, 숫자 혼합 6자 이상"
+            android:text="aaaa1111"
             />
 
         <RelativeLayout
