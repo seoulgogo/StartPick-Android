@@ -21,8 +21,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".ui.StartupDivActivity"></activity>
+        <activity android:name=".ui.WebViewActivity"></activity>
+        <activity android:name=".ui.StartupDivActivity" />
         <activity android:name=".ui.SupportDetailActivity" />
         <activity android:name=".ui.WorkAreaActivity" />
         <activity android:name=".ui.WithFilterActivity" />
@@ -42,6 +44,5 @@
             </intent-filter>
         </activity>
     </application>
-
 
 </manifest>

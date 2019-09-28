@@ -29,7 +29,7 @@
                 android:textStyle="bold"
                 android:text="SNS 콘텐츠 크리에이터"/>
             <TextView
-                android:id="@+id/item_job_fragment_location"
+                android:id="@+id/item_job_fragment_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
@@ -50,8 +50,10 @@
             android:layout_weight="4"
             android:layout_height="match_parent">
             <ImageView
+                android:id="@+id/withList_thumbnail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="fitXY"
                 android:background="#e6e6e6"/>
             <ImageView
                 android:id="@+id/iv_check"

@@ -1,6 +1,7 @@
 package com.seoulapp.startpick.ui
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -697,8 +698,18 @@ class WithFilterActivity : AppCompatActivity() {
                 break
             }else RoleActiveOK = false
         }
-        if(StartupActiveOK && RoleActiveOK) btn_adapt.setBackgroundResource(R.color.maincolor)
-        else btn_adapt.setBackgroundResource(R.color.notAdapted)
+        if(StartupActiveOK && RoleActiveOK) {
+            btn_adapt.setBackgroundResource(R.color.maincolor)
+            btn_adapt.setOnClickListener {
+                
+            }
+        }
+        else {
+            btn_adapt.setBackgroundResource(R.color.notAdapted)
+            btn_adapt.setOnClickListener{
+                Toast.makeText(this, "스타트업 분야와 직무 필터를 모두 선택해주세요.", Toast.LENGTH_SHORT).show()
+            }
+        }
         
 
     }

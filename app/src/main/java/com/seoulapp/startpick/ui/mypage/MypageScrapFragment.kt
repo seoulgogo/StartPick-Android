@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
-import com.seoulapp.startpick.adapter.JobAdapter
+import com.seoulapp.startpick.adapter.WithRecyAdapter
 import com.seoulapp.startpick.adapter.SupportAdapter
 import com.seoulapp.startpick.data.JobData
 import com.seoulapp.startpick.data.SupportData
@@ -19,7 +19,7 @@ import org.jetbrains.anko.textColorResource
 class MypageScrapFragment : Fragment() {
 
     private lateinit var rootView: View
-    lateinit var mypageScrapRecyclerViewAdapter : JobAdapter
+    lateinit var mypageScrapRecyclerViewAdapter : WithRecyAdapter
     lateinit var mypageSupportBusinessAdapter : SupportAdapter
 
     val networkService: NetworkService by lazy {
@@ -83,39 +83,39 @@ class MypageScrapFragment : Fragment() {
     fun setRecyclerView() {
 
         if(btn_selector){
-            var mypageScrapData: ArrayList<JobData> = ArrayList()
+//            var mypageScrapData: ArrayList<WithAdapter> = ArrayList()
+//
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 1", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 2", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 3", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 4", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 5", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 6", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 7", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 8", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 9", "서울시창업지원센터", "콘텐츠"))
 
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 1", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 2", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 3", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 4", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 5", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 6", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 7", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 8", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 9", "서울시창업지원센터", "콘텐츠"))
-
-            mypageScrapRecyclerViewAdapter = JobAdapter(activity!!, mypageScrapData)
-            rv_mypage_scrap_fg.adapter = mypageScrapRecyclerViewAdapter
-            rv_mypage_scrap_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+         //   mypageScrapRecyclerViewAdapter = WithRecyAdapter(activity!!, mypageScrapData)
+//            rv_mypage_scrap_fg.adapter = mypageScrapRecyclerViewAdapter
+//            rv_mypage_scrap_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         }
         else{
-            var dataList: ArrayList<SupportData> = ArrayList()
-            dataList.add(SupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "고용노동부", "~19.09.09"))
-            dataList.add(SupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "고용노동부", "~19.09.09"))
-            dataList.add(SupportData("공고 1", "고용노동부", "~19.09.09"))
-            dataList.add(SupportData("공고 2", "고용노동부", "~19.09.09"))
-            dataList.add(SupportData("공고 3", "고용노동부", "~19.09.09"))
-            dataList.add(SupportData("공고 4", "고용노동부", "~19.09.09"))
-            dataList.add(SupportData("공고 5", "고용노동부", "~19.09.09"))
-            dataList.add(SupportData("공고 6", "고용노동부", "~19.09.09"))
-            dataList.add(SupportData("공고 7", "고용노동부", "~19.09.09"))
-            dataList.add(SupportData("공고 8", "고용노동부", "~19.09.09"))
+           // var dataList: ArrayList<WithItemData> = ArrayList()
+//            dataList.add(WithItemData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "고용노동부", "~19.09.09"))
+//            dataList.add(WithItemData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "고용노동부", "~19.09.09"))
+//            dataList.add(WithItemData("공고 1", "고용노동부", "~19.09.09"))
+//            dataList.add(WithItemData("공고 2", "고용노동부", "~19.09.09"))
+//            dataList.add(WithItemData("공고 3", "고용노동부", "~19.09.09"))
+//            dataList.add(WithItemData("공고 4", "고용노동부", "~19.09.09"))
+//            dataList.add(WithItemData("공고 5", "고용노동부", "~19.09.09"))
+//            dataList.add(WithItemData("공고 6", "고용노동부", "~19.09.09"))
+//            dataList.add(WithItemData("공고 7", "고용노동부", "~19.09.09"))
+//            dataList.add(WithItemData("공고 8", "고용노동부", "~19.09.09"))
 
 
-            mypageSupportBusinessAdapter = SupportAdapter(activity!!, dataList)
-            rv_mypage_scrap_fg.adapter = mypageSupportBusinessAdapter
-            rv_mypage_scrap_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+//            mypageSupportBusinessAdapter = SupportAdapter(activity!!, dataList)
+//            rv_mypage_scrap_fg.adapter = mypageSupportBusinessAdapter
+//            rv_mypage_scrap_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         }
     }
 }

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         activity_main_vp_container.run {
             adapter = BasePagerAdapter(supportFragmentManager).apply {
                 addFragment(HomeFragment())
-                addFragment(JobFragment())
+                addFragment(WithFragment())
                 addFragment(SupportBusinessFragment())
                 addFragment(MapFragment())
                 addFragment(MypageFragment())
