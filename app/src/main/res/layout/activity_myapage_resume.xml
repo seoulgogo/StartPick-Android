@@ -88,13 +88,6 @@
                             android:layout_height="wrap_content"
                             android:src="@drawable/icon_profile" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:src="@drawable/icon_camera" />
-
                     </RelativeLayout>
 
                     <LinearLayout
@@ -108,7 +101,7 @@
                             android:layout_height="wrap_content">
 
                             <TextView
-                                android:id="@+id/tv_username_mypage_frag"
+                                android:id="@+id/tv_username_mypageresume_frag"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="진하은"
@@ -116,6 +109,7 @@
                                 android:textSize="16sp" />
 
                             <TextView
+                                android:id="@+id/tv_gender_age_mypageresume_frag"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="4dp"
@@ -125,7 +119,7 @@
                         </LinearLayout>
 
                         <TextView
-                            android:id="@+id/tv_major_mypage_frag"
+                            android:id="@+id/tv_major_mypageresume_frag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
@@ -134,7 +128,7 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            android:id="@+id/tv_email_mypage_frag"
+                            android:id="@+id/tv_email_mypageresume_frag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="startpick@gmail.com"
@@ -286,8 +280,8 @@
 
                     <ImageView
                         android:id="@+id/btn_career_mypage_resume_act"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/btn_under_up_arraow" />
 
@@ -309,6 +303,7 @@
                         android:textSize="16sp" />
 
                     <EditText
+                        android:id="@+id/et_companyname_mypageresume_act"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="회사명을 입력해주세요."
@@ -336,6 +331,7 @@
                             android:layout_weight="1">
 
                             <EditText
+                                android:id="@+id/et_startyear_mypageresume_act"
                                 android:layout_width="90dp"
                                 android:layout_height="40dp"
                                 android:background="@drawable/edittext_background_box"
@@ -346,6 +342,7 @@
                                 android:textSize="16sp" />
 
                             <EditText
+                                android:id="@+id/et_startmonth_mypageresume_act"
                                 android:layout_width="52dp"
                                 android:layout_height="40dp"
                                 android:layout_marginLeft="8dp"
@@ -371,6 +368,7 @@
                             android:layout_weight="1">
 
                             <EditText
+                                android:id="@+id/et_endyear_mypageresume_act"
                                 android:layout_width="90dp"
                                 android:layout_height="40dp"
                                 android:layout_marginLeft="8dp"
@@ -382,6 +380,7 @@
                                 android:textSize="16sp" />
 
                             <EditText
+                                android:id="@+id/et_endmonth_mypageresume_act"
                                 android:layout_width="52dp"
                                 android:layout_height="40dp"
                                 android:layout_marginLeft="8dp"
@@ -405,6 +404,7 @@
                         android:textSize="16sp" />
 
                     <EditText
+                        android:id="@+id/et_content_mypageresume_act"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_marginTop="4dp"
@@ -454,8 +454,8 @@
 
                     <ImageView
                         android:id="@+id/btn_active_mypage_resume_act"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/btn_under_up_arraow" />
                 </RelativeLayout>
@@ -476,6 +476,7 @@
                         android:textSize="16sp" />
 
                     <EditText
+                        android:id="@+id/et_activityname_mypageresume_act"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="활동명을 입력해주세요."
@@ -503,6 +504,7 @@
                             android:layout_weight="1">
 
                             <EditText
+                                android:id="@+id/et_startyear2_mypageresume_act"
                                 android:layout_width="90dp"
                                 android:layout_height="40dp"
                                 android:background="@drawable/edittext_background_box"
@@ -513,6 +515,7 @@
                                 android:textSize="16sp" />
 
                             <EditText
+                                android:id="@+id/et_startmonth2_mypageresume_act"
                                 android:layout_width="52dp"
                                 android:layout_height="40dp"
                                 android:layout_marginLeft="8dp"
@@ -538,6 +541,7 @@
                             android:layout_weight="1">
 
                             <EditText
+                                android:id="@+id/et_endyear2_mypageresume_act"
                                 android:layout_width="90dp"
                                 android:layout_height="40dp"
                                 android:layout_marginLeft="8dp"
@@ -549,6 +553,7 @@
                                 android:textSize="16sp" />
 
                             <EditText
+                                android:id="@+id/et_endmonth2_mypageresume_act"
                                 android:layout_width="52dp"
                                 android:layout_height="40dp"
                                 android:layout_marginLeft="8dp"
@@ -564,6 +569,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/et_content_mypageresume_act"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
@@ -572,6 +578,7 @@
                         android:textSize="16sp" />
 
                     <EditText
+                        android:id="@+id/et_activitycontent_resumeact"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_marginTop="4dp"
@@ -622,8 +629,8 @@
 
                     <ImageView
                         android:id="@+id/btn_introduce_mypage_resume_act"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/btn_under_up_arraow" />
 
@@ -671,8 +678,8 @@
 
                     <ImageView
                         android:id="@+id/btn_link_mypage_resume_act"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
                         android:layout_alignParentRight="true"
                         android:src="@drawable/btn_under_up_arraow" />
 

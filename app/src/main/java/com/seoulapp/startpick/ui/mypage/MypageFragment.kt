@@ -5,24 +5,42 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Shader
 import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
 import android.widget.RelativeLayout
+import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.seoulapp.startpick.data.MapGetData
+import com.seoulapp.startpick.data.UserInfoData
+import com.seoulapp.startpick.db.SharedPreferenceController
+import com.seoulapp.startpick.network.ApplicationController
+import com.seoulapp.startpick.network.NetworkService
+import com.seoulapp.startpick.network.get.GetMapPlaceAllResponse
+import com.seoulapp.startpick.network.get.GetMypageUserInfoResponse
+import com.seoulapp.startpick.ui.adapter.InfoMapAdapter
 import com.seoulapp.startpick.ui.adapter.MypagenaviAdapter
+import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.jetbrains.anko.ctx
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.startActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
@@ -35,14 +53,19 @@ class MypageFragment : Fragment() {
 
     val My_READ_STORAGE_REQUEST_CODE = 88
     private val REQ_CODE_SELECT_IMAGE = 100
-    lateinit var selectedImageUri : Uri
+    lateinit var selectedImageUri: Uri
 
+    private var imgs: MultipartBody.Part? = null
 
-    private var imgs : MultipartBody.Part? = null
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        //userInfo통신
+        UserInfo()
         configureMainTab()
         setOnClickListener()
     }
@@ -53,6 +76,68 @@ class MypageFragment : Fragment() {
         rootView = inflater.inflate(R.layout.fragment_mypage, container, false)
 
         return rootView
+    }
+
+    private fun UserInfo() {
+        //이걸로 바꿔줘야함!!!
+        //if (SharedPreferenceController.MY_EMAIL.length > 0)
+         //   getMypageUserInfoResponse(SharedPreferenceController.MY_EMAIL)
+
+        getMypageUserInfoResponse("soso3786@gmail.com")
+
+    }
+
+    //userInfo get함수
+    private fun getMypageUserInfoResponse(email: String) {
+
+        val getMypageUserInfoResponse: Call<GetMypageUserInfoResponse> = networkService.getMypageUserInfo(email)
+
+        getMypageUserInfoResponse.enqueue(object : Callback<GetMypageUserInfoResponse> {
+
+            override fun onFailure(call: Call<GetMypageUserInfoResponse>, t: Throwable) {
+                Log.e("userinfo get fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetMypageUserInfoResponse>, response: Response<GetMypageUserInfoResponse>
+            ) {
+                Log.e("userinfo get success", response.body().toString())
+
+                val temp: UserInfoData = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (status == 200) {
+                    makeView(temp)
+                }
+                else
+                { }
+            }
+        })
+    }
+
+    private fun makeView(data : UserInfoData)
+    {
+        //이미지
+        //user_porfile
+        if (data.img == null)
+            Glide.with(ctx).load(R.drawable.icon_profile).into(img_profile_mypage_fg)
+        else
+            Glide.with(ctx).load(data.img).into(img_profile_mypage_fg)
+
+        //이름
+        tv_username_mypage_frag.setText(data.name)
+        //이메일
+        tv_email_mypage_frag.setText(data.email)
+        //직업
+        tv_major_mypage_frag.setText(data.job)
+
+        var gender_string = ""
+        //나이, 성별
+        if(data.gender == 0)
+            gender_string = "남"
+        else
+            gender_string = "여"
+
+        tv_age_gender_mypage_frag.setText("("+gender_string+","+ data.age + ")")
     }
 
     //ViewPager
@@ -74,7 +159,7 @@ class MypageFragment : Fragment() {
 
     }
 
-    private fun setOnClickListener(){
+    private fun setOnClickListener() {
         rl_profile_mypage_fg.setOnClickListener {
             requestReadExternalStoragePermission()
         }
@@ -94,7 +179,8 @@ class MypageFragment : Fragment() {
             if (shouldShowRequestPermissionRationale(android.Manifest.permission.READ_EXTERNAL_STORAGE
                     )
             ) {
-            } else { requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+            } else {
+                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
                         My_READ_STORAGE_REQUEST_CODE
                 )
             }
@@ -151,6 +237,8 @@ class MypageFragment : Fragment() {
                     val photo = File(selectedImageUri.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
 
                     imgs = MultipartBody.Part.createFormData("imgs", photo.name, photoBody)
+
+                    //##통신하면 될 듯!!
 
                 }
             }

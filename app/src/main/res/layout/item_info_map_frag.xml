@@ -67,7 +67,7 @@
         android:layout_height="90dp"
         android:layout_marginRight="16dp"
         android:scaleType="fitXY"
-        android:background="#000000"
+        android:src="@drawable/img_map_loading"
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         />

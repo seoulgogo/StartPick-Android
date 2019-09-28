@@ -22,16 +22,20 @@ class InfoMapAdapter(val ctx: Context, val dataList: ArrayList<MapGetData>) : Re
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         //glide
-        Glide.with(ctx).load(dataList[position].s3).into(holder.Image)
+        if(dataList[position].s3 == "")
+            Glide.with(ctx).load(R.drawable.img_map_loading).into(holder.Image)
+        else
+            Glide.with(ctx).load(dataList[position].s3).into(holder.Image)
         holder.support_center.text =  dataList[position].agency.toString()
         holder.center_name.text = dataList[position].theme.toString()
         holder.address.text = dataList[position].address.toString()
-        holder.url.text = dataList[position].url.toString()
         holder.phone.text = dataList[position].phone
 
-        if(dataList[position].url.toString() == null){
+        if(dataList[position].url.toString() == ""){
             holder.url.text = "url 없음"
         }
+        else
+            holder.url.text = dataList[position].url.toString()
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {

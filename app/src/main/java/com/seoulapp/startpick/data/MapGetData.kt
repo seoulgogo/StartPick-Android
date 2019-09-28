@@ -10,5 +10,6 @@ data class MapGetData(
     val phone: String,
     val s3: String,
     val theme: String,
+    val dist : Double,
     val url: String?
 )

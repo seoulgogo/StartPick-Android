@@ -18,9 +18,11 @@
 
             <!--배너-->
             <ImageView
+                android:id="@+id/img_banner_home_fragment"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="#000000" />
+                android:src="@drawable/main_banner"
+                android:scaleType="fitXY"/>
 
             <!--1번째 recyclerview-->
             <LinearLayout
