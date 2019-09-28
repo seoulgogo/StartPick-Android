@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,28 +8,36 @@
         android:id="@+id/linear_total"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:weightSum="10"
+        android:weightSum="14"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:text="총 6,712건"
-            android:textSize="12sp"
-            android:textColor="#212529"
-            android:gravity="center_vertical"
-            android:paddingStart="16dp"/>
+            android:layout_weight="13"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/list_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="6,712"
+                android:textSize="12sp"
+                android:textColor="#212529"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="center_vertical"
             android:background="@drawable/round_border_gray"
             android:padding="6dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
                 android:src="@drawable/icon_array"/>
             <TextView
                 android:layout_width="wrap_content"

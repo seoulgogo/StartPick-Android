@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.SupportBusinessFragment">
 
     <TextView
@@ -20,33 +19,233 @@
         android:layout_below="@+id/tv_title_frg_support"
         android:layout_width="match_parent"
         android:layout_height="48dp">
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tablayout_frag_support"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:tabSelectedTextColor="#22b573"
-            app:tabMode="scrollable"
-            app:tabTextColor="#212529"
-            app:tabIndicatorColor="#22b573"
-            app:tabIndicatorFullWidth="false"
-            app:tabRippleColor="#22b573"
-            app:tabGravity="center"
-            >
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <RelativeLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="전체"
+                        android:layout_centerInParent="true"
+                        android:textSize="16sp"
+                        android:textColor="@color/maincolor"
+                        />
+                    <View
+                        android:id="@+id/v1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/maincolor"/>
+                </RelativeLayout>
 
-        </android.support.design.widget.TabLayout>
-        <View
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dee2e6"/>
+                <RelativeLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv2"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:text="정책"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textSize="16sp"
+                        android:textColor="#212529"
+                        />
+                    <View
+                        android:id="@+id/v2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/bar"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/tab3"
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="교육"
+                        android:layout_centerInParent="true"
+                        android:textSize="16sp"
+                        android:textColor="#212529"
+                        />
+                    <View
+                        android:id="@+id/v3"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/bar"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/tab4"
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="컨설팅"
+                        android:layout_centerInParent="true"
+                        android:textSize="16sp"
+                        android:textColor="#212529"
+                        />
+                    <View
+                        android:id="@+id/v4"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/bar"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/tab5"
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="시설"
+                        android:layout_centerInParent="true"
+                        android:textSize="16sp"
+                        android:textColor="#212529"
+                        />
+                    <View
+                        android:id="@+id/v5"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/bar"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/tab6"
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="사업화"
+                        android:layout_centerInParent="true"
+                        android:textSize="16sp"
+                        android:textColor="#212529"
+                        />
+                    <View
+                        android:id="@+id/v6"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/bar"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/tab7"
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="행사"
+                        android:layout_centerInParent="true"
+                        android:textSize="16sp"
+                        android:textColor="#212529"
+                        />
+                    <View
+                        android:id="@+id/v7"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/bar"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/tab8"
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="기타"
+                        android:layout_centerInParent="true"
+                        android:textSize="16sp"
+                        android:textColor="#212529"
+                        />
+                    <View
+                        android:id="@+id/v8"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/bar"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+
     </RelativeLayout>
-
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vpg_frag_support"
+    
+    <RelativeLayout
+        android:id="@+id/linear_totalview"
         android:layout_below="@+id/tab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/itemCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="총 6,712건"
+            android:textSize="12sp"
+            android:textColor="#212529"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"/>
+        <LinearLayout
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:background="@drawable/round_border_gray"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_array"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="등록일순"
+                android:textColor="#212529"/>
+        </LinearLayout>
+    </RelativeLayout>
 
-    </android.support.v4.view.ViewPager>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycle_support"
+        android:layout_below="@+id/linear_totalview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
 </RelativeLayout>

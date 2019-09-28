@@ -7,9 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
-import com.seoulapp.startpick.adapter.JobAdapter
+import com.seoulapp.startpick.adapter.WithRecyAdapter
 import com.seoulapp.startpick.ui.adapter.ReceivedSupportAdapter
-import com.seoulapp.startpick.data.JobData
 import com.seoulapp.startpick.data.ReceivedSupportData
 import kotlinx.android.synthetic.main.fragment_mypage_support_state.*
 import org.jetbrains.anko.textColorResource
@@ -18,7 +17,7 @@ class MypageSupportStateFragment : Fragment() {
 
     private lateinit var rootView: View
 
-    lateinit var mypageSupportRecyclerViewAdapter : JobAdapter
+    lateinit var mypageSupportRecyclerViewAdapter : WithRecyAdapter
     lateinit var mypageSupportBusinessAdapter : ReceivedSupportAdapter
 
 
@@ -81,19 +80,19 @@ class MypageSupportStateFragment : Fragment() {
         }
         else{
 
-            var mypageScrapData: ArrayList<JobData> = ArrayList()
+//            var mypageScrapData: ArrayList<WithAdapter> = ArrayList()
+//
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 1", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 2", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 3", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 4", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 5", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 6", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 7", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 8", "서울시창업지원센터", "콘텐츠"))
+//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 9", "서울시창업지원센터", "콘텐츠"))
 
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 1", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 2", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 3", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 4", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 5", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 6", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 7", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 8", "서울시창업지원센터", "콘텐츠"))
-            mypageScrapData.add(JobData("SNS 콘텐츠 크리에이터 9", "서울시창업지원센터", "콘텐츠"))
-
-            mypageSupportRecyclerViewAdapter = JobAdapter(activity!!, mypageScrapData)
+            //mypageSupportRecyclerViewAdapter = WithRecyAdapter(activity!!, mypageScrapData)
             rv_mypage_support_state_fg.adapter = mypageSupportRecyclerViewAdapter
             rv_mypage_support_state_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 

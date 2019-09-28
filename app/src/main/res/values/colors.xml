@@ -8,5 +8,7 @@
     <color name="notAdapted">#8c8c8c</color>
     <color name="coloreditnormal">#868e96</color>
     <color name="notSelected">#acacac</color>
+    <color name="basicColor">#212529</color>
+    <color name="bar">#dee2e6</color>
 
 </resources>
