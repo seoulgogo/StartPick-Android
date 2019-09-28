@@ -20,19 +20,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".ui.StartupDivActivity"></activity>
+        <activity android:name=".ui.WebViewActivity"></activity>
+        <activity android:name=".ui.StartupDivActivity" />
         <activity android:name=".ui.SupportDetailActivity" />
         <activity android:name=".ui.WorkAreaActivity" />
         <activity android:name=".ui.WithFilterActivity" />
         <activity android:name=".ui.WithDetailActivity" />
         <activity android:name=".ui.mypage.MyPostedNoticeActivity" />
         <activity android:name=".ui.mypage.MyapageResumeActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.SignMainActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.SignupActivity" />
         <activity android:name=".ui.WriteActivity" />
-        <activity android:name=".ui.SignMainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -41,6 +43,5 @@
             </intent-filter>
         </activity>
     </application>
-
 
 </manifest>
