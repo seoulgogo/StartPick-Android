@@ -13,14 +13,27 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.seoulapp.startpick.R
+import com.seoulapp.startpick.data.UserInfoData
+import com.seoulapp.startpick.network.ApplicationController
+import com.seoulapp.startpick.network.NetworkService
+import com.seoulapp.startpick.network.get.GetMypageUserInfoResponse
+import com.seoulapp.startpick.network.post.PostLoginResponse
 import kotlinx.android.synthetic.main.activity_myapage_resume.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
@@ -44,6 +57,32 @@ class MyapageResumeActivity : AppCompatActivity() {
     var btn_introduce = false
     var btn_link_arrow = false
 
+    var phone = ""
+    var email = ""
+    var name = ""
+    var major = ""
+    var intro = ""
+    var link = ""
+
+    var c_companyName = ""
+    var c_startYear = ""
+    var c_startMonth = ""
+    var c_endYear = ""
+    var c_endMonth = ""
+    var c_content = ""
+
+    var a_companyName = ""
+    var a_startYear = ""
+    var a_startMonth = ""
+    var a_endYear = ""
+    var a_endMonth = ""
+    var a_content = ""
+
+    var flag = -1
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +90,7 @@ class MyapageResumeActivity : AppCompatActivity() {
 
         setOnClickListener()
         editText()
+        UserInfo()
     }
 
     fun setOnClickListener() {
@@ -70,7 +110,27 @@ class MyapageResumeActivity : AppCompatActivity() {
         btn_store_mypage_resume_act.setOnClickListener {
             if(next_btn_activation)
             {
+                major = et_major_mypage_resume_act.toString()
+                link = et_link_mypage_resume_act.toString()
+                intro = et_introduce_mypage_resume_act.toString()
+
+                c_companyName = et_companyname_mypageresume_act.toString()
+                c_startYear = et_startyear_mypageresume_act.toString()
+                c_startMonth = et_startmonth_mypageresume_act.toString()
+                c_endYear = et_endyear_mypageresume_act.toString()
+                c_endMonth = et_endmonth_mypageresume_act.toString()
+                c_content = et_content_mypageresume_act.toString()
+
+                a_companyName = et_activityname_mypageresume_act.toString()
+                a_startYear = et_startyear2_mypageresume_act.toString()
+                a_startMonth = et_startmonth2_mypageresume_act.toString()
+                a_endYear = et_endyear2_mypageresume_act.toString()
+                a_endMonth = et_endmonth2_mypageresume_act.toString()
+                a_content = et_activitycontent_resumeact.toString()
+
                 //##통신
+                postResumeStore()
+
                 finish()
             }
         }
@@ -158,6 +218,136 @@ class MyapageResumeActivity : AppCompatActivity() {
 
     }
 
+    private fun configurebasicSetting() {
+        phone = intent.getStringExtra("phone")
+        title = intent.getStringExtra("title")
+        major = intent.getStringExtra("major")
+        c_content = intent.getStringExtra("name")
+        link = intent.getStringExtra("link")
+
+        //이력서를 눌러서 들어오는 경우
+        flag = 1
+
+    }
+
+    private fun UserInfo() {
+        //이걸로 바꿔줘야함!!!
+        //if (SharedPreferenceController.MY_EMAIL.length > 0)
+        //   getMypageUserInfoResponse(SharedPreferenceController.MY_EMAIL)
+
+        getMypageUserInfoResponse("soso3786@gmail.com")
+
+    }
+
+    //userInfo get함수
+    private fun getMypageUserInfoResponse(email: String) {
+
+        val getMypageUserInfoResponse: Call<GetMypageUserInfoResponse> = networkService.getMypageUserInfo(email)
+
+        getMypageUserInfoResponse.enqueue(object : Callback<GetMypageUserInfoResponse> {
+
+            override fun onFailure(call: Call<GetMypageUserInfoResponse>, t: Throwable) {
+                Log.e("userinfo get fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetMypageUserInfoResponse>, response: Response<GetMypageUserInfoResponse>
+            ) {
+                Log.e("userinfo get success", response.body().toString())
+
+                val temp: UserInfoData = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (status == 200) {
+                    makeView(temp)
+                }
+                else
+                { }
+            }
+        })
+    }
+
+    //resume create post함수
+    fun postResumeStore() {
+
+        var carrerJson = JSONObject()
+        carrerJson.put("companyName",c_companyName)
+        carrerJson.put("startYear",c_startYear)
+        carrerJson.put("startMonth",c_startMonth)
+        carrerJson.put("endYear",c_endYear)
+        carrerJson.put("endMonth",c_endMonth)
+        carrerJson.put("content",c_content)
+        var activeJson = JSONObject()
+        activeJson.put("activityName",c_companyName)
+        activeJson.put("startYear",c_startYear)
+        activeJson.put("startMonth",c_startMonth)
+        activeJson.put("endYear",c_endYear)
+        activeJson.put("endMonth",c_endMonth)
+        activeJson.put("content",c_content)
+
+        var jsonObject = JSONObject()
+        jsonObject.put("email", email)
+        jsonObject.put("name", name)
+        jsonObject.put("phone", phone)
+        jsonObject.put("major", major)
+        jsonObject.put("intro", intro)
+        jsonObject.put("link",link)
+        jsonObject.put("intro", intro)
+        jsonObject.put("career",carrerJson)
+        jsonObject.put("activity",activeJson)
+
+        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
+        var networkService = networkService.postMyresumeStore(gsonObject)
+        networkService.enqueue(object : Callback<PostLoginResponse> {
+            override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
+                Log.e("Login error", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostLoginResponse>, response: Response<PostLoginResponse>) {
+                if (response.isSuccessful) {
+                    val status = response.body()!!.status
+                    if (status == 200) {
+                        //SharedPreferenceController.setUserToken(applicationContext, response.body()!!.data.token.token)
+                        Toast.makeText(getApplicationContext(), "저장되었습니다!", Toast.LENGTH_LONG).show()
+                        finish()
+
+                    } else if(status == 400){
+
+                        Toast.makeText(getApplicationContext(), response.body()!!.message, Toast.LENGTH_LONG).show()
+
+                        Log.e("message",response.body()!!.message)
+                    }
+                }
+            }
+        })
+    }
+
+    private fun makeView(data : UserInfoData)
+    {
+        //이미지
+        //user_porfile
+        if (data.img == null)
+            Glide.with(this).load(R.drawable.icon_profile).into(img_profile_mypage_resume_act)
+        else
+            Glide.with(this).load(data.img).into(img_profile_mypage_resume_act)
+
+        //이름
+        tv_username_mypageresume_frag.setText(data.name)
+        //이메일
+        tv_email_mypageresume_frag.setText(data.email)
+        email = data.email
+        //직업
+        tv_major_mypageresume_frag.setText(data.job)
+
+        var gender_string = ""
+        //나이, 성별
+        if(data.gender == 0)
+            gender_string = "남"
+        else
+            gender_string = "여"
+
+        tv_gender_age_mypageresume_frag.setText("("+gender_string+","+ data.age + ")")
+    }
+
     private fun test(id : View, flag : Boolean, view : View ) {
 
         var btn_flag = flag
@@ -186,9 +376,9 @@ class MyapageResumeActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val text = et_phone_mypage_resume_act.text
+                phone = et_phone_mypage_resume_act.text.toString()
 
-                if (text.length > 0) {
+                if (phone.length > 0) {
                     et_phone = true
                 } else {
                     et_phone = false
@@ -213,9 +403,9 @@ class MyapageResumeActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val text = et_resume_theme_mypage_resume_act.text
+                 name = et_resume_theme_mypage_resume_act.text.toString()
 
-                if (text.length > 0) {
+                if (name.length > 0) {
                     et_resume_theme = true
                 } else {
                     et_resume_theme = false

@@ -8,6 +8,8 @@ object SharedPreferenceController {
     val MY_ACCOUNT = "unique_string"
     val REFRESH_TOKEN = "refresh_token"
     val ACCESS_TOKEN = "access_token"
+    var MY_EMAIL = ""
+    var MY_JOB_IDX = 1
 
     fun setUserToken(ctx: Context, u_token: String?) {
 

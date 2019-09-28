@@ -51,8 +51,7 @@ class LoginActivity : AppCompatActivity() {
 
             if(login_btn_activation)
             {
-                //##통신
-                //postLoginResponse(id, pw)
+                postLoginResponse(id, pw)
 
                 //이건 지워야함
                 startActivity<MainActivity>()
@@ -151,6 +150,7 @@ class LoginActivity : AppCompatActivity() {
                     if (status == 200) {
                         //SharedPreferenceController.setUserToken(applicationContext, response.body()!!.data.token.token)
 
+                        SharedPreferenceController.MY_EMAIL = id
                         startActivity<MainActivity>()
                         finish()
 
