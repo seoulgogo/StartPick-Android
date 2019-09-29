@@ -94,6 +94,7 @@ interface NetworkService {
             @Path("email") email : String
     ):Call<GetShowAllResumeResponse>
 
+
     //마이페이지.스크랩.지원사업
     @GET("myPage/scrape/getScrapsupport/{user_idx}")
     fun getScrapSupport(
@@ -137,18 +138,27 @@ interface NetworkService {
     /* 함께해요 fragment */
 
     // 함께해요 리스트
+
+    // 함께해요 전체 리스트
     @GET("withUs/all")
-    fun getWithList(
+    fun getWithusAllResponse(
     ): Call<GetWithusAllResponse>
 
     // 함께해요 리스트 필터 적용된 리스트
     @GET("withUs/all/filterWithUs/{startUp_idx}/{job_idx}")
-    fun getWithusDetailResponse(
+    fun getWithusFilterResponse(
             @Path("startUp_idx") startUp_idx: Int,
             @Path("job_idx") job_idx : Int
     ): Call<GetWithusFilterResponse>
 
+
     /* 지원사업 리스트 */
+
+    // 함께해요 각 아이템 디테일 데이터
+    @GET("withUs/all/detailAll/{withUs_idx}")
+    fun getWithusDetailResponse(
+            @Path("withUs_idx") withUs_idx: Int
+    ): Call<GetWithusDetailResponse>
 
     // 지원사업 전체 리스트
     @GET("supportList/all")
@@ -166,6 +176,26 @@ interface NetworkService {
     fun getSupportDetailResponse(
             @Path("business_idx") business_idx: Int
     ): Call<GetSupportDetailResponse>
+
+    // 지원사업 글쓰기 포스트
+    @Multipart
+    @POST("withUs/insertWithUs")
+    fun postWithusApply(
+            @Part("user_idx") user_idx : RequestBody,
+            @Part("startUp_idx") startUp_idx : RequestBody,
+            @Part("job_idx") job_idx : RequestBody,
+            @Part("detailJob") detailJob : RequestBody,
+            @Part("recrutNum") recrutNum : RequestBody,
+            @Part("salary") salary : RequestBody,
+            @Part("city_idx") city_idx : RequestBody,
+            @Part("mainTask") mainTask : RequestBody,
+            @Part("intro") intro : RequestBody,
+            @Part("companyName") companyName : RequestBody,
+            @Part("managerName") managerName : RequestBody,
+            @Part("managerPhone") managerPhone : RequestBody,
+            @Part("managerEmail") managerEmail : RequestBody,
+            @Part img : MultipartBody.Part?
+    ): Call<PostLoginResponse>
 
 
 

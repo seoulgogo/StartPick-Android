@@ -1,12 +1,19 @@
 package com.seoulapp.startpick.ui
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.util.Log
+import android.widget.Toast
 import com.seoulapp.startpick.R
 import kotlinx.android.synthetic.main.activity_work_area.*
 import kotlinx.android.synthetic.main.activity_work_area.back_arrow
+import kotlinx.android.synthetic.main.fragment_job.*
+import org.jetbrains.anko.ctx
+import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.textColor
 
 class WorkAreaActivity : AppCompatActivity() {
@@ -15,6 +22,7 @@ class WorkAreaActivity : AppCompatActivity() {
     var isActiveArray : Array<Boolean> = Array(25, {false})
     val green = "#22b573"
     val black = "#212529"
+    var city_idx : Int = 0
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,8 +34,10 @@ class WorkAreaActivity : AppCompatActivity() {
         }
 
         WorkChangeColor() // 근무지역 필터 색깔 활성화
+        AdaptActive() // 적용하기 버튼 세팅
 
     }
+
 
     /** 근무지역 필터 색깔 활성화 */
     fun WorkChangeColor(){
@@ -396,6 +406,21 @@ class WorkAreaActivity : AppCompatActivity() {
             }else activeOK = false
         }
         if(!activeOK) btn_adapt.setBackgroundResource(R.color.notAdapted)
+
+        // 적용하기 버튼 클릭 이벤트
+        if(activeOK){
+            btn_adapt.setOnClickListener {
+                // 인텐트로 근무지역 idx 주기
+                var intent = Intent()
+                intent.putExtra("city_idx", city_idx )
+                setResult(RESULT_OK, intent)
+                finish()
+            }
+        }else{
+            btn_adapt.setOnClickListener {
+                Toast.makeText(ctx, "근무지역을 선택해주세요.", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 
