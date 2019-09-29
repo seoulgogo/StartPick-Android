@@ -3,22 +3,41 @@ package com.seoulapp.startpick.ui.mypage
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
+import com.seoulapp.startpick.adapter.SupportAdapter
 import com.seoulapp.startpick.adapter.WithRecyAdapter
+import com.seoulapp.startpick.data.ApplicationData
 import com.seoulapp.startpick.ui.adapter.ReceivedSupportAdapter
 import com.seoulapp.startpick.data.ReceivedSupportData
+import com.seoulapp.startpick.data.WithusItemData
+import com.seoulapp.startpick.network.ApplicationController
+import com.seoulapp.startpick.network.NetworkService
+import com.seoulapp.startpick.network.get.GetSupportApplicationResponse
+import com.seoulapp.startpick.network.get.GetSupportStatemyApplyResponse
+import com.seoulapp.startpick.network.get.WithUs
+import kotlinx.android.synthetic.main.fragment_mypage_scrap.*
 import kotlinx.android.synthetic.main.fragment_mypage_support_state.*
 import org.jetbrains.anko.textColorResource
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MypageSupportStateFragment : Fragment() {
 
     private lateinit var rootView: View
 
-    lateinit var mypageSupportRecyclerViewAdapter : WithRecyAdapter
-    lateinit var mypageSupportBusinessAdapter : ReceivedSupportAdapter
+    lateinit var mypagesendRecyclerViewAdapter : WithRecyAdapter
+    lateinit var mypageapplicationAdapter : ReceivedSupportAdapter
+
+    var email = ""
+
+    val networkService: NetworkService by lazy {
+        ApplicationController.instance.networkService
+    }
 
 
     var btn_selector_support = false
@@ -32,6 +51,9 @@ class MypageSupportStateFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        //email = SharedPreferenceController.MY_EMAIL
+        email = "soso1@gmail.com"
 
         selector()
         setOnClickListener()
@@ -57,44 +79,85 @@ class MypageSupportStateFragment : Fragment() {
         }
     }
 
+
+    //지원현황 보낸지원 뷰
+    private fun getSupportstateSendResponse() {
+
+        val getsupportstatesendResponse: Call<GetSupportStatemyApplyResponse> = networkService.getMyApply(email)
+
+        getsupportstatesendResponse.enqueue(object : Callback<GetSupportStatemyApplyResponse> {
+            override fun onFailure(call: Call<GetSupportStatemyApplyResponse>, t: Throwable) {
+                Log.e("스크랩 지원사업 fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetSupportStatemyApplyResponse>, response: Response<GetSupportStatemyApplyResponse>) {
+                Log.e("스크랩 지원사업 success", response.body()!!.data.toString())
+                val temp: ArrayList<WithusItemData> = response.body()!!.data.withUsList
+                val status = response.body()!!.status
+
+                if (temp.size > 0) {
+                    if (status == 200) {
+
+                        mypagesendRecyclerViewAdapter = WithRecyAdapter(activity!!, temp)
+                        rv_mypage_support_state_fg.adapter = mypagesendRecyclerViewAdapter
+                        rv_mypage_support_state_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+
+                        mypagesendRecyclerViewAdapter.dataList.addAll(temp)
+                        mypagesendRecyclerViewAdapter.notifyDataSetChanged()
+
+                    }
+                } else{
+                    mypagesendRecyclerViewAdapter.dataList.clear()
+                }
+            }
+        })
+    }
+
+
+    //지원현황 받은지원 뷰
+    private fun getSupportstateapplicationResponse() {
+
+        val getsupportstatesendResponse: Call<GetSupportApplicationResponse> = networkService.getMypageApplication(email)
+
+        getsupportstatesendResponse.enqueue(object : Callback<GetSupportApplicationResponse> {
+            override fun onFailure(call: Call<GetSupportApplicationResponse>, t: Throwable) {
+                Log.e("스크랩 받은지원 fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetSupportApplicationResponse>, response: Response<GetSupportApplicationResponse>) {
+                Log.e("스크랩 받은지원 success", response.body()!!.data.toString())
+                val temp: ArrayList<ApplicationData> = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (temp.size > 0) {
+                    if (status == 200) {
+
+                        mypageapplicationAdapter = ReceivedSupportAdapter(activity!!, temp)
+                        rv_mypage_support_state_fg.adapter = mypageapplicationAdapter
+                        rv_mypage_support_state_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+
+                        mypageapplicationAdapter.dataList.addAll(temp)
+                        mypageapplicationAdapter.notifyDataSetChanged()
+
+                    }
+                } else{
+                    mypagesendRecyclerViewAdapter.dataList.clear()
+                }
+            }
+        })
+    }
+
     //리사이클러뷰
     fun setRecyclerView() {
 
         if(btn_selector_support == false){
-            var dataList: ArrayList<ReceivedSupportData> = ArrayList()
-            dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
-            dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
-            dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
-            dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
-            dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
-            dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
-            dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
-            dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
-            dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
-            dataList.add(ReceivedSupportData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "유가희"))
 
-
-            mypageSupportBusinessAdapter = ReceivedSupportAdapter(activity!!, dataList)
-            rv_mypage_support_state_fg.adapter = mypageSupportBusinessAdapter
-            rv_mypage_support_state_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            getSupportstateapplicationResponse()
         }
         else{
-
-//            var mypageScrapData: ArrayList<WithAdapter> = ArrayList()
-//
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 1", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 2", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 3", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 4", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 5", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 6", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 7", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 8", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 9", "서울시창업지원센터", "콘텐츠"))
-
-            //mypageSupportRecyclerViewAdapter = WithRecyAdapter(activity!!, mypageScrapData)
-            rv_mypage_support_state_fg.adapter = mypageSupportRecyclerViewAdapter
-            rv_mypage_support_state_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            getSupportstateSendResponse()
 
         }
     }

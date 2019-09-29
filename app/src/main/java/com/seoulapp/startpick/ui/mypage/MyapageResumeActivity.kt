@@ -25,6 +25,8 @@ import com.seoulapp.startpick.data.UserInfoData
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetMypageUserInfoResponse
+import com.seoulapp.startpick.network.get.GetShowResumeResponse
+import com.seoulapp.startpick.network.get.showResumeData
 import com.seoulapp.startpick.network.post.PostLoginResponse
 import kotlinx.android.synthetic.main.activity_myapage_resume.*
 import okhttp3.MediaType
@@ -63,6 +65,7 @@ class MyapageResumeActivity : AppCompatActivity() {
     var major = ""
     var intro = ""
     var link = ""
+    var resume_name = ""
 
     var c_companyName = ""
     var c_startYear = ""
@@ -79,6 +82,7 @@ class MyapageResumeActivity : AppCompatActivity() {
     var a_content = ""
 
     var flag = -1
+    var getid = -1
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -90,7 +94,15 @@ class MyapageResumeActivity : AppCompatActivity() {
 
         setOnClickListener()
         editText()
-        UserInfo()
+
+
+        getid = intent.getIntExtra("getid", -1)
+        resume_name = intent.getStringExtra("name")
+
+        if(getid == 1)
+            getShowResumeResponse()
+        else
+            UserInfo()
     }
 
     fun setOnClickListener() {
@@ -266,6 +278,32 @@ class MyapageResumeActivity : AppCompatActivity() {
         })
     }
 
+    //이력서 작성 detail
+    fun getShowResumeResponse(){
+        val getresumeShowResponse: Call<GetShowResumeResponse> = networkService.getResumeShow(resume_name)
+
+        getresumeShowResponse.enqueue(object : Callback<GetShowResumeResponse> {
+
+            override fun onFailure(call: Call<GetShowResumeResponse>, t: Throwable) {
+                Log.e("이력서 detail get fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetShowResumeResponse>, response: Response<GetShowResumeResponse>
+            ) {
+                Log.e("이력서 detail get success", response.body().toString())
+
+                val temp: showResumeData = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (status == 200) {
+                    makeResumeShowView(temp)
+                }
+                else
+                { }
+            }
+        })
+    }
+
     //resume create post함수
     fun postResumeStore() {
 
@@ -319,6 +357,49 @@ class MyapageResumeActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+
+    private fun makeResumeShowView(data : showResumeData)
+    {
+        //연락처
+        et_phone_mypage_resume_act.setText(data.phone)
+        //이력서제목
+        et_resume_theme_mypage_resume_act.setText(data.name)
+        //전공
+        et_major_mypage_resume_act.setText(data?.major)
+        //자기소개
+        et_introduce_mypage_resume_act.setText(data?.intro)
+        //링크
+        et_link_mypage_resume_act.setText(data?.link)
+        //회사명
+        et_companyname_mypageresume_act.setText(data.career[0]?.companyName)
+
+        //####startDate를 가공해야함
+        //career재직기간 시작
+        et_startyear_mypageresume_act.setText(data.career[0]?.startDate)
+
+        //####endDate를 가공해야함
+        //career재직기간 끝
+        et_startyear_mypageresume_act.setText(data.career[0]?.endDate)
+
+        //career담당업무
+        et_content_career_mypage_resume_act.setText(data.career[0]?.content)
+
+        //활동
+        //활동명
+        et_activityname_mypageresume_act.setText(data.activity[0]?.activityName)
+
+        //####startDate를 가공해야함
+        //act재직기간 시작
+        et_startyear2_mypageresume_act.setText(data.activity[0]?.startDate)
+
+        //####endDate를 가공해야함
+        //act재직기간 끝
+        et_endmonth2_mypageresume_act.setText(data.activity[0]?.endDate)
+
+        //activity담당업무
+        et_activitycontent_resumeact.setText(data.activity[0]?.content)
     }
 
     private fun makeView(data : UserInfoData)

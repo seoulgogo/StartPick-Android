@@ -6,5 +6,6 @@ data class UserInfoData(
     val job: String,
     val name: String,
     val gender : Int,
-    val age : Int
+    val age : Int,
+    val userIdx : Int
 )

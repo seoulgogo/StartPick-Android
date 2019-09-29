@@ -5,37 +5,27 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.Shader
 import android.net.Uri
 import android.os.Bundle
-import android.provider.ContactsContract
-import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
-import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
 import android.widget.RelativeLayout
-import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.seoulapp.startpick.data.MapGetData
 import com.seoulapp.startpick.data.UserInfoData
-import com.seoulapp.startpick.db.SharedPreferenceController
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
-import com.seoulapp.startpick.network.get.GetMapPlaceAllResponse
 import com.seoulapp.startpick.network.get.GetMypageUserInfoResponse
-import com.seoulapp.startpick.ui.adapter.InfoMapAdapter
+import com.seoulapp.startpick.network.post.PostSignupResponse
 import com.seoulapp.startpick.ui.adapter.MypagenaviAdapter
-import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import org.jetbrains.anko.ctx
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.startActivity
 import retrofit2.Call
@@ -55,7 +45,7 @@ class MypageFragment : Fragment() {
     private val REQ_CODE_SELECT_IMAGE = 100
     lateinit var selectedImageUri: Uri
 
-    private var imgs: MultipartBody.Part? = null
+    private var img: MultipartBody.Part? = null
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -85,6 +75,36 @@ class MypageFragment : Fragment() {
 
         getMypageUserInfoResponse("soso3786@gmail.com")
 
+    }
+
+    //이미지변경
+    fun postImgChangeResponse() {
+
+        var email = RequestBody.create(MediaType.parse("text/plain"), "asdlkfj@gmail.com")
+
+        val networkService = networkService.postImgChange(email,img)
+
+        Log.d("TAGG", "BBBB")
+
+        networkService.enqueue(object : Callback<PostSignupResponse> {
+            override fun onFailure(call: Call<PostSignupResponse>, t: Throwable) {
+                Log.e("이미지 변경 error", "Error ", t)
+            }
+
+            override fun onResponse(call: Call<PostSignupResponse>, response: Response<PostSignupResponse>) {
+                Log.e("onResponse", response.message().toString())
+                if (response.isSuccessful) {
+                    Log.e("이미지 변경 success", response.message().toString())
+                    response?.takeIf { it.isSuccessful }
+                            ?.body()
+                            ?.let {
+                                if (it.success == true) {
+                                }
+                            }
+                }else{
+                }
+            }
+        })
     }
 
     //userInfo get함수
@@ -236,9 +256,9 @@ class MypageFragment : Fragment() {
                     val photoBody = RequestBody.create(MediaType.parse("image/jpg"), baos.toByteArray())
                     val photo = File(selectedImageUri.toString()) // 가져온 파일의 이름을 알아내려고 사용합니다
 
-                    imgs = MultipartBody.Part.createFormData("imgs", photo.name, photoBody)
+                    img = MultipartBody.Part.createFormData("img", photo.name, photoBody)
 
-                    //##통신하면 될 듯!!
+                    postImgChangeResponse()
 
                 }
             }

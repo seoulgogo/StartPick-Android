@@ -1,10 +1,6 @@
 package com.seoulapp.startpick.network
 
 import com.google.gson.JsonObject
-<<<<<<< HEAD
-=======
-
->>>>>>> a807bb99effbcd4d06726cf4a3c3339d8f8ca99b
 import com.seoulapp.startpick.network.get.GetMainNewOrderResponse
 import com.seoulapp.startpick.network.get.GetMapPlaceAllResponse
 import com.seoulapp.startpick.network.get.GetMypageUserInfoResponse
@@ -59,7 +55,6 @@ interface NetworkService {
     ):Call<GetMainNewOrderResponse>
 
 
-
     /*map fragment*/
 
     //map fragment에서 정보 가져오기
@@ -99,10 +94,47 @@ interface NetworkService {
             @Path("email") email : String
     ):Call<GetShowAllResumeResponse>
 
+    //마이페이지.스크랩.지원사업
     @GET("myPage/scrape/getScrapsupport/{user_idx}")
     fun getScrapSupport(
             @Path("user_idx") user_idx : Int
     ):Call<GetSupportTabResponse>
+
+    //마이페이지.스크랩.구인구직
+    @GET("myPage/scrape/getScrapWithUs/{user_idx}")
+    fun getScrapWithUs(
+            @Path("user_idx") user_idx : Int
+    ):Call<GetWithusAllResponse>
+
+    //지원현황.받은지원
+    @GET("apply/application/{email}")
+    fun getMypageApplication(
+            @Path("email") email : String
+    ):Call<GetSupportApplicationResponse>
+
+    //지원현황.보낸지원
+    @GET("apply/myApply/{email}")
+    fun getMyApply(
+            @Path("email") email: String
+    ):Call<GetSupportStatemyApplyResponse>
+
+    //이미지변경
+    @Multipart
+    @POST("auth/changeImg")
+    fun postImgChange(
+            @Part("email") email : RequestBody,
+            @Part img : MultipartBody.Part?
+    ):Call<PostSignupResponse>
+
+    //이력서선택-->이력서 뿌려주기
+    @GET("resume/showResume/{resumeName}")
+    fun getResumeShow(
+            @Path("resumeName") resumeName : String
+    ):Call<GetShowResumeResponse>
+
+
+
+    /* 함께해요 fragment */
 
     // 함께해요 리스트
     @GET("withUs/all")
@@ -115,6 +147,8 @@ interface NetworkService {
             @Path("startUp_idx") startUp_idx: Int,
             @Path("job_idx") job_idx : Int
     ): Call<GetWithusFilterResponse>
+
+    /* 지원사업 리스트 */
 
     // 지원사업 전체 리스트
     @GET("supportList/all")

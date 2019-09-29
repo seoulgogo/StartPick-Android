@@ -1,7 +1,6 @@
 package com.seoulapp.startpick.adapter
 
 import android.content.Context
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +10,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.seoulapp.startpick.R
-import com.seoulapp.startpick.data.InfoHomefragData
-import com.seoulapp.startpick.network.get.MainOrderData
+import com.seoulapp.startpick.data.MainOrderData
 import com.seoulapp.startpick.ui.WithDetailActivity
 import org.jetbrains.anko.startActivity
 
-class InfoHomeAdapter(private val ctx : Context, private val dataList : ArrayList<MainOrderData>) : RecyclerView.Adapter<InfoHomeAdapter.Holder>() {
+class InfoHomeAdapter(private val ctx : Context, val dataList : ArrayList<MainOrderData>) : RecyclerView.Adapter<InfoHomeAdapter.Holder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx)!!.inflate(R.layout.item_info_home_frag, viewGroup, false)
         return Holder(view)
@@ -28,9 +26,19 @@ class InfoHomeAdapter(private val ctx : Context, private val dataList : ArrayLis
 
         //glide
         Glide.with(ctx).load(dataList[position].thumnail).into(holder.Image)
-        holder.title.text =  dataList[position].detailJob.toString()
-        holder.organize.text = dataList[position].companyName.toString()
-        holder.division.text = dataList[position].startUp
+
+        if(dataList[position].detailJob == null)
+            holder.title.text = "없음"
+        else
+            holder.title.text =  dataList[position].detailJob.toString()
+
+        if(dataList[position].companyName == null)
+            holder.organize.text = "없음"
+        else
+            holder.organize.text = dataList[position].companyName.toString()
+
+
+        holder.division.text = dataList[position].startUp.toString()
 
         holder.container.setOnClickListener {
             ctx.startActivity<WithDetailActivity>(

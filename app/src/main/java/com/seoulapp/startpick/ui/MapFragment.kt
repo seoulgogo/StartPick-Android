@@ -117,6 +117,7 @@ class MapFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         setOnClickListener()
+        //spinner()
 
     }
 
@@ -533,7 +534,7 @@ class MapFragment : Fragment() {
         }
     }
 
-/*
+
     fun spinner() {
 
         var spinner_thema: AwesomeSpinner = R.id.spinner_thema_map_fragment as AwesomeSpinner
@@ -558,7 +559,7 @@ class MapFragment : Fragment() {
                 AwesomeSpinner.onSpinnerItemClickListener { position, itemAtPosition ->
                     var thema = position
                 })
-    }*/
+    }
 
 
 }
