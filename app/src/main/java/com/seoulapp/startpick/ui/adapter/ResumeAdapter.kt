@@ -36,7 +36,8 @@ class ResumeAdapter  (private val ctx : Context, private val dataList : ArrayLis
                     "major" to dataList[position].major,
                     "name" to dataList[position].name,
                     "intro" to dataList[position].intro,
-                    "link" to dataList[position].link
+                    "link" to dataList[position].link,
+                    "getid" to 1
             )
         }
     }

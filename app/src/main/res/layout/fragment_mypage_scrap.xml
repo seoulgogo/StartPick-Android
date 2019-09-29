@@ -33,7 +33,7 @@
                         android:layout_centerInParent="true"
                         android:textSize="14sp"
                         android:textColor="@color/maincolor"
-                        android:text="구인구직"/>
+                        android:text="함께해요"/>
 
                 </RelativeLayout>
 

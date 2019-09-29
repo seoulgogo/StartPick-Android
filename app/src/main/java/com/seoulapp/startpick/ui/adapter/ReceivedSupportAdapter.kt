@@ -5,12 +5,15 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.seoulapp.startpick.R
+import com.seoulapp.startpick.data.ApplicationData
 import com.seoulapp.startpick.data.ReceivedSupportData
 
-class ReceivedSupportAdapter (private val ctx : Context, private val dataList : ArrayList<ReceivedSupportData>) :
+class ReceivedSupportAdapter (private val ctx : Context, val dataList : ArrayList<ApplicationData>) :
         RecyclerView.Adapter<ReceivedSupportAdapter.Holder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
@@ -19,8 +22,17 @@ class ReceivedSupportAdapter (private val ctx : Context, private val dataList : 
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.title.text = dataList[position].title
-        holder.name.text = dataList[position].name
+
+
+        holder.title.text = dataList[position].resumeName
+        holder.name.text = dataList[position].userName
+        holder.company_name.text = "[" + dataList[position].jobIdx+"_" + dataList[position].companyName +"]"
+
+        //glide
+        if(dataList[position].img == "")
+            Glide.with(ctx).load(R.drawable.img_map_loading).into(holder.img)
+        else
+            Glide.with(ctx).load(dataList[position].img).into(holder.img)
 
         /* 아이템 클릭 이벤트 */
         holder.item.setOnClickListener {
@@ -34,5 +46,7 @@ class ReceivedSupportAdapter (private val ctx : Context, private val dataList : 
         var item = itemView.findViewById(R.id.rl_container_support_mp_fg) as RelativeLayout
         var title = itemView.findViewById(R.id.tv_resume_name_support_mp_fg) as TextView
         var name = itemView.findViewById(R.id.tv_resume_name_support_mp_fg) as TextView
+        var company_name = itemView.findViewById(R.id.tv_resume_companyName_mp_fg) as TextView
+        var img = itemView.findViewById(R.id.img_profile_recyclerview_item) as ImageView
     }
 }

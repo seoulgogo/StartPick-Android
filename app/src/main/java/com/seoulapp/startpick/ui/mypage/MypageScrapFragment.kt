@@ -3,24 +3,32 @@ package com.seoulapp.startpick.ui.mypage
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.adapter.WithRecyAdapter
 import com.seoulapp.startpick.adapter.SupportAdapter
-import com.seoulapp.startpick.data.JobData
-import com.seoulapp.startpick.data.SupportData
+import com.seoulapp.startpick.data.SupportItemData
+import com.seoulapp.startpick.data.WithusItemData
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
+import com.seoulapp.startpick.network.get.GetSupportTabResponse
+import com.seoulapp.startpick.network.get.GetWithusAllResponse
 import kotlinx.android.synthetic.main.fragment_mypage_scrap.*
 import org.jetbrains.anko.textColorResource
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MypageScrapFragment : Fragment() {
 
     private lateinit var rootView: View
-    lateinit var mypageScrapRecyclerViewAdapter : WithRecyAdapter
-    lateinit var mypageSupportBusinessAdapter : SupportAdapter
+    lateinit var mypageScrapRecyclerViewAdapter: WithRecyAdapter
+    lateinit var mypageSupportBusinessAdapter: SupportAdapter
+
+    var user_idx = -1
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -31,6 +39,11 @@ class MypageScrapFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         rootView = inflater.inflate(R.layout.fragment_mypage_scrap, container, false)
+
+        //이걸로 나중에 바꿔야함
+        //user_idx = SharedPreferenceController.USER_IDX
+
+        user_idx = 1
 
         return rootView
     }
@@ -43,12 +56,10 @@ class MypageScrapFragment : Fragment() {
         setRecyclerView()
     }
 
-    fun setOnClickListener(){
+    fun setOnClickListener() {
         btn_selector_business_myapge_scrap_fg.setOnClickListener {
             btn_selector = false
             selector()
-
-            //통신 recyclerview()나오도록
             setRecyclerView()
 
         }
@@ -56,21 +67,18 @@ class MypageScrapFragment : Fragment() {
         btn_selector_job_myapge_scrap_fg.setOnClickListener {
             btn_selector = true
             selector()
-
-            //통신 recyclerview 통신
             setRecyclerView()
         }
     }
 
-    fun selector(){
-        if(btn_selector) {
+    fun selector() {
+        if (btn_selector) {
             btn_selector_job_myapge_scrap_fg.setBackgroundResource(R.color.maincolor)
             tv_selector_job_myapge_scrap_fg.textColorResource = R.color.white
 
             btn_selector_business_myapge_scrap_fg.setBackgroundResource(R.drawable.mypage_scrap_selector_box)
             tv_selector_business_myapge_scrap_fg.textColorResource = R.color.maincolor
-        }
-        else{
+        } else {
             btn_selector_job_myapge_scrap_fg.setBackgroundResource(R.drawable.mypage_scrap_selector_box)
             tv_selector_job_myapge_scrap_fg.textColorResource = R.color.maincolor
 
@@ -79,43 +87,82 @@ class MypageScrapFragment : Fragment() {
         }
     }
 
+    //스크랩 지원사업 뷰
+    private fun getSupportBussinessResponse() {
+
+        val getsupportbusinessResponse: Call<GetSupportTabResponse> = networkService.getScrapSupport(user_idx)
+
+        getsupportbusinessResponse.enqueue(object : Callback<GetSupportTabResponse> {
+            override fun onFailure(call: Call<GetSupportTabResponse>, t: Throwable) {
+                Log.e("스크랩 지원사업 fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetSupportTabResponse>, response: Response<GetSupportTabResponse>) {
+                Log.e("스크랩 지원사업 success", response.body()!!.data.toString())
+                val temp: ArrayList<SupportItemData> = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (temp.size > 0) {
+                    if (status == 200) {
+
+                        mypageSupportBusinessAdapter = SupportAdapter(activity!!, temp)
+                        rv_mypage_scrap_fg.adapter = mypageSupportBusinessAdapter
+                        rv_mypage_scrap_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+                        mypageSupportBusinessAdapter.dataList.addAll(temp)
+                        mypageSupportBusinessAdapter.notifyDataSetChanged()
+
+                    }
+                } else{
+                  mypageScrapRecyclerViewAdapter.dataList.clear()
+                }
+            }
+        })
+    }
+
+    //스크랩 함께해요 뷰
+    private fun getSupportWithUsResponse() {
+
+        val getwithusResponse: Call<GetWithusAllResponse> = networkService.getScrapWithUs(user_idx)
+
+        getwithusResponse.enqueue(object : Callback<GetWithusAllResponse> {
+            override fun onFailure(call: Call<GetWithusAllResponse>, t: Throwable) {
+                Log.e("스크랩 함께해요 fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<GetWithusAllResponse>, response: Response<GetWithusAllResponse>) {
+                Log.e("스크랩 함께해요 success", response.body()!!.data.toString())
+                val temp: ArrayList<WithusItemData> = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (temp.size > 0) {
+                    if (status == 200) {
+
+                        mypageScrapRecyclerViewAdapter.dataList.addAll(temp)
+                        mypageScrapRecyclerViewAdapter.notifyDataSetChanged()
+
+                    }
+                }
+                else{
+                    mypageScrapRecyclerViewAdapter.dataList.clear()
+                }
+            }
+        })
+    }
+
     //리사이클러뷰
     fun setRecyclerView() {
 
-        if(btn_selector){
-//            var mypageScrapData: ArrayList<WithAdapter> = ArrayList()
-//
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 1", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 2", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 3", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 4", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 5", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 6", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 7", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 8", "서울시창업지원센터", "콘텐츠"))
-//            mypageScrapData.add(WithAdapter("SNS 콘텐츠 크리에이터 9", "서울시창업지원센터", "콘텐츠"))
+        if (btn_selector) {
+            val dataList: ArrayList<WithusItemData> = ArrayList()
 
-         //   mypageScrapRecyclerViewAdapter = WithRecyAdapter(activity!!, mypageScrapData)
-//            rv_mypage_scrap_fg.adapter = mypageScrapRecyclerViewAdapter
-//            rv_mypage_scrap_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        }
-        else{
-           // var dataList: ArrayList<WithItemData> = ArrayList()
-//            dataList.add(WithItemData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "고용노동부", "~19.09.09"))
-//            dataList.add(WithItemData("2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고", "고용노동부", "~19.09.09"))
-//            dataList.add(WithItemData("공고 1", "고용노동부", "~19.09.09"))
-//            dataList.add(WithItemData("공고 2", "고용노동부", "~19.09.09"))
-//            dataList.add(WithItemData("공고 3", "고용노동부", "~19.09.09"))
-//            dataList.add(WithItemData("공고 4", "고용노동부", "~19.09.09"))
-//            dataList.add(WithItemData("공고 5", "고용노동부", "~19.09.09"))
-//            dataList.add(WithItemData("공고 6", "고용노동부", "~19.09.09"))
-//            dataList.add(WithItemData("공고 7", "고용노동부", "~19.09.09"))
-//            dataList.add(WithItemData("공고 8", "고용노동부", "~19.09.09"))
+            mypageScrapRecyclerViewAdapter = WithRecyAdapter(activity!!, dataList)
+            rv_mypage_scrap_fg.adapter = mypageScrapRecyclerViewAdapter
+            rv_mypage_scrap_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
-
-//            mypageSupportBusinessAdapter = SupportAdapter(activity!!, dataList)
-//            rv_mypage_scrap_fg.adapter = mypageSupportBusinessAdapter
-//            rv_mypage_scrap_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            getSupportWithUsResponse()
+        } else {
+            getSupportBussinessResponse()
         }
     }
 }

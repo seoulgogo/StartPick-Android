@@ -12,16 +12,12 @@ import android.view.ViewGroup
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.adapter.InfoHomeAdapter
 
-import com.seoulapp.startpick.data.InfoHomefragData
-import com.seoulapp.startpick.data.MapGetData
 import com.seoulapp.startpick.db.SharedPreferenceController
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetMainNewOrderResponse
-import com.seoulapp.startpick.network.get.MainOrderData
-import com.seoulapp.startpick.ui.adapter.InfoMapAdapter
+import com.seoulapp.startpick.data.MainOrderData
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_map.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -99,6 +95,9 @@ class HomeFragment : Fragment() {
 
                     }
                 }
+                else{
+                    homeViewAdapter.dataList.clear()
+                }
 
                 Log.v("TAGG : size1 ", temp.size.toString())
 
@@ -109,7 +108,7 @@ class HomeFragment : Fragment() {
     //맞춤형 공고
     private fun getCustomizeOrder() {
 
-        val getMainCustomizeOrderResponse: Call<GetMainNewOrderResponse> = networkService.getMainCustomizeOrder(SharedPreferenceController.MY_JOB_IDX)
+        val getMainCustomizeOrderResponse: Call<GetMainNewOrderResponse> = networkService.getMainCustomizeOrder(7)
 
         getMainCustomizeOrderResponse.enqueue(object : Callback<GetMainNewOrderResponse> {
 
@@ -135,6 +134,9 @@ class HomeFragment : Fragment() {
                         rv_information_home_frag.adapter = homeViewAdapter
                         rv_information_home_frag.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
                     }
+                }
+                else{
+                    homeViewAdapter.dataList.clear()
                 }
                 Log.v("TAGG : size1 ", temp.size.toString())
             }
@@ -171,6 +173,9 @@ class HomeFragment : Fragment() {
                         rv_realtime_info_home_frag.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
 
                     }
+                }
+                else{
+                    homeViewAdapter.dataList.clear()
                 }
 
                 Log.v("TAGG : size1 ", temp.size.toString())

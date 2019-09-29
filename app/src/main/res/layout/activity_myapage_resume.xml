@@ -404,7 +404,7 @@
                         android:textSize="16sp" />
 
                     <EditText
-                        android:id="@+id/et_content_mypageresume_act"
+                        android:id="@+id/et_content_career_mypage_resume_act"
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_marginTop="4dp"
@@ -686,7 +686,6 @@
                 </RelativeLayout>
 
                 <LinearLayout
-                    android:id="@+id/et_link_mypage_resume_act"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -700,6 +699,7 @@
                         android:textSize="12sp" />
 
                     <EditText
+                        android:id="@+id/et_link_mypage_resume_act"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="http://"

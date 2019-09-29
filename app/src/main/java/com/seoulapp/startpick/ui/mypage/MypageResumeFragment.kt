@@ -61,6 +61,7 @@ class MypageResumeFragment : Fragment() {
         setRecyclerView()
     }
 
+
     //이력서 get함수
     private fun getResumeAllShow(email: String) {
 
@@ -69,18 +70,15 @@ class MypageResumeFragment : Fragment() {
         getMypageResumeResponse.enqueue(object : Callback<GetShowAllResumeResponse> {
 
             override fun onFailure(call: Call<GetShowAllResumeResponse>, t: Throwable) {
-                Log.e("이력서 get fail", t.toString())
+                Log.e("이력서 frag get fail", t.toString())
             }
 
             override fun onResponse(call: Call<GetShowAllResumeResponse>, response: Response<GetShowAllResumeResponse>
             ) {
-                Log.e("이력서 sta", response.body()!!.status.toString())
-                Log.e("이력서 suc", response.body()!!.success.toString())
-                Log.e("이력서 suc", response.body()!!.data.toString())
-                Log.e("이력서 get success", response.body()!!.data.toString())
+                Log.e("이력서 frag get success", response.body()!!.data.toString())
 
 
-                val temp: ArrayList<ResumeData> = response.body()!!.data[0].resume
+                val temp: ArrayList<ResumeData> = response.body()!!.data.resume
                 val status = response.body()!!.status
 
                 if (temp.size > 0) {
@@ -100,6 +98,7 @@ class MypageResumeFragment : Fragment() {
         })
     }
 
+
     fun setOnClickListener() {
         btn_write_resume_mypage_fg.setOnClickListener {
             startActivity<MyapageResumeActivity>()
@@ -115,6 +114,6 @@ class MypageResumeFragment : Fragment() {
         rv_mypage_resume_fg.adapter = mypageSupportBusinessAdapter
         rv_mypage_resume_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
-        getResumeAllShow(email)
+        //getResumeAllShow(email)
     }
 }

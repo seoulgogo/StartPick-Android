@@ -151,6 +151,7 @@ class LoginActivity : AppCompatActivity() {
                         //SharedPreferenceController.setUserToken(applicationContext, response.body()!!.data.token.token)
 
                         SharedPreferenceController.MY_EMAIL = id
+                        SharedPreferenceController.USER_IDX = response.body()!!.data.userIdx
                         startActivity<MainActivity>()
                         finish()
 
