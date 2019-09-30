@@ -17,12 +17,19 @@
             android:textColor="#212529"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/icon_x"/>
+        <RelativeLayout
+            android:id="@+id/btnX"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_x"/>
+        </RelativeLayout>
+
     </RelativeLayout>
 
     <View
@@ -37,10 +44,109 @@
         android:layout_below="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="250dp">
-        <!-- 여기 해야함 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:padding="16dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="노력과 책임감을 갖췄습니다."
+                        android:textSize="16sp"
+                        android:textColor="#212529"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="최근 수정일 : 2019.09.30"
+                        android:textSize="12sp"
+                        android:textColor="#868e96"/>
+                </LinearLayout>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/bar"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:padding="16dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="열심히 일 할 자신 있습니다."
+                        android:textSize="16sp"
+                        android:textColor="#212529"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="최근 수정일 : 2019.09.06"
+                        android:textSize="12sp"
+                        android:textColor="#868e96"/>
+                </LinearLayout>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/bar"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:padding="16dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="긍정적인 마인드를 지닌 사람입니다."
+                        android:textSize="16sp"
+                        android:textColor="#212529"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="최근 수정일 : 2019.08.18"
+                        android:textSize="12sp"
+                        android:textColor="#868e96"/>
+                </LinearLayout>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/bar"/>
+        </LinearLayout>
+
     </android.support.v4.widget.NestedScrollView>
     
     <TextView
+        android:id="@+id/btnApplyOK"
         android:layout_below="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

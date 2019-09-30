@@ -295,7 +295,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="73dp"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:text="분야"
                         android:textColor="#868e96"

@@ -14,11 +14,13 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.ShareActionProvider
 import android.widget.Toast
 import com.seoulapp.startpick.R
 
 import com.seoulapp.startpick.adapter.WithRecyAdapter
 import com.seoulapp.startpick.data.WithusItemData
+import com.seoulapp.startpick.db.SharedPreferenceController
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetWithusAllResponse
@@ -37,7 +39,8 @@ class WithFragment : Fragment() {
     lateinit var withRecycleAdapter : WithRecyAdapter   // 리사이클러뷰 어댑터 변수
     var startup_idx : Int = 0                           // 필터에서 적용된 스타트업 분야 변수
     var job_idx : Int = 0                               // 필터에서 적용된 직무 분야 변수
-    var item_count : Int = 0                            // 리사이클러뷰 아이템 개수 변수
+    var item_count : Int = 0 // 리사이클러뷰 아이템 개수 변수
+    var user_idx =0
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -47,11 +50,17 @@ class WithFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_job, container, false)
+
+        user_idx = SharedPreferenceController.USER_IDX
+
+
         return rootView
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
 
         setWithusNeworderRecyclerView() // 리사이클러뷰 최신순으로 데이터 세팅
         floatingBtn() // 글쓰기 버튼 세팅
@@ -82,11 +91,16 @@ class WithFragment : Fragment() {
                 }
             }else if(requestCode == 100){
                 // 공고 작성 완료 버튼 클릭 후 리사이클러뷰 다시 refresh
-                setRecyclerView()
+                //setRecyclerView()
             }else{
                 Log.d("chohee리퀘스트코드", "코드 없음")
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setWithusNeworderRecyclerView()
     }
 
     /** NetworkService 파일에 정의한 함수 */
@@ -164,7 +178,7 @@ class WithFragment : Fragment() {
     /** 최신순 정렬 GET 통신 */
     private fun getWithusNeworderResponse() {
 
-        val getwithInfoResponse: Call<GetWithusAllResponse> = networkService.getWithusNeworderResponse()
+        val getwithInfoResponse: Call<GetWithusAllResponse> = networkService.getWithusNeworderResponse(user_idx)
 
         getwithInfoResponse.enqueue(object : Callback<GetWithusAllResponse> {
             override fun onFailure(call: Call<GetWithusAllResponse>, t: Throwable) {
@@ -198,7 +212,7 @@ class WithFragment : Fragment() {
     /** 인기순 정렬 GET 통신 */
     private fun getWithusLikeorderResponse() {
 
-        val getwithInfoResponse: Call<GetWithusAllResponse> = networkService.getWithusLikeorderResponse()
+        val getwithInfoResponse: Call<GetWithusAllResponse> = networkService.getWithusLikeorderResponse(user_idx)
 
         getwithInfoResponse.enqueue(object : Callback<GetWithusAllResponse> {
             override fun onFailure(call: Call<GetWithusAllResponse>, t: Throwable) {
@@ -227,6 +241,7 @@ class WithFragment : Fragment() {
             }
         })
     }
+
 
     /** 전체 필터일 때 리사이클러 뷰 설정 */
     fun setRecyclerView() {

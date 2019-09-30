@@ -18,14 +18,14 @@
             android:scaleType="fitXY"
             android:src="@drawable/img_main_loading"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="14dp"
-            android:layout_marginRight="14dp"
-            android:src="@drawable/check_icon_inactive"
-            />
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_marginTop="14dp"-->
+            <!--android:layout_marginRight="14dp"-->
+            <!--android:src="@drawable/check_icon_inactive"-->
+            <!--/>-->
 
     </RelativeLayout>
 
