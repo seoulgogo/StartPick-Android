@@ -22,6 +22,7 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.data.UserInfoData
+import com.seoulapp.startpick.db.SharedPreferenceController
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetMypageUserInfoResponse
@@ -95,12 +96,15 @@ class MyapageResumeActivity : AppCompatActivity() {
         setOnClickListener()
         editText()
 
+        UserInfo()
 
         getid = intent.getIntExtra("getid", -1)
-        resume_name = intent.getStringExtra("name")
-
         if(getid == 1)
+        {
+            resume_name = intent.getStringExtra("name")
             getShowResumeResponse()
+        }
+
         else
             UserInfo()
     }
@@ -111,8 +115,11 @@ class MyapageResumeActivity : AppCompatActivity() {
         }
 
         img_delete_mypage_resume_act.setOnClickListener {
-            //##삭제 통신
-            finish()
+            if(getid == 1)
+                getResumeDelete()
+            else
+                Toast.makeText(getApplicationContext(), "뒤로가기 버튼을 눌러주세요.", Toast.LENGTH_LONG).show()
+
         }
 
         rl_profile_mypage_resume_act.setOnClickListener {
@@ -122,23 +129,23 @@ class MyapageResumeActivity : AppCompatActivity() {
         btn_store_mypage_resume_act.setOnClickListener {
             if(next_btn_activation)
             {
-                major = et_major_mypage_resume_act.toString()
-                link = et_link_mypage_resume_act.toString()
-                intro = et_introduce_mypage_resume_act.toString()
+                major = et_major_mypage_resume_act.text.toString()
+                link = et_link_mypage_resume_act.text.toString()
+                intro = et_introduce_mypage_resume_act.text.toString()
 
-                c_companyName = et_companyname_mypageresume_act.toString()
-                c_startYear = et_startyear_mypageresume_act.toString()
-                c_startMonth = et_startmonth_mypageresume_act.toString()
-                c_endYear = et_endyear_mypageresume_act.toString()
-                c_endMonth = et_endmonth_mypageresume_act.toString()
-                c_content = et_content_mypageresume_act.toString()
+                c_companyName = et_companyname_mypageresume_act.text.toString()
+                c_startYear = et_startyear_mypageresume_act.text.toString()
+                c_startMonth = et_startmonth_mypageresume_act.text.toString()
+                c_endYear = et_endyear_mypageresume_act.text.toString()
+                c_endMonth = et_endmonth_mypageresume_act.text.toString()
+                c_content = et_content_mypageresume_act.text.toString()
 
-                a_companyName = et_activityname_mypageresume_act.toString()
-                a_startYear = et_startyear2_mypageresume_act.toString()
-                a_startMonth = et_startmonth2_mypageresume_act.toString()
-                a_endYear = et_endyear2_mypageresume_act.toString()
-                a_endMonth = et_endmonth2_mypageresume_act.toString()
-                a_content = et_activitycontent_resumeact.toString()
+                a_companyName = et_activityname_mypageresume_act.text.toString()
+                a_startYear = et_startyear2_mypageresume_act.text.toString()
+                a_startMonth = et_startmonth2_mypageresume_act.text.toString()
+                a_endYear = et_endyear2_mypageresume_act.text.toString()
+                a_endMonth = et_endmonth2_mypageresume_act.text.toString()
+                a_content = et_activitycontent_resumeact.text.toString()
 
                 //##통신
                 postResumeStore()
@@ -213,19 +220,17 @@ class MyapageResumeActivity : AppCompatActivity() {
 
         //링크
         btn_link_mypage_resume_act.setOnClickListener {
-            //##이거 되는지 확인하기!!!!
-            test(btn_link_mypage_resume_act, btn_link_arrow, et_link_mypage_resume_act)
-            /*if(btn_link_arrow)
+            if(btn_link_arrow)
             {
                 btn_link_arrow = false
                 btn_link_mypage_resume_act.isSelected = false
-                et_link_mypage_resume_act.visibility = View.GONE
+                ll_link_mypage_resume_act.visibility = View.GONE
             }
             else{
                 btn_link_arrow = true
                 btn_link_mypage_resume_act.isSelected = true
-                et_link_mypage_resume_act.visibility = View.VISIBLE
-            }*/
+                ll_link_mypage_resume_act.visibility = View.VISIBLE
+            }
         }
 
     }
@@ -245,9 +250,9 @@ class MyapageResumeActivity : AppCompatActivity() {
     private fun UserInfo() {
         //이걸로 바꿔줘야함!!!
         //if (SharedPreferenceController.MY_EMAIL.length > 0)
-        //   getMypageUserInfoResponse(SharedPreferenceController.MY_EMAIL)
+        getMypageUserInfoResponse(SharedPreferenceController.MY_EMAIL)
 
-        getMypageUserInfoResponse("soso3786@gmail.com")
+        //getMypageUserInfoResponse("soso3786@gmail.com")
 
     }
 
@@ -291,12 +296,42 @@ class MyapageResumeActivity : AppCompatActivity() {
             override fun onResponse(call: Call<GetShowResumeResponse>, response: Response<GetShowResumeResponse>
             ) {
                 Log.e("이력서 detail get success", response.body().toString())
+                val status = response.body()!!.status
+                if (status == 200) {
 
-                val temp: showResumeData = response.body()!!.data
+                    val temp: showResumeData = response.body()!!.data
+
+                    makeResumeShowView(temp)
+                }
+                else if(status == 400)
+                {
+
+                }
+            }
+        })
+    }
+
+    //이력서 삭제 함수
+    private fun getResumeDelete() {
+
+        val getResumeDelete: Call<PostLoginResponse> = networkService.getResumeDelete(resume_name)
+
+        getResumeDelete.enqueue(object : Callback<PostLoginResponse> {
+
+            override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
+                Log.e("이력서삭제 fail", t.toString())
+            }
+
+            override fun onResponse(call: Call<PostLoginResponse>, response: Response<PostLoginResponse>
+            ) {
+                Log.e("이력서 삭제 success", response.body().toString())
+
+                val temp: UserInfoData = response.body()!!.data
                 val status = response.body()!!.status
 
                 if (status == 200) {
-                    makeResumeShowView(temp)
+                    Toast.makeText(getApplicationContext(), "삭제되었습니다!", Toast.LENGTH_LONG).show()
+                    finish()
                 }
                 else
                 { }
@@ -363,43 +398,123 @@ class MyapageResumeActivity : AppCompatActivity() {
     private fun makeResumeShowView(data : showResumeData)
     {
         //연락처
-        et_phone_mypage_resume_act.setText(data.phone)
+        et_phone_mypage_resume_act.setText(data?.phone)
         //이력서제목
-        et_resume_theme_mypage_resume_act.setText(data.name)
+        et_resume_theme_mypage_resume_act.setText(data?.name)
+
         //전공
-        et_major_mypage_resume_act.setText(data?.major)
+        if(data.major !="")
+        {
+            if(btn_major_arrow)
+            {
+                btn_major_arrow = false
+                btn_open_major_mypage_resume_act.isSelected = false
+                et_major_mypage_resume_act.visibility = View.GONE
+            }
+            else{
+                btn_major_arrow = true
+                btn_open_major_mypage_resume_act.isSelected = true
+                et_major_mypage_resume_act.visibility = View.VISIBLE
+            }
+            //전공
+            et_major_mypage_resume_act.setText(data?.major)
+        }
+
         //자기소개
-        et_introduce_mypage_resume_act.setText(data?.intro)
+        if(data.intro !="")
+        {
+            if(btn_introduce)
+            {
+                btn_introduce = false
+                btn_introduce_mypage_resume_act.isSelected = false
+                et_introduce_mypage_resume_act.visibility = View.GONE
+            }
+            else{
+                btn_introduce = true
+                btn_introduce_mypage_resume_act.isSelected = true
+                et_introduce_mypage_resume_act.visibility = View.VISIBLE
+            }
+            //자기소개
+            et_introduce_mypage_resume_act.setText(data?.intro)
+        }
+
         //링크
-        et_link_mypage_resume_act.setText(data?.link)
-        //회사명
-        et_companyname_mypageresume_act.setText(data.career[0]?.companyName)
+        if(data.link !="")
+        {
+            if(btn_link_arrow)
+            {
+                btn_link_arrow = false
+                btn_link_mypage_resume_act.isSelected = false
+                ll_link_mypage_resume_act.visibility = View.GONE
+            }
+            else{
+                btn_link_arrow = true
+                btn_link_mypage_resume_act.isSelected = true
+                ll_link_mypage_resume_act.visibility = View.VISIBLE
+            }
+            //링크
+            et_link_mypage_resume_act.setText(data?.link)
+        }
 
-        //####startDate를 가공해야함
-        //career재직기간 시작
-        et_startyear_mypageresume_act.setText(data.career[0]?.startDate)
+        if(data.career.size !=0)
+        {
 
-        //####endDate를 가공해야함
-        //career재직기간 끝
-        et_startyear_mypageresume_act.setText(data.career[0]?.endDate)
+            if(btn_carrer_arrow)
+            {
+                btn_carrer_arrow = false
+                btn_career_mypage_resume_act.isSelected = false
+                ll_career_mypage_resume_act.visibility = View.GONE
+            }
+            else{
+                btn_carrer_arrow = true
+                btn_career_mypage_resume_act.isSelected = true
+                ll_career_mypage_resume_act.visibility = View.VISIBLE
+            }
 
-        //career담당업무
-        et_content_career_mypage_resume_act.setText(data.career[0]?.content)
+            //회사명
+            et_companyname_mypageresume_act.setText(data.career[0]?.companyName)
 
-        //활동
-        //활동명
-        et_activityname_mypageresume_act.setText(data.activity[0]?.activityName)
+            //####startDate를 가공해야함
+            //career재직기간 시작
+            et_startyear_mypageresume_act.setText(data.career[0]?.startDate)
 
-        //####startDate를 가공해야함
-        //act재직기간 시작
-        et_startyear2_mypageresume_act.setText(data.activity[0]?.startDate)
+            //####endDate를 가공해야함
+            //career재직기간 끝
+            et_startyear_mypageresume_act.setText(data.career[0]?.endDate)
 
-        //####endDate를 가공해야함
-        //act재직기간 끝
-        et_endmonth2_mypageresume_act.setText(data.activity[0]?.endDate)
+            //career담당업무
+            et_content_career_mypage_resume_act.setText(data.career[0]?.content)
+        }
+        if(data.activity.size !=0){
 
-        //activity담당업무
-        et_activitycontent_resumeact.setText(data.activity[0]?.content)
+            if(btn_active_arrow)
+            {
+                btn_active_arrow = false
+                btn_active_mypage_resume_act.isSelected = false
+                ll_active_mypage_resume_act.visibility = View.GONE
+            }
+            else{
+                btn_active_arrow = true
+                btn_active_mypage_resume_act.isSelected = true
+                ll_active_mypage_resume_act.visibility = View.VISIBLE
+            }
+
+            //활동
+            //활동명
+            et_activityname_mypageresume_act.setText(data.activity[0]?.activityName)
+
+            //####startDate를 가공해야함
+            //act재직기간 시작
+            et_startyear2_mypageresume_act.setText(data.activity[0]?.startDate)
+
+            //####endDate를 가공해야함
+            //act재직기간 끝
+            et_endmonth2_mypageresume_act.setText(data.activity[0]?.endDate)
+
+            //activity담당업무
+            et_activitycontent_resumeact.setText(data.activity[0]?.content)
+        }
+
     }
 
     private fun makeView(data : UserInfoData)

@@ -12,10 +12,12 @@ import com.seoulapp.startpick.adapter.WithRecyAdapter
 import com.seoulapp.startpick.adapter.SupportAdapter
 import com.seoulapp.startpick.data.SupportItemData
 import com.seoulapp.startpick.data.WithusItemData
+import com.seoulapp.startpick.db.SharedPreferenceController
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetSupportTabResponse
 import com.seoulapp.startpick.network.get.GetWithusAllResponse
+import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_mypage_scrap.*
 import org.jetbrains.anko.textColorResource
 import retrofit2.Call
@@ -41,9 +43,8 @@ class MypageScrapFragment : Fragment() {
         rootView = inflater.inflate(R.layout.fragment_mypage_scrap, container, false)
 
         //이걸로 나중에 바꿔야함
-        //user_idx = SharedPreferenceController.USER_IDX
+        user_idx = SharedPreferenceController.USER_IDX
 
-        user_idx = 1
 
         return rootView
     }

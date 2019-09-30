@@ -6,7 +6,7 @@ data class MainOrderData(
     val detailJob: String?,
     val job_idx: Int?,
     val likeNum: Int?,
-    val startUp_idx: Int?,
+    val startUp_idx: Int,
     val startUp : String?,
     val thumnail: String?,
     val user_idx: Int?,

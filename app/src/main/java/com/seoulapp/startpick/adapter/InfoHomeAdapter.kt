@@ -24,21 +24,30 @@ class InfoHomeAdapter(private val ctx : Context, val dataList : ArrayList<MainOr
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
+        var startUp : ArrayList<String> = arrayListOf("IT", "여행", "교육", "금융", "보안", "교통", "건설",
+                "게임", "부동산", "친환경", "헬스케어", "사회봉사", "자연과학", "전자제품", "물류/유통",
+                "광고/마케팅", "농/축/수산업", "엔터테인먼트", "바이오/의료", "기타")
+
+
+        var startup_idx : Int= dataList[position].startUp_idx
+
         //glide
         Glide.with(ctx).load(dataList[position].thumnail).into(holder.Image)
 
+        //직무
         if(dataList[position].detailJob == null)
             holder.title.text = "없음"
         else
             holder.title.text =  dataList[position].detailJob.toString()
 
+        //회사명
         if(dataList[position].companyName == null)
             holder.organize.text = "없음"
         else
             holder.organize.text = dataList[position].companyName.toString()
 
-
-        holder.division.text = dataList[position].startUp.toString()
+        //startUp_idx
+        holder.division.text = startUp[startup_idx-1]
 
         holder.container.setOnClickListener {
             ctx.startActivity<WithDetailActivity>(

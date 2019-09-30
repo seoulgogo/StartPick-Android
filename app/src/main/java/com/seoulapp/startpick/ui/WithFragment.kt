@@ -276,7 +276,7 @@ class WithFragment : Fragment() {
         fragment_job_recyclerview.adapter = withRecycleAdapter
         fragment_job_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
-        getWithusNeworderResponse()
+        //getWithusNeworderResponse()
     }
 
     /** 인기순 리사이클러 뷰 설정 */

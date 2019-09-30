@@ -15,13 +15,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
 import android.widget.RelativeLayout
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.seoulapp.startpick.data.UserInfoData
+import com.seoulapp.startpick.db.SharedPreferenceController
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetMypageUserInfoResponse
 import com.seoulapp.startpick.network.post.PostSignupResponse
 import com.seoulapp.startpick.ui.adapter.MypagenaviAdapter
+import com.seoulapp.startpick.util.CustomDialogReady
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -47,6 +50,12 @@ class MypageFragment : Fragment() {
 
     private var img: MultipartBody.Part? = null
 
+    val readycustomDialog: CustomDialogReady by lazy {
+        CustomDialogReady(
+                ctx,  "준비중인 기능입니다.", completefailConfirmListener, "확인"
+        )
+    }
+
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -68,19 +77,23 @@ class MypageFragment : Fragment() {
         return rootView
     }
 
+    private val completefailConfirmListener = View.OnClickListener {
+        readycustomDialog.dismiss()
+        Log.v("다이얼로그", "되라!!!")
+    }
+
     private fun UserInfo() {
         //이걸로 바꿔줘야함!!!
-        //if (SharedPreferenceController.MY_EMAIL.length > 0)
-         //   getMypageUserInfoResponse(SharedPreferenceController.MY_EMAIL)
+        if (SharedPreferenceController.MY_EMAIL.length > 0)
+            getMypageUserInfoResponse(SharedPreferenceController.MY_EMAIL)
 
-        getMypageUserInfoResponse("soso3786@gmail.com")
-
+        //getMypageUserInfoResponse("soso3786@gmail.com")
     }
 
     //이미지변경
-    fun postImgChangeResponse() {
+    fun postImgChangeResponse(img : MultipartBody.Part?) {
 
-        var email = RequestBody.create(MediaType.parse("text/plain"), "asdlkfj@gmail.com")
+        var email = RequestBody.create(MediaType.parse("text/plain"), SharedPreferenceController.MY_EMAIL)
 
         val networkService = networkService.postImgChange(email,img)
 
@@ -94,14 +107,15 @@ class MypageFragment : Fragment() {
             override fun onResponse(call: Call<PostSignupResponse>, response: Response<PostSignupResponse>) {
                 Log.e("onResponse", response.message().toString())
                 if (response.isSuccessful) {
-                    Log.e("이미지 변경 success", response.message().toString())
                     response?.takeIf { it.isSuccessful }
                             ?.body()
                             ?.let {
                                 if (it.success == true) {
+                                    Log.e("이미지 변경 success", response.message().toString())
                                 }
                             }
                 }else{
+                    Log.e("통신 good,,이미지 변경 실패", response.message().toString())
                 }
             }
         })
@@ -187,7 +201,10 @@ class MypageFragment : Fragment() {
         img_my_uploadnotice_mypage_frg.setOnClickListener {
             startActivity<MyPostedNoticeActivity>()
         }
+        btn_setting_mypage_frag.setOnClickListener {
 
+            Toast.makeText(ctx, "준비중인 기능입니다", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
@@ -258,7 +275,7 @@ class MypageFragment : Fragment() {
 
                     img = MultipartBody.Part.createFormData("img", photo.name, photoBody)
 
-                    postImgChangeResponse()
+                    postImgChangeResponse(img)
 
                 }
             }

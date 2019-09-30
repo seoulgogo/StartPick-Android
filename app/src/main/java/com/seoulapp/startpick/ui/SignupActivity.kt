@@ -29,6 +29,7 @@ import com.seoulapp.startpick.network.post.PostSignupResponse
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.jetbrains.anko.checkedTextView
 import org.jetbrains.anko.startActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -106,7 +107,7 @@ class SignupActivity : AppCompatActivity() {
                                     if (btn_sex) {
                                         if (select_duty) {
                                             next_btn_activation = true
-                                            rl_btn_intent_signup_act.setBackgroundResource(R.color.maincolor)
+                                            rl_btn_intent_signup_act.setBackgroundResource(R.drawable.sign_green_round_box)
                                         }
                                     }
                                 }
@@ -144,7 +145,7 @@ class SignupActivity : AppCompatActivity() {
                                     if (btn_sex) {
                                         if (select_duty) {
                                             next_btn_activation = true
-                                            rl_btn_intent_signup_act.setBackgroundResource(R.color.maincolor)
+                                            rl_btn_intent_signup_act.setBackgroundResource(R.drawable.sign_green_round_box)
                                         }
                                     }
                                 }
@@ -166,7 +167,7 @@ class SignupActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val name = et_name_signup_act.text.toString()
+                name = et_name_signup_act.text.toString()
 
                 if (name.length > 0) {
                     et_name = true
@@ -182,7 +183,7 @@ class SignupActivity : AppCompatActivity() {
                                     if (btn_sex) {
                                         if (select_duty) {
                                             next_btn_activation = true
-                                            rl_btn_intent_signup_act.setBackgroundResource(R.color.maincolor)
+                                            rl_btn_intent_signup_act.setBackgroundResource(R.drawable.sign_green_round_box)
                                         }
                                     }
                                 }
@@ -218,7 +219,7 @@ class SignupActivity : AppCompatActivity() {
                                     if (btn_sex) {
                                         if (select_duty) {
                                             next_btn_activation = true
-                                            rl_btn_intent_signup_act.setBackgroundResource(R.color.maincolor)
+                                            rl_btn_intent_signup_act.setBackgroundResource(R.drawable.sign_green_round_box)
                                         }
                                     }
                                 }
@@ -259,7 +260,7 @@ class SignupActivity : AppCompatActivity() {
                                         if (select_duty) {
                                             //## 회원가입 완료 활성화..!!
                                             next_btn_activation = true
-                                            rl_btn_intent_signup_act.setBackgroundResource(R.color.maincolor)
+                                            rl_btn_intent_signup_act.setBackgroundResource(R.drawable.sign_green_round_box)
                                         }
                                     }
                                 }
@@ -272,36 +273,21 @@ class SignupActivity : AppCompatActivity() {
 
         })
 
-        //라디오 버튼
-        var rb_sex = rg_sex_signup_act.checkedRadioButtonId.toString()
 
-        if (rb_sex.length > 0)
-            btn_sex = true
-        else
-            btn_sex = false
-
-        rg_sex_signup_act.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener{
+        rg_sex_signup_act.setOnCheckedChangeListener(object : RadioGroup.OnCheckedChangeListener {
             override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
-                var gender_text = checkedId.toString()
 
-                Toast.makeText(getApplicationContext(), gender_text, Toast.LENGTH_LONG).show()
-
-
-                if (gender_text == "2131362042") {
+                if (rb_woman_signup_act.isChecked) {
                     gender = 1
-                    Log.v("TAGG", gender.toString())
-                }
-                else if(gender_text == "2131362041"){
+                    btn_sex = true
+                } else if (rb_man_signup_act.isChecked) {
                     gender = 0
-                    Log.v("TAGG", gender.toString())
-                }else{
-                    btn_sex = false
+                    btn_sex = true
+                } else {
                     gender = -1
-                    Log.v("TAGG", gender.toString())
+                    btn_sex = false
                 }
-
             }
-
         })
     }
 
@@ -329,7 +315,7 @@ class SignupActivity : AppCompatActivity() {
         spinner.setOnSpinnerItemClickListener(
                 AwesomeSpinner.onSpinnerItemClickListener { position, itemAtPosition ->
 
-                    job_idx = position+1
+                    job_idx = position + 1
 
                     select_duty = true
 
@@ -341,7 +327,7 @@ class SignupActivity : AppCompatActivity() {
                                         if (btn_sex) {
                                             if (et_phone) {
                                                 next_btn_activation = true
-                                                rl_btn_intent_signup_act.setBackgroundResource(R.color.maincolor)
+                                                rl_btn_intent_signup_act.setBackgroundResource(R.drawable.sign_green_round_box)
                                             }
                                         }
                                     }
@@ -376,7 +362,7 @@ class SignupActivity : AppCompatActivity() {
 
             if (next_btn_activation) {
 
-                postSignupResponse()
+                postSignupResponse(img)
 
 
             } else {
@@ -402,61 +388,61 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    fun postSignupResponse() {
+    fun postSignupResponse(img : MultipartBody.Part?) {
 
-      /*  var jsonObject = JSONObject()
+        /*  var jsonObject = JSONObject()
 
-        //이미지
-        jsonObject.put("email", email)
-        jsonObject.put("pw", pw)
-        jsonObject.put("name", name)
-        jsonObject.put("name", name)
-        jsonObject.put("phone", phone)
-        jsonObject.put("birth", birth)
-        jsonObject.put("job_idx", job_idx)
-        jsonObject.put("gender", gender)
+          //이미지
+          jsonObject.put("email", email)
+          jsonObject.put("pw", pw)
+          jsonObject.put("name", name)
+          jsonObject.put("name", name)
+          jsonObject.put("phone", phone)
+          jsonObject.put("birth", birth)
+          jsonObject.put("job_idx", job_idx)
+          jsonObject.put("gender", gender)
 
-        val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject*/
+          val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject*/
 
-        Log.v("TAGG", gender.toString())
-        Log.v("TAGG", job_idx.toString())
+       //Log.v("TAGG", gender.toString())
+        Log.v("TAGG", img.toString())
 
         Log.d("TAGG", "AAAA")
-        var email = RequestBody.create(MediaType.parse("text/plain"), "asdlkfj@gmail.com")
-        var pw = RequestBody.create(MediaType.parse("text/plain"), "1234")
-        var gender = RequestBody.create(MediaType.parse("text/plain"), "1234")
-        var job = RequestBody.create(MediaType.parse("text/plain"), "1")
-        var name = RequestBody.create(MediaType.parse("text/plain"), "유가희")
-        var birth = RequestBody.create(MediaType.parse("text/plain"), "19970402")
-        var phone = RequestBody.create(MediaType.parse("text/plain"), "01051721920")
+        var email = RequestBody.create(MediaType.parse("text/plain"), email)
+        var pw = RequestBody.create(MediaType.parse("text/plain"), pw)
+        var gender = RequestBody.create(MediaType.parse("text/plain"), gender.toString())
+        var job = RequestBody.create(MediaType.parse("text/plain"), job_idx.toString())
+        var name = RequestBody.create(MediaType.parse("text/plain"), name)
+        var birth = RequestBody.create(MediaType.parse("text/plain"), birth)
+        var phone = RequestBody.create(MediaType.parse("text/plain"), phone)
 
-        val networkService = networkService.postSignUp(email,pw,name,phone,birth,job,gender,img)
+
+        val networkService = networkService.postSignUp(email, pw, name, phone, birth, job, gender, img)
 
         Log.d("TAGG", "BBBB")
 
         networkService.enqueue(object : Callback<PostSignupResponse> {
             override fun onFailure(call: Call<PostSignupResponse>, t: Throwable) {
-                Log.e("Login error", "Error ", t)
+                Log.e("회원가입 error", "Error ", t)
             }
 
             override fun onResponse(call: Call<PostSignupResponse>, response: Response<PostSignupResponse>) {
                 Log.e("onResponse", response.message().toString())
                 if (response.isSuccessful) {
-                    Log.v("asdf","성공")
-                    Log.e("Login success", response.message().toString())
-                    response?.takeIf { it.isSuccessful }
-                            ?.body()
-                            ?.let {
-                                if (it.success == true) {
-                                    SharedPreferenceController.MY_JOB_IDX = job_idx
-                                    finish()
-                                    startActivity<SignMainActivity>()
-                                    Log.v("TAGG", it.message)
-                                }
-                            }
-                }else{
-                    Log.v("df", "실패 " +  response.message().toString())
-                    Log.v("df", response.code().toString())
+                    if (response.body()!!.status == 200) {
+                        Log.e("회원가입 success", response.message().toString())
+                        SharedPreferenceController.MY_JOB_IDX = job_idx
+
+                        finish()
+                        startActivity<SignMainActivity>()
+                    }
+                    else{
+                        Log.e("회가실.. reponse가 오지만..", response.body()!!.status.toString())
+                        Log.e("이거 뭐냐", gender.toString())
+                    }
+                } else {
+                    Log.e("회원가입 실패", "실패 " + response.message().toString())
+                    Log.e("회원가입 실패", response.code().toString())
 
                     Log.e("onResponse", "onResponse but...")
                 }

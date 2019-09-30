@@ -26,16 +26,16 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/mypage_scrap_selector_box"/>
+                    android:background="@drawable/mypage_scrap_selector_box" />
 
                 <TextView
                     android:id="@+id/tv_selector_support_myapge_support_fg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textSize="16sp"
+                    android:text="받은 지원"
                     android:textColor="@color/maincolor"
-                    android:text="받은 지원"/>
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
