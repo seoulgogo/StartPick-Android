@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:textColor="@drawable/main_navigation_text_color"
-            android:text="장소"
+            android:text="지원기관"
             android:textSize="12sp" />
     </LinearLayout>
 

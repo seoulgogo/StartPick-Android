@@ -7,13 +7,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.adapter.SupportAdapter
 import com.seoulapp.startpick.adapter.WithRecyAdapter
 import com.seoulapp.startpick.data.ApplicationData
 import com.seoulapp.startpick.ui.adapter.ReceivedSupportAdapter
 import com.seoulapp.startpick.data.ReceivedSupportData
+import com.seoulapp.startpick.data.SupportItemData
 import com.seoulapp.startpick.data.WithusItemData
+import com.seoulapp.startpick.db.SharedPreferenceController
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetSupportApplicationResponse
@@ -21,6 +24,7 @@ import com.seoulapp.startpick.network.get.GetSupportStatemyApplyResponse
 import com.seoulapp.startpick.network.get.WithUs
 import kotlinx.android.synthetic.main.fragment_mypage_scrap.*
 import kotlinx.android.synthetic.main.fragment_mypage_support_state.*
+import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.textColorResource
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,8 +34,8 @@ class MypageSupportStateFragment : Fragment() {
 
     private lateinit var rootView: View
 
-    lateinit var mypagesendRecyclerViewAdapter : WithRecyAdapter
-    lateinit var mypageapplicationAdapter : ReceivedSupportAdapter
+    lateinit var mypagesendRecyclerViewAdapter: WithRecyAdapter
+    lateinit var mypageapplicationAdapter: ReceivedSupportAdapter
 
     var email = ""
 
@@ -52,8 +56,8 @@ class MypageSupportStateFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        //email = SharedPreferenceController.MY_EMAIL
-        email = "soso1@gmail.com"
+        email = SharedPreferenceController.MY_EMAIL
+       // email = "soso1@gmail.com"
 
         selector()
         setOnClickListener()
@@ -97,18 +101,13 @@ class MypageSupportStateFragment : Fragment() {
 
                 if (temp.size > 0) {
                     if (status == 200) {
-
-                        mypagesendRecyclerViewAdapter = WithRecyAdapter(activity!!, temp)
-                        rv_mypage_support_state_fg.adapter = mypagesendRecyclerViewAdapter
-                        rv_mypage_support_state_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-
-
                         mypagesendRecyclerViewAdapter.dataList.addAll(temp)
                         mypagesendRecyclerViewAdapter.notifyDataSetChanged()
 
                     }
-                } else{
-                    mypagesendRecyclerViewAdapter.dataList.clear()
+                }
+                else {
+                    Toast.makeText(ctx, "데이터가 없습니다!", Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -133,17 +132,12 @@ class MypageSupportStateFragment : Fragment() {
                 if (temp.size > 0) {
                     if (status == 200) {
 
-                        mypageapplicationAdapter = ReceivedSupportAdapter(activity!!, temp)
-                        rv_mypage_support_state_fg.adapter = mypageapplicationAdapter
-                        rv_mypage_support_state_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-
-
                         mypageapplicationAdapter.dataList.addAll(temp)
                         mypageapplicationAdapter.notifyDataSetChanged()
 
                     }
-                } else{
-                    mypagesendRecyclerViewAdapter.dataList.clear()
+                } else {
+                    //Toast.makeText(ctx, "데이터가 없습니다!", Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -152,11 +146,23 @@ class MypageSupportStateFragment : Fragment() {
     //리사이클러뷰
     fun setRecyclerView() {
 
-        if(btn_selector_support == false){
+        if (btn_selector_support == false) {
+
+            val dataList: ArrayList<ApplicationData> = ArrayList()
+
+            mypageapplicationAdapter = ReceivedSupportAdapter(activity!!, dataList)
+            rv_mypage_support_state_fg.adapter = mypageapplicationAdapter
+            rv_mypage_support_state_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
             getSupportstateapplicationResponse()
-        }
-        else{
+        } else {
+
+            val withusitemdataList: ArrayList<WithusItemData> = ArrayList()
+
+            mypagesendRecyclerViewAdapter = WithRecyAdapter(activity!!, withusitemdataList)
+            rv_mypage_support_state_fg.adapter = mypagesendRecyclerViewAdapter
+            rv_mypage_support_state_fg.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
             getSupportstateSendResponse()
 
         }

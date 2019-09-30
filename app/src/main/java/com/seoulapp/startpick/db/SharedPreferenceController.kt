@@ -11,6 +11,7 @@ object SharedPreferenceController {
     var MY_EMAIL = ""
     var MY_JOB_IDX = 1
     var USER_IDX = 1
+    var USER_NAME = ""
 
     fun setUserToken(ctx: Context, u_token: String?) {
 

@@ -1,61 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="58dp"
-    android:background="@color/white">
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingVertical="2dp"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/rl_scrap_mypage_frag"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp">
 
-        <TextView
-            android:id="@+id/tv_scrap_navi_frag"
+        <RelativeLayout
+            android:id="@+id/rl_scrap_mypage_frag"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="스크랩"
-            android:textSize="16sp"/>
+            android:layout_height="58dp"
+            android:layout_weight="1">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_scrap_navi_frag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@drawable/main_navigation_text_color"
+                android:text="스크랩"
+                android:textSize="16sp" />
 
-    <RelativeLayout
-        android:id="@+id/rl_resume_mypage_navi_frag"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_weight="1">
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_resume_mypage_navi_frag"
+        <RelativeLayout
+            android:id="@+id/rl_resume_mypage_navi_frag"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="이력서"
-            android:textSize="16sp"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_resume_mypage_navi_frag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@drawable/main_navigation_text_color"
+                android:text="이력서"
+                android:textSize="16sp" />
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rl_supportstatus_mypage_navi_frag"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_weight="1">
-
-        <TextView
-            android:id="@+id/tv_supportstatus_mypage_navi_frag"
+        <RelativeLayout
+            android:id="@+id/rl_supportstatus_mypage_navi_frag"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="지원현황"
-            android:textSize="16sp"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_supportstatus_mypage_navi_frag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="@drawable/main_navigation_text_color"
+                android:text="지원현황"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dee2e6"/>
 
 </LinearLayout>

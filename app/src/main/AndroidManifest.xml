@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.DIAL_PHONE" />
+
 
     <application
         android:name=".network.ApplicationController"
@@ -30,11 +32,11 @@
         <activity android:name=".ui.WithDetailActivity" />
         <activity android:name=".ui.mypage.MyPostedNoticeActivity" />
         <activity android:name=".ui.mypage.MyapageResumeActivity" />
-        <activity android:name=".ui.SignMainActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.SignupActivity" />
         <activity android:name=".ui.WriteActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.SignMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

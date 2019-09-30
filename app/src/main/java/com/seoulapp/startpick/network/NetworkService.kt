@@ -30,7 +30,7 @@ interface NetworkService {
             @Part("name") name : RequestBody,
             @Part("phone") phone : RequestBody,
             @Part("birth") birth : RequestBody,
-            @Part("job_idx") job : RequestBody,
+            @Part("job") job : RequestBody,
             @Part("gender") gender : RequestBody,
             @Part img : MultipartBody.Part?
     ): Call<PostSignupResponse>
@@ -132,6 +132,19 @@ interface NetworkService {
     fun getResumeShow(
             @Path("resumeName") resumeName : String
     ):Call<GetShowResumeResponse>
+
+    //내가 올린 공고
+    @GET("myPage/scrape/getMyWithUs/{user_idx}")
+    fun getMypagegetMyWithus(
+            @Path("user_idx") user_idx : Int
+    ):Call<GetWithusAllResponse>
+
+    //이력서 삭제
+    @GET("resume/delete")
+    fun getResumeDelete(
+            @Query("name") name : String
+    ):Call<PostLoginResponse>
+
 
 
 

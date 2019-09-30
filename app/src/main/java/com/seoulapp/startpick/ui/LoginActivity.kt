@@ -53,9 +53,6 @@ class LoginActivity : AppCompatActivity() {
             {
                 postLoginResponse(id, pw)
 
-                //이건 지워야함
-                startActivity<MainActivity>()
-                finish()
             }else
             {
                 var text = ""
@@ -83,7 +80,9 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val id = et_email_login_act.text
+                id = et_email_login_act.text.toString()
+                SharedPreferenceController.MY_EMAIL = id
+
                 //e-mail form
                 val email_form = "^[_a-zA-Z0-9-\\.]+@[\\.a-zA-Z0-9-]+\\.[a-zA-Z]+$"
 
@@ -97,7 +96,7 @@ class LoginActivity : AppCompatActivity() {
                 if (et_email) {
                     if (et_pw) {
                         login_btn_activation = true
-                        btn_login_act.setBackgroundResource(R.color.maincolor)
+                        btn_login_act.setBackgroundResource(R.drawable.sign_green_round_box)
                     }
                 }
             }
@@ -112,7 +111,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val pw = et_password_login_act.text.toString()
+                pw = et_password_login_act.text.toString()
                 val pw_form = "((?=.*\\d)(?=.*[a-zA-Z]).{6,20})"
 
                 if (pw.length >= 8 && pw.matches(Regex(pw_form))) {
@@ -124,18 +123,18 @@ class LoginActivity : AppCompatActivity() {
                 if (et_pw) {
                     if (et_email) {
                         login_btn_activation = true
-                        btn_login_act.setBackgroundResource(R.color.maincolor)
+                        btn_login_act.setBackgroundResource(R.drawable.sign_green_round_box)
                     }
                 }
             }
         })
     }
 
-    fun postLoginResponse(id :String, pw: String) {
+    fun postLoginResponse(email :String, pw: String) {
 
         var jsonObject = JSONObject()
-        jsonObject.put("id", id)
-        jsonObject.put("passwd", pw)
+        jsonObject.put("email", email)
+        jsonObject.put("pw", pw)
 
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
         var networkService = networkService.postlogin(gsonObject)
@@ -149,17 +148,19 @@ class LoginActivity : AppCompatActivity() {
                     val status = response.body()!!.status
                     if (status == 200) {
                         //SharedPreferenceController.setUserToken(applicationContext, response.body()!!.data.token.token)
+                        Log.e("로그인 성공",response.body()!!.status.toString())
 
-                        SharedPreferenceController.MY_EMAIL = id
                         SharedPreferenceController.USER_IDX = response.body()!!.data.userIdx
+                        SharedPreferenceController.USER_NAME = response.body()!!.data.name
                         startActivity<MainActivity>()
                         finish()
 
                     } else if(status == 400){
 
-                        Toast.makeText(getApplicationContext(), response.body()!!.message, Toast.LENGTH_LONG).show()
+                        //비밀번호가 다르거나, 유저 결과가 없을 때
+                        Toast.makeText(getApplicationContext(), "잘못입력하셨습니다.", Toast.LENGTH_LONG).show()
 
-                        Log.e("message",response.body()!!.message)
+                        Log.e("로그인 message",response.body()!!.message)
                     }
                 }
             }
