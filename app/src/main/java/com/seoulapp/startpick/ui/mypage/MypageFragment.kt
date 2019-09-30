@@ -17,6 +17,7 @@ import com.seoulapp.startpick.R
 import android.widget.RelativeLayout
 import com.bumptech.glide.Glide
 import com.seoulapp.startpick.data.UserInfoData
+import com.seoulapp.startpick.db.SharedPreferenceController
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetMypageUserInfoResponse
@@ -70,17 +71,16 @@ class MypageFragment : Fragment() {
 
     private fun UserInfo() {
         //이걸로 바꿔줘야함!!!
-        //if (SharedPreferenceController.MY_EMAIL.length > 0)
-         //   getMypageUserInfoResponse(SharedPreferenceController.MY_EMAIL)
+        if (SharedPreferenceController.MY_EMAIL.length > 0)
+            getMypageUserInfoResponse(SharedPreferenceController.MY_EMAIL)
 
-        getMypageUserInfoResponse("soso3786@gmail.com")
-
+        //getMypageUserInfoResponse("soso3786@gmail.com")
     }
 
     //이미지변경
-    fun postImgChangeResponse() {
+    fun postImgChangeResponse(img : MultipartBody.Part?) {
 
-        var email = RequestBody.create(MediaType.parse("text/plain"), "asdlkfj@gmail.com")
+        var email = RequestBody.create(MediaType.parse("text/plain"), SharedPreferenceController.MY_EMAIL)
 
         val networkService = networkService.postImgChange(email,img)
 
@@ -94,14 +94,15 @@ class MypageFragment : Fragment() {
             override fun onResponse(call: Call<PostSignupResponse>, response: Response<PostSignupResponse>) {
                 Log.e("onResponse", response.message().toString())
                 if (response.isSuccessful) {
-                    Log.e("이미지 변경 success", response.message().toString())
                     response?.takeIf { it.isSuccessful }
                             ?.body()
                             ?.let {
                                 if (it.success == true) {
+                                    Log.e("이미지 변경 success", response.message().toString())
                                 }
                             }
                 }else{
+                    Log.e("통신 good,,이미지 변경 실패", response.message().toString())
                 }
             }
         })
@@ -258,7 +259,7 @@ class MypageFragment : Fragment() {
 
                     img = MultipartBody.Part.createFormData("img", photo.name, photoBody)
 
-                    postImgChangeResponse()
+                    postImgChangeResponse(img)
 
                 }
             }

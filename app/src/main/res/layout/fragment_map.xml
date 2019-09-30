@@ -334,7 +334,7 @@
                             android:id="@+id/btn_map_page_spot_junglang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/jungnang_inactive"
+                            android:src="@drawable/jungnang_selector"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView"
                             app:layout_constraintEnd_toEndOf="@+id/imageView"
                             app:layout_constraintHorizontal_bias="0.739"
@@ -433,8 +433,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="16dp"
+                        android:textSize="12sp"
                         android:text="내위치"
-                        android:textSize="14sp"
                         android:textColor="@color/maincolor" />
 
                     <ImageView
@@ -446,27 +446,33 @@
                         android:src="@drawable/icon_gps" />
                 </RelativeLayout>
 
-                <com.isapanah.awesomespinner.AwesomeSpinner
-                    android:id="@+id/spinner_thema_map_fragment"
-                    android:layout_width="60dp"
+                <TextView
+                    android:id="@+id/tv_all_see_map_frag"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:spinnerDirection="ltr"
-                    app:spinnerHint="테마"
-                    android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:layout_toRightOf="@+id/rl_mylocation_map_fragment"
+                    android:layout_centerVertical="true"
                     android:textColor="#212529"
-                    android:textSize="14sp" />
+                    android:textSize="12sp"
+                    android:layout_toRightOf="@+id/rl_mylocation_map_fragment"
+                    android:text="전체보기"/>
 
 
             </RelativeLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_seoul_startup_info_map_frag"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_seoul_startup_info_map_frag"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

@@ -108,7 +108,6 @@ class MapFragment : Fragment() {
 
         //처음 정보들 통신
         getMapFragmentResponse()
-        //spinner()
 
         return rootView
     }
@@ -117,7 +116,6 @@ class MapFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         setOnClickListener()
-        //spinner()
 
     }
 
@@ -127,7 +125,14 @@ class MapFragment : Fragment() {
 
             Toast.makeText(ctx, "내 위치 정보를 찾고 있습니다.", Toast.LENGTH_SHORT).show()
             requestReadUserLocationPermission()
+            var dataList: ArrayList<MapGetData> = ArrayList()
+            mapAdapter.dataList.clear()
             postMylocationResponse()
+        }
+
+        tv_all_see_map_frag.setOnClickListener {
+            Toast.makeText(ctx, "전지역을 찾고 있고 있습니다.", Toast.LENGTH_SHORT).show()
+            getMapFragmentResponse()
         }
 
         //강남
@@ -322,19 +327,19 @@ class MapFragment : Fragment() {
                         //mapAdapter.dataList.addAll(temp)
                         mapAdapter.notifyDataSetChanged()*/
 
+                    } else {
+
                     }
                 } else if (status == 400) {
-                    var dataList: ArrayList<MapGetData> = temp
+                    mapAdapter.dataList.clear()
+                    rv_seoul_startup_info_map_frag.adapter = mapAdapter
+                    rv_seoul_startup_info_map_frag.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
 
-                    mapAdapter = InfoMapAdapter(activity!!, dataList)
                     Toast.makeText(ctx, "관련 지역에 데이터가 없습니다.", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(ctx, "뭘까", Toast.LENGTH_SHORT).show()
                 }
 
-                Log.v("TAGG : size1 ", temp.size.toString())
-
             }
+            //Log.v("TAGG : size1 ", temp.size.toString()
         })
     }
 
@@ -342,8 +347,8 @@ class MapFragment : Fragment() {
     fun postMylocationResponse() {
 
         var jsonObject = JSONObject()
-        jsonObject.put("latitude", latitude)
-        jsonObject.put("longitude", longitude)
+        jsonObject.put("la", latitude)
+        jsonObject.put("lo", longitude)
 
         val gsonObject = JsonParser().parse(jsonObject.toString()) as JsonObject
         var networkService = networkService.postPlaceDistOrderCity(gsonObject)
@@ -374,7 +379,8 @@ class MapFragment : Fragment() {
         })
     }
 
-/*    fun setRecyclerView(flag : Int) {
+/*
+        fun setRecyclerView(flag : Int) {
         var dataList: ArrayList<MapGetData> = ArrayList()
 
         mapAdapter = InfoMapAdapter(activity!!, dataList)
@@ -388,8 +394,6 @@ class MapFragment : Fragment() {
         else{
 
         }
-
-
     }*/
 
 /*
@@ -535,7 +539,7 @@ class MapFragment : Fragment() {
     }
 
 
-    fun spinner() {
+/*    fun spinner() {
 
         var spinner_thema: AwesomeSpinner = R.id.spinner_thema_map_fragment as AwesomeSpinner
 
@@ -559,7 +563,7 @@ class MapFragment : Fragment() {
                 AwesomeSpinner.onSpinnerItemClickListener { position, itemAtPosition ->
                     var thema = position
                 })
-    }
+    }*/
 
 
 }

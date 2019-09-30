@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.adapter.InfoHomeAdapter
-
 import com.seoulapp.startpick.db.SharedPreferenceController
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
@@ -44,13 +43,12 @@ class HomeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
 
-
         //통신
         getNewOrder()
         getCustomizeOrder()
         getlikeOrder()
 
-
+        tv_customize_contents_home_frag.setText(SharedPreferenceController.USER_NAME+"님을 위한 맞춤형 공고")
         setOnClickListener()
     }
 

@@ -48,13 +48,20 @@ class MypageResumeFragment : Fragment() {
         return rootView
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        getResumeAllShow(email)
+        setRecyclerView()
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         //나중에 이걸로 바꿔야함
-        //email = SharedPreferenceController.MY_EMAIL
+        email = SharedPreferenceController.MY_EMAIL
 
-        email = "soso1@gmail.com"
+        //email = "soso1@gmail.com"
 
         setOnClickListener()
         getResumeAllShow(email)

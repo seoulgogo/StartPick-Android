@@ -23,10 +23,11 @@ class ReceivedSupportAdapter (private val ctx : Context, val dataList : ArrayLis
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
 
-
         holder.title.text = dataList[position].resumeName
         holder.name.text = dataList[position].userName
         holder.company_name.text = "[" + dataList[position].jobIdx+"_" + dataList[position].companyName +"]"
+
+
 
         //glide
         if(dataList[position].img == "")
@@ -36,7 +37,7 @@ class ReceivedSupportAdapter (private val ctx : Context, val dataList : ArrayLis
 
         /* 아이템 클릭 이벤트 */
         holder.item.setOnClickListener {
-            //
+            //##넘겨줘야할 뷰
         }
     }
 
