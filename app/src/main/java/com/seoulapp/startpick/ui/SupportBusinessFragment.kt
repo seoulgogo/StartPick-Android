@@ -3,21 +3,29 @@ package com.seoulapp.startpick.ui
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 
 import com.seoulapp.startpick.R
 import com.seoulapp.startpick.adapter.SupportAdapter
 import com.seoulapp.startpick.data.SupportItemData
+import com.seoulapp.startpick.data.WithusItemData
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetSupportListAll
 import com.seoulapp.startpick.network.get.GetSupportTabResponse
+import com.seoulapp.startpick.network.get.GetWithusAllResponse
+import kotlinx.android.synthetic.main.fragment_job.*
 import kotlinx.android.synthetic.main.fragment_support_business.*
+import org.jetbrains.anko.support.v4.ctx
+import org.jetbrains.anko.textColor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,8 +53,9 @@ class SupportBusinessFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        tabClickEvent()
+        tabClickEvent() // 탭바 클릭 이벤트
         setTotalRecyclerView() // 전체 리사이클러뷰 세팅
+        btnOrderClick() // 순서버튼 클릭 이벤트
 
     }
 
@@ -129,7 +138,7 @@ class SupportBusinessFragment : Fragment() {
         v8.setBackgroundResource(R.color.bar)
     }
 
-    /* NetworkService 파일에 정의한 함수 */
+    /** NetworkService 파일에 정의한 함수 */
     private fun getSupportTotalResponse() {
 
         val getwithInfoResponse: Call<GetSupportListAll> = networkService.getSupportList()
@@ -158,7 +167,7 @@ class SupportBusinessFragment : Fragment() {
         })
     }
 
-    /* NetworkService 파일에 정의한 함수
+    /** NetworkService 파일에 정의한 함수
      * 탭 카테고리에 따른 지원사업 리스트 Response */
     private fun getSupportTabResponse() {
 
@@ -209,4 +218,186 @@ class SupportBusinessFragment : Fragment() {
 
     }
 
+    /** 등록일 순 리사이블러 뷰 세팅*/
+    fun setEnrollorderRecyclerView(){
+        var dataList: ArrayList<SupportItemData> = ArrayList()
+
+        supportRecyAdapter = SupportAdapter(activity!!, dataList)
+        recycle_support.adapter = supportRecyAdapter
+        recycle_support.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+        getSupportEnrollorderResponse()
+
+    }
+
+    /** 마감일 순 리사이블러 뷰 세팅*/
+    fun setEndorderRecyclerView(){
+        var dataList: ArrayList<SupportItemData> = ArrayList()
+
+        supportRecyAdapter = SupportAdapter(activity!!, dataList)
+        recycle_support.adapter = supportRecyAdapter
+        recycle_support.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+        getSupportEndorderResponse()
+
+    }
+
+    /** 최신 순 리사이블러 뷰 세팅*/
+    fun setStartorderRecyclerView(){
+        var dataList: ArrayList<SupportItemData> = ArrayList()
+
+        supportRecyAdapter = SupportAdapter(activity!!, dataList)
+        recycle_support.adapter = supportRecyAdapter
+        recycle_support.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+        getSupportStartorderResponse()
+
+    }
+
+    /** NetworkService 파일에 정의한 함수 */
+    /** 등록일순 정렬 GET 통신 */
+    private fun getSupportEnrollorderResponse() {
+
+        val getwithInfoResponse: Call<GetSupportListAll> = networkService.getSupportEnrollorderResponse()
+
+        getwithInfoResponse.enqueue(object : Callback<GetSupportListAll> {
+            override fun onFailure(call: Call<GetSupportListAll>, t: Throwable) {
+                Toast.makeText(context, "리스트를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<GetSupportListAll>, response: Response<GetSupportListAll>) {
+                val temp: ArrayList<SupportItemData> = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (temp.size > 0) {
+                    if (status == 200) {
+                        // 리사이클러뷰 아이템 개수 세팅
+                        totalCount = temp.size
+                        itemCount.text = "전체 " + totalCount.toString() + "개"
+
+                        val position = supportRecyAdapter.itemCount
+                        supportRecyAdapter.dataList.addAll(temp)
+                        supportRecyAdapter.notifyDataSetChanged()
+
+                    }
+                }else{
+                    Toast.makeText(context, "모집하는 공고가 없습니다.", Toast.LENGTH_SHORT).show()
+                    tvWithCount.text = "전체 0개"
+                }
+            }
+        })
+    }
+
+    /** NetworkService 파일에 정의한 함수 */
+    /** 마감일순 정렬 GET 통신 */
+    private fun getSupportEndorderResponse() {
+
+        val getwithInfoResponse: Call<GetSupportListAll> = networkService.getSupportEndorderResponse()
+
+        getwithInfoResponse.enqueue(object : Callback<GetSupportListAll> {
+            override fun onFailure(call: Call<GetSupportListAll>, t: Throwable) {
+                Toast.makeText(context, "리스트를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<GetSupportListAll>, response: Response<GetSupportListAll>) {
+                val temp: ArrayList<SupportItemData> = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (temp.size > 0) {
+                    if (status == 200) {
+                        // 리사이클러뷰 아이템 개수 세팅
+                        totalCount = temp.size
+                        itemCount.text = "전체 " + totalCount.toString() + "개"
+
+                        val position = supportRecyAdapter.itemCount
+                        supportRecyAdapter.dataList.addAll(temp)
+                        supportRecyAdapter.notifyDataSetChanged()
+
+                    }
+                }else{
+                    Toast.makeText(context, "모집하는 공고가 없습니다.", Toast.LENGTH_SHORT).show()
+                    tvWithCount.text = "전체 0개"
+                }
+            }
+        })
+    }
+
+    /** NetworkService 파일에 정의한 함수 */
+    /** 최신순 정렬 GET 통신 */
+    private fun getSupportStartorderResponse() {
+
+        val getwithInfoResponse: Call<GetSupportListAll> = networkService.getSupportStartorderResponse()
+
+        getwithInfoResponse.enqueue(object : Callback<GetSupportListAll> {
+            override fun onFailure(call: Call<GetSupportListAll>, t: Throwable) {
+                Toast.makeText(context, "리스트를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<GetSupportListAll>, response: Response<GetSupportListAll>) {
+                val temp: ArrayList<SupportItemData> = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (temp.size > 0) {
+                    if (status == 200) {
+                        // 리사이클러뷰 아이템 개수 세팅
+                        totalCount = temp.size
+                        itemCount.text = "전체 " + totalCount.toString() + "개"
+
+                        val position = supportRecyAdapter.itemCount
+                        supportRecyAdapter.dataList.addAll(temp)
+                        supportRecyAdapter.notifyDataSetChanged()
+
+                    }
+                }else{
+                    Toast.makeText(context, "모집하는 공고가 없습니다.", Toast.LENGTH_SHORT).show()
+                    tvWithCount.text = "전체 0개"
+                }
+            }
+        })
+    }
+
+    /** 순서 버튼 클릭 이벤트 */
+    fun btnOrderClick(){
+        btnOrder.setOnClickListener {
+            showPopup(btnOrder)
+        }
+    }
+
+    /** 메뉴 창 띄우기 */
+    fun showPopup(view: View) {
+        var popup = PopupMenu(context, view)
+        popup.inflate(R.menu.menu_support_order)
+
+        popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
+
+            when (item!!.itemId) {
+                // 최신순 클릭시
+                R.id.newOrder -> {
+                    tvOrder.text = "최신순"
+                    ivArray.setImageResource(R.drawable.icon_array_active)
+                    btnOrder.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
+                    tvOrder.textColor = Color.parseColor("#22b573")
+                    setStartorderRecyclerView() // 리사이클러뷰 갱신
+                }
+                // 마감일순 클릭시
+                R.id.endOrder -> {
+                    tvOrder.text = "마감일순"
+                    ivArray.setImageResource(R.drawable.icon_array_active)
+                    btnOrder.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
+                    tvOrder.textColor = Color.parseColor("#22b573")
+                    setEndorderRecyclerView() // 리사이클러뷰 갱신
+                }
+                // 등록일 순 클릭시
+                R.id.enrollOrder -> {
+                    tvOrder.text = "등록일순"
+                    ivArray.setImageResource(R.drawable.icon_array_active)
+                    btnOrder.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
+                    tvOrder.textColor = Color.parseColor("#22b573")
+                    setEnrollorderRecyclerView()    // 리사이클러뷰 갱신
+                }
+            }
+            true
+        })
+        popup.show()
+    }
 }

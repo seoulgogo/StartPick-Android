@@ -10,8 +10,11 @@ import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.text.InputType
 import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.isapanah.awesomespinner.AwesomeSpinner
 import com.seoulapp.startpick.R
@@ -19,6 +22,8 @@ import com.seoulapp.startpick.db.SharedPreferenceController
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.post.PostLoginResponse
+import kotlinx.android.synthetic.main.activity_myapage_resume.*
+import kotlinx.android.synthetic.main.activity_with_detail.*
 import kotlinx.android.synthetic.main.activity_write.*
 import kotlinx.android.synthetic.main.fragment_job.*
 import kotlinx.android.synthetic.main.fragment_mypage.*
@@ -45,8 +50,11 @@ class WriteActivity : AppCompatActivity() {
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
+    var city : Int = 0
+    var startup : Int = 0
 
     /** 함께해요 글쓰기 데이터 변수들 */
+    var user_idx : Int = 0
     var job_idx : Int = 0
     lateinit var detailJob : String
     var recrutNum : Int = 0
@@ -93,13 +101,12 @@ class WriteActivity : AppCompatActivity() {
         btn_complete.setOnClickListener {
             detailJob = etWithusWriteDetailjob.text.toString()  // 상세 직무 입력 세팅
             salary = etWithusWriteSalary.text.toString()        // 월급 입력 세팅
-            mainTask = etWithusWriteDetailMaintask.toString()   // 주요 업무 세팅
-            intro = etWithusWriteIntro.toString()               // 상세 소개 세팅
-            companyName = etWithusWriteCompanynm.toString()     // 회사명 세팅
-            managerName = etWithusWriteDetailManagernm.toString() // 담당자 이름 세팅
-            managerPhone = etWithusWriteDetailPhone.toString()  // 연락처 세팅
-            managerEmail = etWithusWriteDetailEmail.toString()  // 이메일 세팅
-
+            mainTask = etWithusWriteDetailMaintask.text.toString()   // 주요 업무 세팅
+            intro = etWithusWriteIntro.text.toString()               // 상세 소개 세팅
+            companyName = etWithusWriteCompanynm.text.toString()     // 회사명 세팅
+            managerName = etWithusWriteDetailManagernm.text.toString() // 담당자 이름 세팅
+            managerPhone = etWithusWriteDetailPhone.text.toString()  // 연락처 세팅
+            managerEmail = etWithusWriteDetailEmail.text.toString()  // 이메일 세팅
             postWithusApplyResponse()
         }
 
@@ -162,12 +169,14 @@ class WriteActivity : AppCompatActivity() {
 
     /** 추후 협상 가능 세팅 */
     fun isSelectRadioBtn(){
-        if(etWithusWriteNego.isSelected){
-            Log.d("chohee", "응 눌림~")
-            nego = 1
-        }else{
-            Log.d("chohee", "응 안눌림~")
-            nego = 0
+        etWithusWriteNego.setOnClickListener {
+            if(etWithusWriteNego.isChecked){
+                nego = 1
+                containerSalary.visibility = View.GONE
+            }else{
+                nego = 0
+                containerSalary.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -176,27 +185,26 @@ class WriteActivity : AppCompatActivity() {
     /** 함께해요 공고 작성 포스트 */
     fun postWithusApplyResponse(){
 
-
-        var user_idx = RequestBody.create(MediaType.parse("text/plain"), "1")
-        var startUp_idx = RequestBody.create(MediaType.parse("text/plain"), "1")
-        var job_idx = RequestBody.create(MediaType.parse("text/plain"), "1")
-        var detailJob = RequestBody.create(MediaType.parse("text/plain"), "1")
-        var recrutNum = RequestBody.create(MediaType.parse("text/plain"), "45")
-        var salary = RequestBody.create(MediaType.parse("text/plain"), "300")
-        var city_idx = RequestBody.create(MediaType.parse("text/plain"), "1")
-        var mainTask = RequestBody.create(MediaType.parse("text/plain"), "01051721920")
-        var intro = RequestBody.create(MediaType.parse("text/plain"), "01051721920")
-        var companyName = RequestBody.create(MediaType.parse("text/plain"), "01051721920")
-        var managerName = RequestBody.create(MediaType.parse("text/plain"), "01051721920")
-        var managerPhone = RequestBody.create(MediaType.parse("text/plain"), "01051721920")
-        var managerEmail = RequestBody.create(MediaType.parse("text/plain"), "dldkf@gmail.com")
+        var user_idx = RequestBody.create(MediaType.parse("text/plain"), user_idx.toString())
+        var startUp_idx = RequestBody.create(MediaType.parse("text/plain"), startup.toString())
+        var job_idx = RequestBody.create(MediaType.parse("text/plain"), job_idx.toString())
+        var detailJob = RequestBody.create(MediaType.parse("text/plain"), detailJob)
+        var recrutNum = RequestBody.create(MediaType.parse("text/plain"), recrutNum.toString())
+        var salary = RequestBody.create(MediaType.parse("text/plain"), salary)
+        var city_idx = RequestBody.create(MediaType.parse("text/plain"), city.toString())
+        var mainTask = RequestBody.create(MediaType.parse("text/plain"), mainTask)
+        var intro = RequestBody.create(MediaType.parse("text/plain"), intro)
+        var companyName = RequestBody.create(MediaType.parse("text/plain"), companyName)
+        var managerName = RequestBody.create(MediaType.parse("text/plain"), managerName)
+        var managerPhone = RequestBody.create(MediaType.parse("text/plain"), managerPhone)
+        var managerEmail = RequestBody.create(MediaType.parse("text/plain"), managerEmail)
 
 
         val networkService = networkService.postWithusApply(user_idx,startUp_idx,job_idx,detailJob,recrutNum,salary,city_idx,mainTask,intro,companyName,managerName,managerPhone,managerEmail,img)
 
         networkService.enqueue(object : Callback<PostLoginResponse> {
             override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
-                Log.e("Withus Apply error", "Error ", t)
+                Log.e("서버 접속 오류", "Error ", t)
             }
 
             override fun onResponse(call: Call<PostLoginResponse>, response: Response<PostLoginResponse>) {
@@ -205,9 +213,13 @@ class WriteActivity : AppCompatActivity() {
                             ?.body()
                             ?.let {
                                 if (it.success == true) {
-//                                    SharedPreferenceController.MY_JOB_IDX = job_idx
+                                    // 공고 작성 완료 메시지 보내기
+                                    var intent = Intent()
+                                    intent.putExtra("writeSuccess", 100)
+                                    setResult(RESULT_OK, intent)
+
+                                    Toast.makeText(applicationContext, "공고 작성이 완료되었습니다.", Toast.LENGTH_SHORT).show()
                                     finish()
-//                                    startActivity<SignMainActivity>()
                                 }
                             }
                 }else{
@@ -293,24 +305,80 @@ class WriteActivity : AppCompatActivity() {
         }
 
         // 근무지역 필터 뷰에서 필터 값 받기
-        if(resultCode == Activity.RESULT_OK){
-            if(requestCode == 3000){
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 3000) {
                 city_idx = data?.getIntExtra("city_idx", -1)!!
-
-
+                if (city_idx == -1) {
+                    startup = startUp_idx
+                } else {
+                    city = city_idx
+                }
+                // 선택한 필터로 근무지역 텍스트 바꾸기
+                when (city) {
+                    1 -> tvCity.text = "강남구"
+                    2 -> tvCity.text = "강동구"
+                    3 -> tvCity.text = "강북구"
+                    4 -> tvCity.text = "강서구"
+                    5 -> tvCity.text = "관악구"
+                    6 -> tvCity.text = "광진구"
+                    7 -> tvCity.text = "구로구"
+                    8 -> tvCity.text = "금천구"
+                    9 -> tvCity.text = "노원구"
+                    10 -> tvCity.text = "도봉구"
+                    11 -> tvCity.text = "동대문구"
+                    12 -> tvCity.text = "동작구"
+                    13 -> tvCity.text = "마포구"
+                    14 -> tvCity.text = "서대문구"
+                    15 -> tvCity.text = "서초구"
+                    16 -> tvCity.text = "성동구"
+                    17 -> tvCity.text = "성북구"
+                    18 -> tvCity.text = "송파구"
+                    19 -> tvCity.text = "양천구"
+                    20 -> tvCity.text = "영등포구"
+                    21 -> tvCity.text = "용산구"
+                    22 -> tvCity.text = "은평구"
+                    23 -> tvCity.text = "종로구"
+                    24 -> tvCity.text = "중구"
+                    25 -> tvCity.text = "중랑구"
+                }
             }
         }
 
         // 스타트업 분야 필터 뷰에서 필터 값 받기
-        if(resultCode == Activity.RESULT_OK){
-            if(requestCode == 3000){
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == 3000) {
                 startUp_idx = data?.getIntExtra("startup_idx", -1)!!
-
-
+                if (startUp_idx == -1) {
+                    city = city_idx
+                } else {
+                    startup = startUp_idx
+                }
+                // 선택한 필터로 스타트업 분야 텍스트 바꾸기
+                when (startup) {
+                    1 -> tvStartup.text = "IT"
+                    2 -> tvStartup.text = "여행"
+                    3 -> tvStartup.text = "교육"
+                    4 -> tvStartup.text = "금융"
+                    5 -> tvStartup.text = "보안"
+                    6 -> tvStartup.text = "교통"
+                    7 -> tvStartup.text = "건설"
+                    8 -> tvStartup.text = "게임"
+                    9 -> tvStartup.text = "부동산"
+                    10 -> tvStartup.text = "친환경"
+                    11 -> tvStartup.text = "헬스케어"
+                    12 -> tvStartup.text = "사회봉사"
+                    13 -> tvStartup.text = "자연과학"
+                    14 -> tvStartup.text = "전자제품"
+                    15 -> tvStartup.text = "물류/유통"
+                    16 -> tvStartup.text = "광고/마케팅"
+                    17 -> tvStartup.text = "농/축/수산업"
+                    18 -> tvStartup.text = "엔터테인먼트"
+                    19 -> tvStartup.text = "바이오/의료"
+                    20 -> tvStartup.text = "기타"
+                }
             }
         }
+
+
     }
-
-
-
 }

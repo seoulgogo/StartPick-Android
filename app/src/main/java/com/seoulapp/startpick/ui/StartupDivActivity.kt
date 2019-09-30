@@ -9,7 +9,31 @@ import android.support.v4.content.ContextCompat
 import android.widget.Toast
 import com.seoulapp.startpick.R
 import kotlinx.android.synthetic.main.activity_startup_div.*
-import kotlinx.android.synthetic.main.activity_with_detail.*
+import kotlinx.android.synthetic.main.activity_startup_div.back_arrow
+import kotlinx.android.synthetic.main.activity_startup_div.btn_adapt
+import kotlinx.android.synthetic.main.activity_startup_div.tv_1
+import kotlinx.android.synthetic.main.activity_startup_div.tv_10
+import kotlinx.android.synthetic.main.activity_startup_div.tv_11
+import kotlinx.android.synthetic.main.activity_startup_div.tv_12
+import kotlinx.android.synthetic.main.activity_startup_div.tv_13
+import kotlinx.android.synthetic.main.activity_startup_div.tv_14
+import kotlinx.android.synthetic.main.activity_startup_div.tv_15
+import kotlinx.android.synthetic.main.activity_startup_div.tv_16
+import kotlinx.android.synthetic.main.activity_startup_div.tv_17
+import kotlinx.android.synthetic.main.activity_startup_div.tv_18
+import kotlinx.android.synthetic.main.activity_startup_div.tv_19
+import kotlinx.android.synthetic.main.activity_startup_div.tv_2
+import kotlinx.android.synthetic.main.activity_startup_div.tv_20
+import kotlinx.android.synthetic.main.activity_startup_div.tv_21
+import kotlinx.android.synthetic.main.activity_startup_div.tv_3
+import kotlinx.android.synthetic.main.activity_startup_div.tv_4
+import kotlinx.android.synthetic.main.activity_startup_div.tv_5
+import kotlinx.android.synthetic.main.activity_startup_div.tv_6
+import kotlinx.android.synthetic.main.activity_startup_div.tv_7
+import kotlinx.android.synthetic.main.activity_startup_div.tv_8
+import kotlinx.android.synthetic.main.activity_startup_div.tv_9
+import kotlinx.android.synthetic.main.activity_work_area.*
+import org.jetbrains.anko.ctx
 import org.jetbrains.anko.textColor
 
 class StartupDivActivity : AppCompatActivity() {
@@ -36,39 +60,34 @@ class StartupDivActivity : AppCompatActivity() {
             finish()
         }
     }
-
+    
+    /** 스타트업 분야 필터 색깔 활성화 */
     fun StartupfilterColorChange(){
         tv_1.setOnClickListener {
             if(isStartupClickedArray[0] % 2 == 0){
-                StartupTotalGreen(this)
-                startup_idx = 1
-                // 다른 버튼 막기 위함
-                for(i in 0..20){
-                    isStartupClickedArray[i] = -1
-                    isStartupActiveArray[i] = true
-                }
-            }
-            else {
-                StartupTotalBlack(this)
-                for(i in 0..20){
-                    isStartupClickedArray[i] = 0
-                    isStartupActiveArray[i] = false
-                }
+                startup_idx = 0
+                isStartupActiveArray[0] = true
+                tv_1.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
+                tv_1.textColor = Color.parseColor(green)
+                isStartupClickedArray[0]++
+                /* 눌려있는 것 클릭했을 때 */
+            }else{
+                isStartupActiveArray[0]= false
+                tv_1.background = ContextCompat.getDrawable(this, R.drawable.round_border_gray)
+                tv_1.textColor = Color.parseColor(black)
+                isStartupClickedArray[0]++
             }
             AdaptActive()
         }
         tv_2.setOnClickListener {
-            /* 안 눌려있는 것 클릭했을 때 */
-            if(isStartupClickedArray[1] == -1){
-                toastForUnchecked()
-            }else if(isStartupClickedArray[1] % 2 == 0){
+            if(isStartupClickedArray[1] % 2 == 0){
+                startup_idx = 1
                 isStartupActiveArray[1] = true
-                startup_idx = 2
                 tv_2.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_2.textColor = Color.parseColor(green)
                 isStartupClickedArray[1]++
                 /* 눌려있는 것 클릭했을 때 */
-            }else {
+            }else{
                 isStartupActiveArray[1] = false
                 tv_2.background = ContextCompat.getDrawable(this, R.drawable.round_border_gray)
                 tv_2.textColor = Color.parseColor(black)
@@ -77,10 +96,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_3.setOnClickListener {
-            if(isStartupClickedArray[2] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[2] % 2 == 0){
+            if(isStartupClickedArray[2] % 2 == 0){
+                startup_idx = 2
                 isStartupActiveArray[2] = true
-                startup_idx = 3
                 tv_3.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_3.textColor = Color.parseColor(green)
                 isStartupClickedArray[2]++
@@ -93,10 +111,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_4.setOnClickListener {
-            if(isStartupClickedArray[3] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[3] % 2 == 0){
+            if(isStartupClickedArray[3] % 2 == 0){
+                startup_idx = 3
                 isStartupActiveArray[3] = true
-                startup_idx = 4
                 tv_4.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_4.textColor = Color.parseColor(green)
                 isStartupClickedArray[3]++
@@ -109,10 +126,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_5.setOnClickListener {
-            if(isStartupClickedArray[4] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[4] % 2 == 0){
+            if(isStartupClickedArray[4] % 2 == 0){
+                startup_idx = 4
                 isStartupActiveArray[4] = true
-                startup_idx = 5
                 tv_5.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_5.textColor = Color.parseColor(green)
                 isStartupClickedArray[4]++
@@ -125,10 +141,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_6.setOnClickListener {
-            if(isStartupClickedArray[5] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[5] % 2 == 0){
+            if(isStartupClickedArray[5] % 2 == 0){
+                startup_idx = 5
                 isStartupActiveArray[5] = true
-                startup_idx = 6
                 tv_6.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_6.textColor = Color.parseColor(green)
                 isStartupClickedArray[5]++
@@ -141,10 +156,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_7.setOnClickListener {
-            if(isStartupClickedArray[6] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[6] % 2 == 0){
+            if(isStartupClickedArray[6] % 2 == 0){
+                startup_idx = 6
                 isStartupActiveArray[6] = true
-                startup_idx = 7
                 tv_7.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_7.textColor = Color.parseColor(green)
                 isStartupClickedArray[6]++
@@ -157,10 +171,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_8.setOnClickListener {
-            if(isStartupClickedArray[7] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[7] % 2 == 0){
+            if(isStartupClickedArray[7] % 2 == 0){
+                startup_idx = 7
                 isStartupActiveArray[7] = true
-                startup_idx = 8
                 tv_8.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_8.textColor = Color.parseColor(green)
                 isStartupClickedArray[7]++
@@ -173,10 +186,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_9.setOnClickListener {
-            if(isStartupClickedArray[8] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[8] % 2 == 0){
+            if(isStartupClickedArray[8] % 2 == 0){
+                startup_idx = 8
                 isStartupActiveArray[8] = true
-                startup_idx = 9
                 tv_9.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_9.textColor = Color.parseColor(green)
                 isStartupClickedArray[8]++
@@ -189,10 +201,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_10.setOnClickListener {
-            if(isStartupClickedArray[9] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[9] % 2 == 0){
+            if(isStartupClickedArray[9] % 2 == 0){
+                startup_idx = 9
                 isStartupActiveArray[9] = true
-                startup_idx = 10
                 tv_10.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_10.textColor = Color.parseColor(green)
                 isStartupClickedArray[9]++
@@ -205,10 +216,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_11.setOnClickListener {
-            if(isStartupClickedArray[10] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[10] % 2 == 0){
+            if(isStartupClickedArray[10] % 2 == 0){
+                startup_idx = 10
                 isStartupActiveArray[10] = true
-                startup_idx = 11
                 tv_11.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_11.textColor = Color.parseColor(green)
                 isStartupClickedArray[10]++
@@ -221,10 +231,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_12.setOnClickListener {
-            if(isStartupClickedArray[11] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[11] % 2 == 0){
+            if(isStartupClickedArray[11] % 2 == 0){
+                startup_idx = 11
                 isStartupActiveArray[11] = true
-                startup_idx = 12
                 tv_12.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_12.textColor = Color.parseColor(green)
                 isStartupClickedArray[11]++
@@ -237,10 +246,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_13.setOnClickListener {
-            if(isStartupClickedArray[12] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[12] % 2 == 0){
+            if(isStartupClickedArray[12] % 2 == 0){
+                startup_idx = 12
                 isStartupActiveArray[12] = true
-                startup_idx = 13
                 tv_13.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_13.textColor = Color.parseColor(green)
                 isStartupClickedArray[12]++
@@ -253,10 +261,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_14.setOnClickListener {
-            if(isStartupClickedArray[13] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[13] % 2 == 0){
+            if(isStartupClickedArray[13] % 2 == 0){
+                startup_idx = 13
                 isStartupActiveArray[13] = true
-                startup_idx = 14
                 tv_14.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_14.textColor = Color.parseColor(green)
                 isStartupClickedArray[13]++
@@ -269,10 +276,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_15.setOnClickListener {
-            if(isStartupClickedArray[14] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[14] % 2 == 0){
+            if(isStartupClickedArray[14] % 2 == 0){
+                startup_idx = 14
                 isStartupActiveArray[14] = true
-                startup_idx = 15
                 tv_15.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_15.textColor = Color.parseColor(green)
                 isStartupClickedArray[14]++
@@ -285,10 +291,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_16.setOnClickListener {
-            if(isStartupClickedArray[15] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[15] % 2 == 0){
+            if(isStartupClickedArray[15] % 2 == 0){
+                startup_idx = 15
                 isStartupActiveArray[15] = true
-                startup_idx = 16
                 tv_16.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_16.textColor = Color.parseColor(green)
                 isStartupClickedArray[15]++
@@ -301,10 +306,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_17.setOnClickListener {
-            if(isStartupClickedArray[16] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[16] % 2 == 0){
+            if(isStartupClickedArray[16] % 2 == 0){
+                startup_idx = 16
                 isStartupActiveArray[16] = true
-                startup_idx = 17
                 tv_17.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_17.textColor = Color.parseColor(green)
                 isStartupClickedArray[16]++
@@ -317,10 +321,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_18.setOnClickListener {
-            if(isStartupClickedArray[17] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[17] % 2 == 0){
+            if(isStartupClickedArray[17] % 2 == 0){
+                startup_idx = 17
                 isStartupActiveArray[17] = true
-                startup_idx = 18
                 tv_18.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_18.textColor = Color.parseColor(green)
                 isStartupClickedArray[17]++
@@ -333,10 +336,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_19.setOnClickListener {
-            if(isStartupClickedArray[18] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[18] % 2 == 0){
+            if(isStartupClickedArray[18] % 2 == 0){
+                startup_idx = 18
                 isStartupActiveArray[18] = true
-                startup_idx = 19
                 tv_19.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_19.textColor = Color.parseColor(green)
                 isStartupClickedArray[18]++
@@ -349,10 +351,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_20.setOnClickListener {
-            if(isStartupClickedArray[19] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[19] % 2 == 0){
+            if(isStartupClickedArray[19] % 2 == 0){
+                startup_idx = 19
                 isStartupActiveArray[19] = true
-                startup_idx = 20
                 tv_20.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_20.textColor = Color.parseColor(green)
                 isStartupClickedArray[19]++
@@ -365,10 +366,9 @@ class StartupDivActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_21.setOnClickListener {
-            if(isStartupClickedArray[20] == -1) toastForUnchecked()
-            else if(isStartupClickedArray[20] % 2 == 0){
+            if(isStartupClickedArray[20] % 2 == 0){
+                startup_idx = 20
                 isStartupActiveArray[20] = true
-                startup_idx = 21
                 tv_21.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_21.textColor = Color.parseColor(green)
                 isStartupClickedArray[20]++
@@ -380,7 +380,6 @@ class StartupDivActivity : AppCompatActivity() {
             }
             AdaptActive()
         }
-
     }
 
     /** 초기화 버튼 */
@@ -394,51 +393,7 @@ class StartupDivActivity : AppCompatActivity() {
         }
     }
 
-    /** 스타트업 전체 필터 클릭 시 색 바꾸기 */
-    fun StartupTotalGreen(ctx : Context){
-        tv_1.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_1.textColor = Color.parseColor(green)
-        tv_2.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_2.textColor = Color.parseColor(green)
-        tv_3.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_3.textColor = Color.parseColor(green)
-        tv_4.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_4.textColor = Color.parseColor(green)
-        tv_5.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_5.textColor = Color.parseColor(green)
-        tv_6.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_6.textColor = Color.parseColor(green)
-        tv_7.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_7.textColor = Color.parseColor(green)
-        tv_8.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_8.textColor = Color.parseColor(green)
-        tv_9.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_9.textColor = Color.parseColor(green)
-        tv_10.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_10.textColor = Color.parseColor(green)
-        tv_11.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_11.textColor = Color.parseColor(green)
-        tv_12.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_12.textColor = Color.parseColor(green)
-        tv_13.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_13.textColor = Color.parseColor(green)
-        tv_14.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_14.textColor = Color.parseColor(green)
-        tv_15.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_15.textColor = Color.parseColor(green)
-        tv_16.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_16.textColor = Color.parseColor(green)
-        tv_17.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_17.textColor = Color.parseColor(green)
-        tv_18.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_18.textColor = Color.parseColor(green)
-        tv_19.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_19.textColor = Color.parseColor(green)
-        tv_20.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_20.textColor = Color.parseColor(green)
-        tv_21.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_21.textColor = Color.parseColor(green)
-    }
+
 
     fun StartupTotalBlack(ctx : Context){
         tv_1.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_gray)
@@ -485,33 +440,37 @@ class StartupDivActivity : AppCompatActivity() {
         tv_21.textColor = Color.parseColor(black)
     }
 
-    /** 토스트 메시지 */
-    fun toastForUnchecked(){
-        Toast.makeText(this, "전체 필터를 해제해주세요.", Toast.LENGTH_SHORT).show()
-    }
-
     /** 하나라도 눌리면 적용하기 버튼 활성화 */
     fun AdaptActive(){
-        var StartupActiveOK = false
-
+        var activeOK = false
+        var clickedCount : Int = 0
         for(i in 0..20){
-            if(isStartupActiveArray[i]){
-                StartupActiveOK = true
-                break
-            }else StartupActiveOK = false
+            if(isStartupClickedArray[i] == 1){
+                clickedCount++;
+                if(clickedCount > 1) {
+                    Toast.makeText(ctx, "스타트업 분야는 하나만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                    btn_adapt.setBackgroundResource(R.color.notAdapted)
+                    activeOK = false
+                }else{
+                    btn_adapt.setBackgroundResource(R.color.maincolor)
+                    activeOK = true
+                }
+            }
         }
-        if(StartupActiveOK) {
-            btn_adapt.setBackgroundResource(R.color.maincolor)
+
+        // 적용하기 버튼 클릭 이벤트
+        if(activeOK){
             btn_adapt.setOnClickListener {
+                // 인텐트로 근무지역 idx 주기
                 var intent = Intent()
-                intent.putExtra("startup_idx", startup_idx)
+                intent.putExtra("startup_idx", startup_idx )
                 setResult(RESULT_OK, intent)
                 finish()
             }
-
+        }else{
+            btn_adapt.setOnClickListener {
+                Toast.makeText(ctx, "스타트업 분야를 선택해주세요.", Toast.LENGTH_SHORT).show()
+            }
         }
-        else btn_adapt.setBackgroundResource(R.color.notAdapted)
-
-
     }
 }

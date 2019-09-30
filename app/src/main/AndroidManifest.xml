@@ -15,14 +15,14 @@
         android:name=".network.ApplicationController"
         android:allowBackup="true"
         android:appComponentFactory="whateverString"
-        android:usesCleartextTraffic="true"
         android:icon="@drawable/startpick_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".ui.WebViewActivity"></activity>
+        <activity android:name=".ui.WebViewActivity" />
         <activity android:name=".ui.StartupDivActivity" />
         <activity android:name=".ui.SupportDetailActivity" />
         <activity android:name=".ui.WorkAreaActivity" />
@@ -30,11 +30,12 @@
         <activity android:name=".ui.WithDetailActivity" />
         <activity android:name=".ui.mypage.MyPostedNoticeActivity" />
         <activity android:name=".ui.mypage.MyapageResumeActivity" />
-        <activity android:name=".ui.SignMainActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.SignupActivity" />
         <activity android:name=".ui.WriteActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.SignMainActivity" />
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

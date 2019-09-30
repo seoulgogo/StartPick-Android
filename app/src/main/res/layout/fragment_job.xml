@@ -20,14 +20,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="함께해요"
             android:textColor="#212529"
-            android:textSize="17sp"/>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/search"/>
+            android:textSize="18sp"/>
 
     </RelativeLayout>
 
@@ -69,41 +62,43 @@
                 android:id="@+id/btn_filter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
                 android:orientation="horizontal"
                 android:background="@drawable/round_border"
-                android:layout_marginEnd="8dp"
                 android:padding="6dp">
-
                 <ImageView
-                    android:id="@+id/ivFilterBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/iv_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginEnd="6dp"
-                    android:src="@drawable/icon_filter" />
+                    android:src="@drawable/icon_filter"/>
                 <TextView
-                    android:id="@+id/tvFilterBtn"
+                    android:id="@+id/tv_filter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="필터"
-                    android:textColor="#212529"
-                    android:textSize="12sp"/>
+                    android:textSize="14sp"
+                    android:textColor="#212529"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/btn_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/round_border"
                 android:padding="6dp">
                 <ImageView
+                    android:id="@+id/iv_order"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="6dp"
                     android:src="@drawable/icon_array"/>
                 <TextView
+                    android:id="@+id/tv_order"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="최신순"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textColor="#212529"/>
             </LinearLayout>
         </LinearLayout>

@@ -33,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="@color/maincolor"
                     android:text="받은 지원"/>
 
@@ -55,7 +55,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="@color/maincolor"
                     android:text="보낸 지원"/>
 

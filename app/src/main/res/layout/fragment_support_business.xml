@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:text="지원사업"
-        android:textSize="17sp"
+        android:textSize="18sp"
         android:textColor="#212529"
         android:gravity="center_vertical|center_horizontal"/>
 
@@ -216,27 +216,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="총 6,712건"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="#212529"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"/>
+
         <LinearLayout
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
+            android:id="@+id/btnOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="6dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:background="@drawable/round_border_gray"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="6dp">
+
             <ImageView
+                android:id="@+id/ivArray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_array"/>
+                android:src="@drawable/icon_array" />
+
             <TextView
+                android:id="@+id/tvOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="등록일순"
-                android:textColor="#212529"/>
+                android:textColor="#212529" />
         </LinearLayout>
     </RelativeLayout>
 

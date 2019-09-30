@@ -40,8 +40,6 @@ class WithFilterActivity : AppCompatActivity() {
 
     var isStartupClickedArray : Array<Int> = Array(21, {0})
     var isRoleClickedArray : Array<Int> = Array(8, {0})
-    var isStartupActiveArray : Array<Boolean> = Array(21, {false})
-    var isRoleActiveArray : Array<Boolean> = Array(21, {false})
     var startupSelect : Boolean = false
     var jobSelect : Boolean = false
     val green = "#22b573"
@@ -76,17 +74,20 @@ class WithFilterActivity : AppCompatActivity() {
      *  1이면 누른 후 상태
      *  */
     fun StartupfilterColorChange(){
+        // 전체 선택
         tv_1.setOnClickListener {
             // 모든 필터 중 처음 눌렀을 때
             if(startupSelect == false){
                 startupSelect = true
                 isStartupClickedArray[0]++
-                StartupTotalGreen(this)
+                tv_1.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
+                tv_1.textColor = Color.parseColor(green)
                 // 눌려있던 필터 선택을 해제하고 싶을 때
             }else if(startupSelect == true && isStartupClickedArray[0] == 1){
                 startupSelect = false
                 isStartupClickedArray[0]--
-                StartupTotalBlack(this)
+                tv_1.background = ContextCompat.getDrawable(this, R.drawable.round_border_gray)
+                tv_1.textColor = Color.parseColor(black)
             }
             AdaptActive()
         }
@@ -535,17 +536,20 @@ class WithFilterActivity : AppCompatActivity() {
 
     /** 직무 필터 색 바꾸기 */
     fun RolefilterColorChange(){
+        // 전체 선택
         role_1.setOnClickListener {
             // 모든 필터 중 처음 눌렀을 때
             if(jobSelect == false){
                 jobSelect = true
                 isRoleClickedArray[0]++
-                RoleTotalGreen(this)
+                role_1.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
+                role_1.textColor = Color.parseColor(green)
                 // 눌려있던 필터 선택을 해제하고 싶을 때
             }else if(jobSelect == true && isRoleClickedArray[0] == 1){
                 jobSelect = false
                 isRoleClickedArray[0]--
-                RoleTotalBlack(this)
+                role_1.background = ContextCompat.getDrawable(this, R.drawable.round_border_gray)
+                role_1.textColor = Color.parseColor(black)
             }
             AdaptActive()
         }
@@ -720,52 +724,6 @@ class WithFilterActivity : AppCompatActivity() {
         }
     }
 
-    /** 스타트업 전체 필터 클릭 시 색 바꾸기 */
-    fun StartupTotalGreen(ctx : Context){
-        tv_1.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_1.textColor = Color.parseColor(green)
-        tv_2.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_2.textColor = Color.parseColor(green)
-        tv_3.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_3.textColor = Color.parseColor(green)
-        tv_4.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_4.textColor = Color.parseColor(green)
-        tv_5.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_5.textColor = Color.parseColor(green)
-        tv_6.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_6.textColor = Color.parseColor(green)
-        tv_7.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_7.textColor = Color.parseColor(green)
-        tv_8.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_8.textColor = Color.parseColor(green)
-        tv_9.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_9.textColor = Color.parseColor(green)
-        tv_10.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_10.textColor = Color.parseColor(green)
-        tv_11.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_11.textColor = Color.parseColor(green)
-        tv_12.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_12.textColor = Color.parseColor(green)
-        tv_13.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_13.textColor = Color.parseColor(green)
-        tv_14.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_14.textColor = Color.parseColor(green)
-        tv_15.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_15.textColor = Color.parseColor(green)
-        tv_16.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_16.textColor = Color.parseColor(green)
-        tv_17.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_17.textColor = Color.parseColor(green)
-        tv_18.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_18.textColor = Color.parseColor(green)
-        tv_19.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_19.textColor = Color.parseColor(green)
-        tv_20.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_20.textColor = Color.parseColor(green)
-        tv_21.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        tv_21.textColor = Color.parseColor(green)
-    }
-
     fun StartupTotalBlack(ctx : Context){
         tv_1.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_gray)
         tv_1.textColor = Color.parseColor(black)
@@ -809,25 +767,6 @@ class WithFilterActivity : AppCompatActivity() {
         tv_20.textColor = Color.parseColor(black)
         tv_21.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_gray)
         tv_21.textColor = Color.parseColor(black)
-    }
-
-    fun RoleTotalGreen(ctx : Context){
-        role_1.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        role_1.textColor = Color.parseColor(green)
-        role_2.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        role_2.textColor = Color.parseColor(green)
-        role_3.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        role_3.textColor = Color.parseColor(green)
-        role_4.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        role_4.textColor = Color.parseColor(green)
-        role_5.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        role_5.textColor = Color.parseColor(green)
-        role_6.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        role_6.textColor = Color.parseColor(green)
-        role_7.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        role_7.textColor = Color.parseColor(green)
-        role_8.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-        role_8.textColor = Color.parseColor(green)
     }
 
     fun RoleTotalBlack(ctx : Context){

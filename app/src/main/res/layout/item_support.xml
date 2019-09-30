@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="2019년 사회적경제기업 스토어36.5 리뉴얼 지원사업 참여매장 모집 공고"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="#212529"
             android:textStyle="bold"
             />
@@ -30,14 +30,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="고용노동부"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="#212529"
                 android:layout_marginEnd="16dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="~"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="#22b573"
                 android:gravity="center_vertical"
                 android:layout_marginBottom="16dp"/>
@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="19.09.09"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="#22b573"
                 android:gravity="center_vertical"
                 android:layout_marginBottom="16dp"/>
