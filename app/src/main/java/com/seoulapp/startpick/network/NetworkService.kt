@@ -133,12 +133,6 @@ interface NetworkService {
             @Path("resumeName") resumeName : String
     ):Call<GetShowResumeResponse>
 
-
-
-    /* 함께해요 fragment */
-
-    // 함께해요 리스트
-
     // 함께해요 전체 리스트
     @GET("withUs/all")
     fun getWithusAllResponse(
@@ -151,8 +145,6 @@ interface NetworkService {
             @Path("job_idx") job_idx : Int
     ): Call<GetWithusFilterResponse>
 
-
-    /* 지원사업 리스트 */
 
     // 함께해요 각 아이템 디테일 데이터
     @GET("withUs/all/detailAll/{withUs_idx}")
@@ -209,7 +201,6 @@ interface NetworkService {
     fun getWithusNeworderResponse(
     ): Call<GetWithusAllResponse>
 
-
     // 함께해요 인기순 GET 통신
     @GET("withUs/order/likeOrder")
     fun getWithusLikeorderResponse(
@@ -230,6 +221,16 @@ interface NetworkService {
     fun getSupportStartorderResponse(
     ): Call<GetSupportListAll>
 
+    // 함께해요 최신순 리스트
+    @GET("withUs/order/newOrder/{user_idx}")
+    fun getWithusNeworderResponse(
+            @Path("user_idx") user_idx: Int
+    ): Call<GetWithusAllResponse>
 
+    // 함께해요 인기순 리스트
+    @GET("withUs/order/likeOrder/{user_idx}")
+    fun getWithusLikeorderResponse(
+            @Path("user_idx") user_idx: Int
+    ): Call<GetWithusAllResponse>
 
 }

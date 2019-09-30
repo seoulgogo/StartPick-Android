@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -43,13 +44,19 @@ class WithDetailActivity : AppCompatActivity() {
         three_point.setOnClickListener { showPopup(three_point) }   // 메뉴 버튼 클릭 이벤트
         getIntentData()                                             // intent로 넘어온 데이터 받기
         getWithusDetailResponse()                                   // 함께해요 아이템 디테일 데이터 GET 통신
-        btn_apply.setOnClickListener {
+        btn_apply.setOnClickListener {      // 지원하기 버튼 클릭 이벤트
             /* 다이얼로그 띄우기 */
             val dialog = Dialog(this)
-            dialog.setContentView(R.layout.dialog_applycomplete)
-            val btnOK = dialog.findViewById<TextView>(R.id.btnOK)
+            dialog.setContentView(R.layout.customdialog_selectresume)
+            val btnX = dialog.findViewById<RelativeLayout>(R.id.btnX)
+            val btnOK = dialog.findViewById<TextView>(R.id.btnApplyOK)
+            btnX.setOnClickListener { dialog.dismiss() }
             btnOK.setOnClickListener {
-                dialog.dismiss() // 다이얼로그 끄기
+                dialog.setContentView(R.layout.dialog_applycomplete)
+                val realApply = dialog.findViewById<TextView>(R.id.btnOK)
+                realApply.setOnClickListener {
+                    dialog.dismiss()
+                }
             }
             dialog.show()
         }
@@ -58,10 +65,10 @@ class WithDetailActivity : AppCompatActivity() {
             isbtnScrap++;
             // 스크랩 버튼 눌렸을 경우
             if(isbtnScrap % 2 == 1){
-                Toast.makeText(this, "스크랩 되었습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "준비중인 기능입니다.", Toast.LENGTH_SHORT).show()
                 iv_scrap.setImageResource(R.drawable.check_icon_active)
             }else{
-                Toast.makeText(this, "스크랩이 취소 되었습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "준비중인 기능입니다.", Toast.LENGTH_SHORT).show()
                 iv_scrap.setImageResource(R.drawable.check_icon_wh)
             }
 
@@ -269,19 +276,20 @@ class WithDetailActivity : AppCompatActivity() {
                     }
                     // 삭제버튼 클릭시
                     R.id.menu_delete -> {
-                        /* 다이얼로그 띄우기 */
-                        val dialog = Dialog(this)
-                        dialog.setContentView(R.layout.customdialog_menu_modify)
-                        val no = dialog.findViewById<TextView>(R.id.no)
-                        val yes = dialog.findViewById<TextView>(R.id.yes)
-                        no.setOnClickListener {
-                            dialog.dismiss() // 다이얼로그 끄기
-                        }
-                        yes.setOnClickListener {
-                            postWithusDeleteResponse() // 삭제 통신 포스트
-                            dialog.dismiss()           // 다이얼로그 끄기
-                        }
-                        dialog.show()
+                        Toast.makeText(this, "준비중인 기능입니다.", Toast.LENGTH_SHORT).show()
+//                        /* 다이얼로그 띄우기 */
+//                        val dialog = Dialog(this)
+//                        dialog.setContentView(R.layout.customdialog_menu_modify)
+//                        val no = dialog.findViewById<TextView>(R.id.no)
+//                        val yes = dialog.findViewById<TextView>(R.id.yes)
+//                        no.setOnClickListener {
+//                            dialog.dismiss() // 다이얼로그 끄기
+//                        }
+//                        yes.setOnClickListener {
+//                            postWithusDeleteResponse() // 삭제 통신 포스트
+//                            dialog.dismiss()           // 다이얼로그 끄기
+//                        }
+//                        dialog.show()
                     }
                 }
                 true

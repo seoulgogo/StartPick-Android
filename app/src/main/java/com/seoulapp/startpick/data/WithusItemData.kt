@@ -9,5 +9,6 @@ data class WithusItemData(
     val startUp_idx: Int,
     val thumnail: String,
     val user_idx: Int,
-    val withUs_idx: Int
+    val withUs_idx: Int,
+    val isChecked : Boolean
 )

@@ -122,8 +122,9 @@
                     android:id="@+id/etWithusWriteDetailjob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColorHint="#868e96"
                     android:hint="구체적인 포지션을 적어주세요. ex) UI디자이너"
-                    android:textColor="#868e96"
+                    android:textColor="#212529"
                     android:textSize="16sp" />
 
                 <View
@@ -221,7 +222,8 @@
                         android:layout_weight="13"
                         android:layout_height="wrap_content"
                         android:hint="급여를 입력해주세요."
-                        android:textColor="#868e96"
+                        android:textColorHint="#868e96"
+                        android:textColor="#212529"
                         android:textSize="16sp" />
                     <TextView
                         android:layout_width="0dp"
@@ -353,6 +355,7 @@
                         android:background="@drawable/round_border"
                         android:gravity="top"
                         android:hint="주요업무나 자격요건, 우대사항 등 관련된 내용을 자유롭게 설명해주세요."
+                        android:textColorHint="#868e96"
                         android:inputType="textMultiLine"
                         android:lines="12"
                         android:overScrollMode="always"
@@ -361,7 +364,7 @@
                         android:scrollbarStyle="insideInset"
                         android:scrollbars="vertical"
                         android:singleLine="false"
-                        android:textColor="#868e96"
+                        android:textColor="#212529"
                         android:textSize="16sp" />
                 </android.support.v4.widget.NestedScrollView>
 
@@ -388,6 +391,7 @@
                         android:background="@drawable/round_border"
                         android:gravity="top"
                         android:hint="회사 소개와 혜택 및 복지 등 관련된 내용을 자유롭게 설명해주세요."
+                        android:textColorHint="#868e96"
                         android:inputType="textMultiLine"
                         android:lines="12"
                         android:overScrollMode="always"
@@ -396,7 +400,7 @@
                         android:scrollbarStyle="insideInset"
                         android:scrollbars="vertical"
                         android:singleLine="false"
-                        android:textColor="#868e96"
+                        android:textColor="#212529"
                         android:textSize="16sp" />
                 </android.support.v4.widget.NestedScrollView>
             </LinearLayout>
@@ -448,6 +452,7 @@
                         android:id="@+id/iv_thumbnail"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:scaleType="fitXY"
                         android:layout_marginTop="5dp"
                         android:background="@drawable/img_main_loading" />
                     <ImageView
@@ -487,7 +492,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="회사명을 입력해주세요."
-                    android:textColor="#868e96"
+                    android:textColorHint="#868e96"
+                    android:textColor="#212529"
                     android:textSize="16sp" />
 
                 <View
@@ -568,7 +574,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="담당자 이름을 입력해주세요."
-                    android:textColor="#868e96"
+                    android:textColorHint="#868e96"
+                    android:textColor="#212529"
                     android:textSize="16sp" />
 
                 <View
@@ -600,7 +607,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="'-' 구분없이 입력해주세요."
-                    android:textColor="#868e96"
+                    android:textColorHint="#868e96"
+                    android:textColor="#212529"
                     android:textSize="16sp" />
 
                 <View
@@ -632,7 +640,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="example@gmail.com"
-                    android:textColor="#868e96"
+                    android:textColorHint="#868e96"
+                    android:textColor="#212529"
                     android:textSize="16sp" />
 
                 <View
@@ -649,13 +658,13 @@
     <TextView
         android:id="@+id/btn_complete"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="54dp"
         android:layout_alignParentBottom="true"
         android:background="@color/maincolor"
         android:gravity="center_vertical|center_horizontal"
         android:text="작성 완료"
         android:textColor="#FFFFFF"
-        android:textSize="17sp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
 </RelativeLayout>
