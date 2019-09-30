@@ -15,7 +15,7 @@
             android:id="@+id/tv_resume_title_support_mp_fg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textColor="#212529"
             android:text="이력서제목"/>
 
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="#212529"
             android:text="지원자 이름"/>
 
@@ -32,7 +32,7 @@
             android:id="@+id/tv_resume_companyName_mp_fg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="@color/maincolor"
             android:text="[직무_회사명]"
             />

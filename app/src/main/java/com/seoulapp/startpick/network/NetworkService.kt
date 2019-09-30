@@ -190,7 +190,7 @@ interface NetworkService {
             @Path("business_idx") business_idx: Int
     ): Call<GetSupportDetailResponse>
 
-    // 지원사업 글쓰기 포스트
+    // 함께해요 글쓰기 포스트
     @Multipart
     @POST("withUs/insertWithUs")
     fun postWithusApply(
@@ -210,6 +210,38 @@ interface NetworkService {
             @Part img : MultipartBody.Part?
     ): Call<PostLoginResponse>
 
+    // 함께해요 공고 삭제하기
+    @Multipart
+    @POST("withUs/withUsDelete")
+    fun postWithusDeleteResponse(
+            @Part("withUs_idx") withUs_idx : RequestBody
+    ): Call<PostLoginResponse>
+
+    // 함께해요 최신순 GET 통신
+    @GET("withUs/order/newOrder")
+    fun getWithusNeworderResponse(
+    ): Call<GetWithusAllResponse>
+
+
+    // 함께해요 인기순 GET 통신
+    @GET("withUs/order/likeOrder")
+    fun getWithusLikeorderResponse(
+    ): Call<GetWithusAllResponse>
+
+    // 지원사업 등록일순 GET 통신
+    @GET("supportList/order/enrollOrder")
+    fun getSupportEnrollorderResponse(
+    ): Call<GetSupportListAll>
+
+    // 지원사업 마감일순 GET 통신
+    @GET("supportList/order/endOrder")
+    fun getSupportEndorderResponse(
+    ): Call<GetSupportListAll>
+
+    // 지원사업 최신순 GET 통신
+    @GET("supportList/order/startOrder")
+    fun getSupportStartorderResponse(
+    ): Call<GetSupportListAll>
 
 
 

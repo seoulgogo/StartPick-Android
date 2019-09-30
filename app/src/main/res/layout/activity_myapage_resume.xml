@@ -30,7 +30,7 @@
             android:layout_centerInParent="true"
             android:text="이력서"
             android:textColor="#212529"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/img_delete_mypage_resume_act"

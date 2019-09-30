@@ -16,7 +16,7 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="필터"
             android:textColor="#212529"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/back_arrow"
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="초기화"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="#212529"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="스타트업 분야"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textColor="#212529"
                 android:textStyle="bold"/>
             <LinearLayout
@@ -414,7 +414,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="직무"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textColor="#212529"
                 android:textStyle="bold"
                 />
@@ -549,5 +549,5 @@
         android:textColor="#FFFFFF"
         android:gravity="center_vertical|center_horizontal"
         android:textStyle="bold"
-        android:textSize="17sp"/>
+        android:textSize="18sp"/>
 </RelativeLayout>

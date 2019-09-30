@@ -19,12 +19,13 @@
             android:layout_width="0dp"
             android:layout_weight="6"
             android:layout_height="match_parent"
+            android:layout_marginRight="16dp"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/item_job_fragment_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textColor="#212529"
                 android:textStyle="bold"
                 android:text="SNS 콘텐츠 크리에이터"/>
@@ -32,7 +33,7 @@
                 android:id="@+id/item_job_fragment_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="#212529"
                 android:layout_marginTop="8dp"
                 android:text="서울시창업지원센터"/>
@@ -40,7 +41,7 @@
                 android:id="@+id/tvWithusItem_Job"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textColor="#868e96"
                 android:layout_marginTop="4dp"
                 android:text="콘텐츠"/>
@@ -54,17 +55,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                android:background="#e6e6e6"/>
-            <ImageView
-                android:id="@+id/iv_check"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
+                android:background="@drawable/img_main_loading"/>
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/check_btn_selector"
-                />
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true" >
+                <ImageView
+                    android:id="@+id/btn_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/like_selector"
+                    />
+
+                <TextView
+                    android:id="@+id/likeNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/btn_like"
+                    android:layout_marginStart="26dp"
+                    android:layout_marginTop="3dp"
+                    android:text="1"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
         </RelativeLayout>
 
     </LinearLayout>

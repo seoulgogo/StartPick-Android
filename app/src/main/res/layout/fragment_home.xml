@@ -38,9 +38,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="진하은님을 위한 맞춤형 공고"
-                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:textStyle="bold"
                     android:textColor="#212529"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     />
 
                 <android.support.v7.widget.RecyclerView
@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     >
 
                 </android.support.v7.widget.RecyclerView>
@@ -67,9 +67,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="인기 공고"
-                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:textStyle="bold"
                     android:textColor="#212529"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     />
 
                 <android.support.v7.widget.RecyclerView
@@ -77,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     >
 
                 </android.support.v7.widget.RecyclerView>
@@ -96,9 +96,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="방금 올라온 공고"
-                    android:fontFamily="@font/notosanscjkkr_bold"
+                    android:textStyle="bold"
                     android:textColor="#212529"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     />
 
                 <android.support.v7.widget.RecyclerView
@@ -106,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     >
 
                 </android.support.v7.widget.RecyclerView>

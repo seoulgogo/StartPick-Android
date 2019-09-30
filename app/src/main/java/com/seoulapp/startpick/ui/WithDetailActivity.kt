@@ -3,6 +3,7 @@ package com.seoulapp.startpick.ui
 import android.app.Dialog
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.PopupMenu
@@ -14,7 +15,10 @@ import com.seoulapp.startpick.data.WithusDetailData
 import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetWithusDetailResponse
+import com.seoulapp.startpick.network.post.PostLoginResponse
 import kotlinx.android.synthetic.main.activity_with_detail.*
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import org.jetbrains.anko.ctx
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,7 +27,9 @@ import retrofit2.Response
 
 class WithDetailActivity : AppCompatActivity() {
 
-    var withUs_idx : Int = 0        // 공고 idx 변수
+    var withUs_idx : Int = 0 // 공고 idx 변수
+    lateinit var withUs_idx_string : String
+    var isbtnScrap : Int = 0
 
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
@@ -36,12 +42,35 @@ class WithDetailActivity : AppCompatActivity() {
         btn_back.setOnClickListener { finish() }                    // 뒤로가기 버튼 세팅
         three_point.setOnClickListener { showPopup(three_point) }   // 메뉴 버튼 클릭 이벤트
         getIntentData()                                             // intent로 넘어온 데이터 받기
-        getWithusDetailResponse()                                   // 함께해요 아이템 디테일 데이터 통신
+        getWithusDetailResponse()                                   // 함께해요 아이템 디테일 데이터 GET 통신
+        btn_apply.setOnClickListener {
+            /* 다이얼로그 띄우기 */
+            val dialog = Dialog(this)
+            dialog.setContentView(R.layout.dialog_applycomplete)
+            val btnOK = dialog.findViewById<TextView>(R.id.btnOK)
+            btnOK.setOnClickListener {
+                dialog.dismiss() // 다이얼로그 끄기
+            }
+            dialog.show()
+        }
+
+        btn_scrap.setOnClickListener {
+            isbtnScrap++;
+            // 스크랩 버튼 눌렸을 경우
+            if(isbtnScrap % 2 == 1){
+                Toast.makeText(this, "스크랩 되었습니다.", Toast.LENGTH_SHORT).show()
+                iv_scrap.setImageResource(R.drawable.check_icon_active)
+            }else{
+                Toast.makeText(this, "스크랩이 취소 되었습니다.", Toast.LENGTH_SHORT).show()
+                iv_scrap.setImageResource(R.drawable.check_icon_wh)
+            }
+
+        }
 
     }
 
     /** NetworkService 파일에 정의한 함수 */
-    /** 함께해요 디테일 정보 통신 */
+    /** 함께해요 디테일 정보 GET 통신 */
     private fun getWithusDetailResponse() {
 
         val getwithInfoResponse: Call<GetWithusDetailResponse> = networkService.getWithusDetailResponse(withUs_idx)
@@ -57,6 +86,7 @@ class WithDetailActivity : AppCompatActivity() {
 
                 if (temp.size > 0) {
                     if (status == 200) {
+
                         // 디테일 뷰에 정보 세팅
                         Glide.with(ctx).load(temp[0].thumnail).into(ivWithusDetailThumb)    // 썸네일 이미지 세팅
                         tvWithusDetailTitle.text = temp[0].detailJob + " (" + temp[0].recrutNum + "명)"          // 공고 타이틀 세팅
@@ -190,40 +220,73 @@ class WithDetailActivity : AppCompatActivity() {
     /** 인텐트 정보 받기 */
     fun getIntentData(){
         withUs_idx = intent.getIntExtra("withUs_idx", -1)
+        withUs_idx_string = withUs_idx.toString()
+        Log.d("choheeidx", withUs_idx.toString())
     }
 
-    /** 메뉴 창 띄우기 */
-    private fun showPopup(view: View) {
-        var popup = PopupMenu(this, view)
-        popup.inflate(R.menu.menu_main)
+    /** 네트워크 설정 파일에 있는 함수 */
+    /** 함께해요 공고 삭제 POST 통신 */
+    fun postWithusDeleteResponse() {
 
-        popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
+        var withUs_idx = RequestBody.create(MediaType.parse("text/plain"), withUs_idx_string)
 
-            when (item!!.itemId) {
-                // 수정버튼 클릭시
-                R.id.menu_modified -> {
+        val networkService = networkService.postWithusDeleteResponse(withUs_idx)
+        Log.d("choheeWith", withUs_idx.toString())
+        networkService.enqueue(object : Callback<PostLoginResponse> {
+            override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
+                Toast.makeText(applicationContext, "서버 접속 오류", Toast.LENGTH_SHORT).show()
+            }
 
-                }
-                // 삭제버튼 클릭시
-                R.id.menu_delete -> {
-                    /* 다이얼로그 띄우기 */
-                    val dialog = Dialog(this)
-                    dialog.setContentView(R.layout.customdialog_menu_modify)
-                    val no = dialog.findViewById<TextView>(R.id.no)
-                    val yes = dialog.findViewById<TextView>(R.id.yes)
-                    no.setOnClickListener {
-                        dialog.dismiss() // 다이얼로그 끄기
-                    }
-                    yes.setOnClickListener {
-                        Toast.makeText(this, "삭제되었습니다.", Toast.LENGTH_SHORT).show()
-                    }
+            override fun onResponse(call: Call<PostLoginResponse>, response: Response<PostLoginResponse>) {
+                if (response.isSuccessful) {
+                    response?.takeIf { it.isSuccessful }
+                            ?.body()
+                            ?.let {
+                                if (it.success == true) {
+                                    Toast.makeText(applicationContext, "삭제되었습니다.", Toast.LENGTH_SHORT).show()
+                                    finish()
+                                }
+                            }
+                } else {
 
-                    dialog.show()
                 }
             }
-            true
         })
 
-        popup.show()
     }
+
+        /** 메뉴 창 띄우기 */
+        fun showPopup(view: View) {
+            var popup = PopupMenu(this, view)
+            popup.inflate(R.menu.menu_main)
+
+            popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
+
+                when (item!!.itemId) {
+                    // 수정버튼 클릭시
+                    R.id.menu_modified -> {
+                        Toast.makeText(this, "준비중인 기능입니다.", Toast.LENGTH_SHORT).show()
+                    }
+                    // 삭제버튼 클릭시
+                    R.id.menu_delete -> {
+                        /* 다이얼로그 띄우기 */
+                        val dialog = Dialog(this)
+                        dialog.setContentView(R.layout.customdialog_menu_modify)
+                        val no = dialog.findViewById<TextView>(R.id.no)
+                        val yes = dialog.findViewById<TextView>(R.id.yes)
+                        no.setOnClickListener {
+                            dialog.dismiss() // 다이얼로그 끄기
+                        }
+                        yes.setOnClickListener {
+                            postWithusDeleteResponse() // 삭제 통신 포스트
+                            dialog.dismiss()           // 다이얼로그 끄기
+                        }
+                        dialog.show()
+                    }
+                }
+                true
+            })
+
+            popup.show()
+        }
 }

@@ -57,10 +57,11 @@ class SupportDetailActivity : AppCompatActivity() {
                         summery.text = temp[0].summery              // 사업 개요
                         target.text = temp[0].target                // 지원분야 및 대상
                         classifyList.text = temp[0].classifyList    // 분류체계
-                        endDate.text = temp[0].endDate + " 까지"    // 신청기간
+                        endDate.text = temp[0].startDate + " ~ " + temp[0].endDate     // 신청기간
                         link = temp[0].link
                     }
                 }
+
             }
 
 

@@ -29,7 +29,7 @@
             android:layout_centerInParent="true"
             android:text="로그인"
             android:textColor="#212529"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
     </RelativeLayout>
 
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:text="이메일"
             android:textColor="#212529"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/et_email_login_act"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:textColorHint="#868e96"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:hint="example@gmail.com"
             />
 
@@ -69,7 +69,7 @@
             android:layout_marginTop="24dp"
             android:text="비밀번호"
             android:textColor="#212529"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/et_password_login_act"
@@ -77,14 +77,14 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textColorHint="#868e96"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:hint="영문, 숫자 혼합 6자 이상"
             />
 
         <RelativeLayout
             android:id="@+id/btn_login_act"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="54dp"
             android:layout_marginTop="64dp"
             android:background="@drawable/loginbtn_disable_box"
             >
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/notosanscjkkr_bold"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textColor="#FFFFFF"
                 android:text="로그인"
                 />

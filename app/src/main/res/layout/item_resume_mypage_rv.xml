@@ -13,17 +13,16 @@
         android:layout_marginHorizontal="16dp"
         android:text="이력서제목"
         android:textColor="#212529"
-        android:textSize="16sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_resume_edit_resume_mp_fg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="6dp"
         android:text="최근 수정일 : 2018.09.18"
         android:textColor="#868e96"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <View
         android:layout_width="match_parent"

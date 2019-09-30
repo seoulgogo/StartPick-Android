@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:paddingVertical="2dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingVertical="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,8 +22,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textColor="@drawable/main_navigation_text_color"
                 android:text="스크랩"
+                android:textColor="@drawable/main_navigation_text_color"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -39,8 +39,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textColor="@drawable/main_navigation_text_color"
                 android:text="이력서"
+                android:textColor="@drawable/main_navigation_text_color"
                 android:textSize="16sp" />
         </RelativeLayout>
 
@@ -56,16 +56,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textColor="@drawable/main_navigation_text_color"
                 android:text="지원현황"
+                android:textColor="@drawable/main_navigation_text_color"
                 android:textSize="16sp" />
         </RelativeLayout>
 
     </LinearLayout>
 
+
+    <!--  <RelativeLayout
+          android:id="@+id/rl_resume_mypage_navi_frag"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:layout_weight="1">
+
+
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:id="@+id/rl_supportstatus_mypage_navi_frag"
+          android:layout_width="wrap_content"
+          android:layout_height="match_parent"
+          android:orientation="vertical"
+          android:gravity="center"
+          android:layout_weight="1">-->
+
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#dee2e6"/>
+        android:background="#dee2e6" />
 
 </LinearLayout>

@@ -32,17 +32,7 @@
                     android:layout_centerInParent="true"
                     android:text="서울창업지도"
                     android:textColor="#212529"
-                    android:textSize="16sp" />
-
-                <!--btn search-->
-                <ImageView
-                    android:id="@+id/btn_search_map_frag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:paddingHorizontal="20dp"
-                    android:src="@drawable/search" />
+                    android:textSize="18sp" />
 
             </RelativeLayout>
 
@@ -413,10 +403,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="12dp"
                 android:text="지원기관을 테마로 기본적인 정보를 제공하는 창업지도입니다."
                 android:textColor="#212529"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -424,7 +413,7 @@
                 android:layout_gravity="center"
                 android:text="정보를 보고 싶은 지역을 선택해주세요."
                 android:textColor="#212529"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -482,9 +471,7 @@
 
                 </android.support.v7.widget.RecyclerView>
 
-
             </RelativeLayout>
-
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
