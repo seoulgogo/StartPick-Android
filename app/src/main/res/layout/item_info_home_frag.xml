@@ -33,19 +33,20 @@
         android:id="@+id/tv_title_info_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/notosanscjkkr_bold"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
         android:text="SNS 콘텐츠 크리에이터"
         android:textColor="#212529"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_organizer_info_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:text="서울시창업지원센터"
         android:textColor="#212529"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_division_info_item"
@@ -54,7 +55,7 @@
         android:layout_marginTop="4dp"
         android:text="콘텐츠"
         android:textColor="#868e96"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
 
 </LinearLayout>

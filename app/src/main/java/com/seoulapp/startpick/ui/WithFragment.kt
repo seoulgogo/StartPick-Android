@@ -10,8 +10,10 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import com.seoulapp.startpick.R
 
@@ -21,7 +23,6 @@ import com.seoulapp.startpick.network.ApplicationController
 import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetWithusAllResponse
 import com.seoulapp.startpick.network.get.GetWithusFilterResponse
-import kotlinx.android.synthetic.main.activity_with_filter.*
 import kotlinx.android.synthetic.main.fragment_job.*
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.textColor
@@ -52,9 +53,10 @@ class WithFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        setRecyclerView() // 리사이클러뷰 데이터 세팅
+        setWithusNeworderRecyclerView() // 리사이클러뷰 최신순으로 데이터 세팅
         floatingBtn() // 글쓰기 버튼 세팅
         filterClick() // 필터 버튼 세팅
+        orderClick() // 순서 버튼 세팅
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -72,12 +74,17 @@ class WithFragment : Fragment() {
                     setRecyclerView()
 
                     // 필터 버튼 색깔 활성화 해제
-                    ivFilterBtn.setImageResource(R.drawable.icon_filter)
+                    iv_filter.setImageResource(R.drawable.icon_filter)
                     btn_filter.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_gray)
-                    tvFilterBtn.textColor = Color.parseColor("#212529")
+                    tv_filter.textColor = Color.parseColor("#212529")
                 }else{
                     setFilterAdaptRecyclerView()
                 }
+            }else if(requestCode == 100){
+                // 공고 작성 완료 버튼 클릭 후 리사이클러뷰 다시 refresh
+                setRecyclerView()
+            }else{
+                Log.d("chohee리퀘스트코드", "코드 없음")
             }
         }
     }
@@ -153,6 +160,73 @@ class WithFragment : Fragment() {
         })
     }
 
+    /** NetworkService 파일에 정의한 함수 */
+    /** 최신순 정렬 GET 통신 */
+    private fun getWithusNeworderResponse() {
+
+        val getwithInfoResponse: Call<GetWithusAllResponse> = networkService.getWithusNeworderResponse()
+
+        getwithInfoResponse.enqueue(object : Callback<GetWithusAllResponse> {
+            override fun onFailure(call: Call<GetWithusAllResponse>, t: Throwable) {
+                Toast.makeText(context, "리스트를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<GetWithusAllResponse>, response: Response<GetWithusAllResponse>) {
+                val temp: ArrayList<WithusItemData> = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (temp.size > 0) {
+                    if (status == 200) {
+                        // 리사이클러뷰 아이템 개수 세팅
+                        item_count = temp.size
+                        tvWithCount.text = "전체 " + item_count.toString() + "개"
+
+                        val position = withRecycleAdapter.itemCount
+                        withRecycleAdapter.dataList.addAll(temp)
+                        withRecycleAdapter.notifyDataSetChanged()
+
+                    }
+                }else{
+                    Toast.makeText(context, "모집하는 공고가 없습니다.", Toast.LENGTH_SHORT).show()
+                    tvWithCount.text = "전체 0개"
+                }
+            }
+        })
+    }
+
+    /** NetworkService 파일에 정의한 함수 */
+    /** 인기순 정렬 GET 통신 */
+    private fun getWithusLikeorderResponse() {
+
+        val getwithInfoResponse: Call<GetWithusAllResponse> = networkService.getWithusLikeorderResponse()
+
+        getwithInfoResponse.enqueue(object : Callback<GetWithusAllResponse> {
+            override fun onFailure(call: Call<GetWithusAllResponse>, t: Throwable) {
+                Toast.makeText(context, "리스트를 불러오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<GetWithusAllResponse>, response: Response<GetWithusAllResponse>) {
+                val temp: ArrayList<WithusItemData> = response.body()!!.data
+                val status = response.body()!!.status
+
+                if (temp.size > 0) {
+                    if (status == 200) {
+                        // 리사이클러뷰 아이템 개수 세팅
+                        item_count = temp.size
+                        tvWithCount.text = "전체 " + item_count.toString() + "개"
+
+                        val position = withRecycleAdapter.itemCount
+                        withRecycleAdapter.dataList.addAll(temp)
+                        withRecycleAdapter.notifyDataSetChanged()
+
+                    }
+                }else{
+                    Toast.makeText(context, "모집하는 공고가 없습니다.", Toast.LENGTH_SHORT).show()
+                    tvWithCount.text = "전체 0개"
+                }
+            }
+        })
+    }
 
     /** 전체 필터일 때 리사이클러 뷰 설정 */
     fun setRecyclerView() {
@@ -178,12 +252,36 @@ class WithFragment : Fragment() {
         getWithusFilterResponse()
     }
 
+    /** 최신순 리사이클러 뷰 설정 */
+    fun setWithusNeworderRecyclerView() {
+
+        var withItemDataArray: ArrayList<WithusItemData> = ArrayList()
+
+        withRecycleAdapter = WithRecyAdapter(activity!!, withItemDataArray)
+        fragment_job_recyclerview.adapter = withRecycleAdapter
+        fragment_job_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+        getWithusNeworderResponse()
+    }
+
+    /** 인기순 리사이클러 뷰 설정 */
+    fun setWithusLikeorderRecyclerView() {
+
+        var withItemDataArray: ArrayList<WithusItemData> = ArrayList()
+
+        withRecycleAdapter = WithRecyAdapter(activity!!, withItemDataArray)
+        fragment_job_recyclerview.adapter = withRecycleAdapter
+        fragment_job_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+
+        getWithusLikeorderResponse()
+    }
+
     /** 플로팅 이미지 설정 */
     fun floatingBtn() {
         // 글쓰기 버튼 클릭 리스너
         iv_write.setOnClickListener {
             var intent = Intent(this.context, WriteActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, 100)
         }
     }
 
@@ -195,12 +293,49 @@ class WithFragment : Fragment() {
             startActivityForResult(intent, 3000)
 
             // 필터 버튼 색깔 활성화
-            ivFilterBtn.setImageResource(R.drawable.icon_filter_active)
+            iv_filter.setImageResource(R.drawable.icon_filter_active)
             btn_filter.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
-            tvFilterBtn.textColor = Color.parseColor("#22b573")
+            tv_filter.textColor = Color.parseColor("#22b573")
         }
     }
 
+    /** 최신순 클릭 이벤트 */
+    fun orderClick(){
+        btn_order.setOnClickListener {
+            showPopup(btn_order)    // 팝업창 띄우기
+        }
+    }
+
+
+    /** 메뉴 창 띄우기 */
+    fun showPopup(view: View) {
+        var popup = PopupMenu(context, view)
+        popup.inflate(R.menu.menu_withus_order)
+
+        popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
+
+            when (item!!.itemId) {
+                // 최신순 클릭시
+                R.id.newOrder -> {
+                    tv_order.text = "최신순"
+                    iv_order.setImageResource(R.drawable.icon_array_active)
+                    btn_order.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
+                    tv_order.textColor = Color.parseColor("#22b573")
+                    setWithusNeworderRecyclerView() // 리사이클러뷰 세팅
+                }
+                // 인기순 클릭시
+                R.id.likeOrder -> {
+                    tv_order.text = "인기순"
+                    iv_order.setImageResource(R.drawable.icon_array_active)
+                    btn_order.background = ContextCompat.getDrawable(ctx, R.drawable.round_border_green)
+                    tv_order.textColor = Color.parseColor("#22b573")
+                    setWithusLikeorderRecyclerView() // 리사이클러뷰 세팅
+                }
+            }
+            true
+        })
+        popup.show()
+    }
 
 }
 

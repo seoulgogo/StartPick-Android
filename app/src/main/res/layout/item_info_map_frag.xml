@@ -18,8 +18,9 @@
             android:id="@+id/tv_support_center_map_frag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="#212529"
+            android:textStyle="bold"
             android:text="DMC 창업센터" />
 
         <TextView
@@ -27,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="#495057"
             android:text="시창업센터"
             />
@@ -36,7 +37,7 @@
             android:id="@+id/tv_address_map_frag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:textColor="#868e96"
             android:text="서울특별시 마포구 성암로 330, (상암동,DMC첨단…"
             />
@@ -45,7 +46,7 @@
             android:id="@+id/tv_url_map_frag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:textColor="#868e96"
             android:text="http://www.seouldesign.or.kr/page/35/det…"
             />
@@ -54,7 +55,7 @@
             android:id="@+id/tv_phone_map_frag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="#22b573"
             android:text="02-3153-7174~5, 7177"
             />

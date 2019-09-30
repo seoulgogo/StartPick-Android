@@ -1,38 +1,31 @@
 package com.seoulapp.startpick.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
-import android.util.Log
 import android.widget.Toast
 import com.seoulapp.startpick.R
 import kotlinx.android.synthetic.main.activity_work_area.*
 import kotlinx.android.synthetic.main.activity_work_area.back_arrow
-import kotlinx.android.synthetic.main.fragment_job.*
 import org.jetbrains.anko.ctx
-import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.textColor
 
 class WorkAreaActivity : AppCompatActivity() {
 
     var isClickedArray : Array<Int> = Array(25, {0})
     var isActiveArray : Array<Boolean> = Array(25, {false})
+
     val green = "#22b573"
     val black = "#212529"
     var city_idx : Int = 0
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_work_area)
 
-        /* 뒤로가기 */
-        back_arrow.setOnClickListener {
-            finish()
-        }
-
+        back_arrow.setOnClickListener { finish() } // 뒤로가기 버튼 활성화
         WorkChangeColor() // 근무지역 필터 색깔 활성화
         AdaptActive() // 적용하기 버튼 세팅
 
@@ -43,13 +36,14 @@ class WorkAreaActivity : AppCompatActivity() {
     fun WorkChangeColor(){
         tv_1.setOnClickListener {
             if(isClickedArray[0] % 2 == 0){
+                city_idx = 1
                 isActiveArray[0] = true
                 tv_1.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_1.textColor = Color.parseColor(green)
                 isClickedArray[0]++
                 /* 눌려있는 것 클릭했을 때 */
             }else{
-                isActiveArray[0] = false
+                isActiveArray[0]= false
                 tv_1.background = ContextCompat.getDrawable(this, R.drawable.round_border_gray)
                 tv_1.textColor = Color.parseColor(black)
                 isClickedArray[0]++
@@ -58,6 +52,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_2.setOnClickListener {
             if(isClickedArray[1] % 2 == 0){
+                city_idx = 2
                 isActiveArray[1] = true
                 tv_2.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_2.textColor = Color.parseColor(green)
@@ -73,6 +68,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_3.setOnClickListener {
             if(isClickedArray[2] % 2 == 0){
+                city_idx = 3
                 isActiveArray[2] = true
                 tv_3.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_3.textColor = Color.parseColor(green)
@@ -87,6 +83,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_4.setOnClickListener {
             if(isClickedArray[3] % 2 == 0){
+                city_idx = 4
                 isActiveArray[3] = true
                 tv_4.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_4.textColor = Color.parseColor(green)
@@ -101,6 +98,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_5.setOnClickListener {
             if(isClickedArray[4] % 2 == 0){
+                city_idx = 5
                 isActiveArray[4] = true
                 tv_5.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_5.textColor = Color.parseColor(green)
@@ -115,6 +113,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_6.setOnClickListener {
             if(isClickedArray[5] % 2 == 0){
+                city_idx = 6
                 isActiveArray[5] = true
                 tv_6.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_6.textColor = Color.parseColor(green)
@@ -129,6 +128,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_7.setOnClickListener {
             if(isClickedArray[6] % 2 == 0){
+                city_idx = 7
                 isActiveArray[6] = true
                 tv_7.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_7.textColor = Color.parseColor(green)
@@ -143,6 +143,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_8.setOnClickListener {
             if(isClickedArray[7] % 2 == 0){
+                city_idx = 8
                 isActiveArray[7] = true
                 tv_8.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_8.textColor = Color.parseColor(green)
@@ -157,6 +158,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_9.setOnClickListener {
             if(isClickedArray[8] % 2 == 0){
+                city_idx = 9
                 isActiveArray[8] = true
                 tv_9.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_9.textColor = Color.parseColor(green)
@@ -171,6 +173,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_10.setOnClickListener {
             if(isClickedArray[9] % 2 == 0){
+                city_idx = 10
                 isActiveArray[9] = true
                 tv_10.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_10.textColor = Color.parseColor(green)
@@ -185,6 +188,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_11.setOnClickListener {
             if(isClickedArray[10] % 2 == 0){
+                city_idx = 11
                 isActiveArray[10] = true
                 tv_11.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_11.textColor = Color.parseColor(green)
@@ -199,6 +203,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_12.setOnClickListener {
             if(isClickedArray[11] % 2 == 0){
+                city_idx = 12
                 isActiveArray[11] = true
                 tv_12.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_12.textColor = Color.parseColor(green)
@@ -212,13 +217,14 @@ class WorkAreaActivity : AppCompatActivity() {
             AdaptActive()
         }
         tv_13.setOnClickListener {
-           if(isClickedArray[12] % 2 == 0){
-               isActiveArray[12] = true
+            if(isClickedArray[12] % 2 == 0){
+                city_idx = 13
+                isActiveArray[12] = true
                 tv_13.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_13.textColor = Color.parseColor(green)
                 isClickedArray[12]++
             }else{
-               isActiveArray[12] = false
+                isActiveArray[12] = false
                 tv_13.background = ContextCompat.getDrawable(this, R.drawable.round_border_gray)
                 tv_13.textColor = Color.parseColor(black)
                 isClickedArray[12]++
@@ -227,6 +233,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_14.setOnClickListener {
             if(isClickedArray[13] % 2 == 0){
+                city_idx = 14
                 isActiveArray[13] = true
                 tv_14.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_14.textColor = Color.parseColor(green)
@@ -241,6 +248,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_15.setOnClickListener {
             if(isClickedArray[14] % 2 == 0){
+                city_idx = 15
                 isActiveArray[14] = true
                 tv_15.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_15.textColor = Color.parseColor(green)
@@ -255,6 +263,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_16.setOnClickListener {
             if(isClickedArray[15] % 2 == 0){
+                city_idx = 16
                 isActiveArray[15] = true
                 tv_16.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_16.textColor = Color.parseColor(green)
@@ -269,6 +278,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_17.setOnClickListener {
             if(isClickedArray[16] % 2 == 0){
+                city_idx = 17
                 isActiveArray[16] = true
                 tv_17.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_17.textColor = Color.parseColor(green)
@@ -283,6 +293,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_18.setOnClickListener {
             if(isClickedArray[17] % 2 == 0){
+                city_idx = 18
                 isActiveArray[17] = true
                 tv_18.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_18.textColor = Color.parseColor(green)
@@ -297,6 +308,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_19.setOnClickListener {
             if(isClickedArray[18] % 2 == 0){
+                city_idx = 19
                 isActiveArray[18] = true
                 tv_19.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_19.textColor = Color.parseColor(green)
@@ -311,6 +323,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_20.setOnClickListener {
             if(isClickedArray[19] % 2 == 0){
+                city_idx = 20
                 isActiveArray[19] = true
                 tv_20.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_20.textColor = Color.parseColor(green)
@@ -325,6 +338,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_21.setOnClickListener {
             if(isClickedArray[20] % 2 == 0){
+                city_idx = 21
                 isActiveArray[20] = true
                 tv_21.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_21.textColor = Color.parseColor(green)
@@ -339,6 +353,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_22.setOnClickListener {
             if(isClickedArray[21] % 2 == 0){
+                city_idx = 22
                 isActiveArray[21] = true
                 tv_22.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_22.textColor = Color.parseColor(green)
@@ -353,6 +368,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_23.setOnClickListener {
             if(isClickedArray[22] % 2 == 0){
+                city_idx = 23
                 isActiveArray[22] = true
                 tv_23.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_23.textColor = Color.parseColor(green)
@@ -367,6 +383,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_24.setOnClickListener {
             if(isClickedArray[23] % 2 == 0){
+                city_idx = 24
                 isActiveArray[23] = true
                 tv_24.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_24.textColor = Color.parseColor(green)
@@ -381,6 +398,7 @@ class WorkAreaActivity : AppCompatActivity() {
         }
         tv_25.setOnClickListener {
             if(isClickedArray[24] % 2 == 0){
+                city_idx = 25
                 isActiveArray[24] = true
                 tv_25.background = ContextCompat.getDrawable(this, R.drawable.round_border_green)
                 tv_25.textColor = Color.parseColor(green)
@@ -398,14 +416,20 @@ class WorkAreaActivity : AppCompatActivity() {
     /** 하나라도 눌리면 적용하기 버튼 활성화 */
     fun AdaptActive(){
         var activeOK = false
+        var clickedCount : Int = 0
         for(i in 0..24){
-            if(isActiveArray[i]){
-                activeOK = true
-                btn_adapt.setBackgroundResource(R.color.maincolor)
-                break
-            }else activeOK = false
+            if(isClickedArray[i] == 1){
+                clickedCount++;
+                if(clickedCount > 1) {
+                    Toast.makeText(ctx, "근무지역은 하나만 선택해주세요.", Toast.LENGTH_SHORT).show()
+                    btn_adapt.setBackgroundResource(R.color.notAdapted)
+                    activeOK = false
+                }else{
+                    btn_adapt.setBackgroundResource(R.color.maincolor)
+                    activeOK = true
+                }
+            }
         }
-        if(!activeOK) btn_adapt.setBackgroundResource(R.color.notAdapted)
 
         // 적용하기 버튼 클릭 이벤트
         if(activeOK){
@@ -421,7 +445,6 @@ class WorkAreaActivity : AppCompatActivity() {
                 Toast.makeText(ctx, "근무지역을 선택해주세요.", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 
 

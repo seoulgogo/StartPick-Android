@@ -3,6 +3,7 @@ package com.seoulapp.startpick.adapter
 import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,10 +19,10 @@ import com.seoulapp.startpick.ui.WithDetailActivity
 
 class WithRecyAdapter(private val ctx : Context, val dataList : ArrayList<WithusItemData>) : RecyclerView.Adapter<WithRecyAdapter.Holder>() {
 
-    var isClicked = false
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): Holder {
         val view: View = LayoutInflater.from(ctx)!!.inflate(R.layout.item_job_fragment, viewGroup, false)
+
         return Holder(view)
     }
 
@@ -29,6 +30,7 @@ class WithRecyAdapter(private val ctx : Context, val dataList : ArrayList<Withus
         Glide.with(ctx).load(dataList[position].thumnail).into(holder.thumbnail)
         holder.title.text = dataList[position].detailJob
         holder.company.text = dataList[position].companyName
+        holder.likeNum.text = dataList[position].likeNum.toString()
         when (dataList[position].job_idx){
             1 -> holder.job.text = "개발"
             2 -> holder.job.text = "기획"
@@ -39,7 +41,6 @@ class WithRecyAdapter(private val ctx : Context, val dataList : ArrayList<Withus
             7 -> holder.job.text = "기타"
         }
 
-
         /** 각 아이템 클릭 이벤트 */
         holder.item.setOnClickListener {
             var intent = Intent(ctx, WithDetailActivity::class.java)
@@ -47,27 +48,33 @@ class WithRecyAdapter(private val ctx : Context, val dataList : ArrayList<Withus
             ctx.startActivity(intent)
         }
 
-        /** 체크 버튼 클릭 이벤트 */
-        // 근데 이거 아님 이상함 두번 눌러야 체크 켜짐,,
-        holder.iv_check.setOnClickListener {
-            if(isClicked == false) {
-                holder.iv_check.isSelected = true
-                isClicked = true
+        var itemLikeArray : Array<Int> = Array(dataList.size, {0})  // 좋아요 버튼 눌렀는지 확인하는 배열
+
+        /** 좋아요 버튼 클릭 이벤트 */
+        holder.btnLike.setOnClickListener {
+            itemLikeArray[position]++;
+            // 좋아요 눌린 경우
+            if(itemLikeArray[position] % 2 == 1){
+                // 셀렉터
+                holder.btnLike.isSelected = true
+                holder.likeNum.text = (dataList[position].likeNum+1).toString()
+            }else{
+                holder.btnLike.isSelected = false
+                holder.likeNum.text = (dataList[position].likeNum).toString()
             }
-            else {
-                holder.iv_check.isSelected = false
-                isClicked = false
-            }
+
         }
+
     }
 
     inner class Holder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var item = itemView as RelativeLayout                                                   // 각 아이템 변수
-        var iv_check = itemView.findViewById(R.id.iv_check) as ImageView                        // 체크 이미지 변수
         var title = itemView.findViewById(R.id.item_job_fragment_title) as TextView             // 함께해요 제목 변수
         var company = itemView.findViewById(R.id.item_job_fragment_company) as TextView         // 함께해요 회사 변수
         var thumbnail = itemView.findViewById(R.id.withList_thumbnail) as ImageView             // 함께해요 썸네일 변수
         var job = itemView.findViewById(R.id.tvWithusItem_Job) as TextView                      // 함께해요 직무 변수
+        var likeNum = itemView.findViewById(R.id.likeNum) as TextView                      // 함께해요 직무 변수
+        var btnLike = itemView.findViewById(R.id.btn_like) as ImageView                      // 함께해요 직무 변수
     }
 
     override fun getItemCount(): Int = dataList.size

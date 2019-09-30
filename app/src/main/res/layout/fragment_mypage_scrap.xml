@@ -31,7 +31,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:textColor="@color/maincolor"
                         android:text="함께해요"/>
 
@@ -53,7 +53,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:textColor="@color/maincolor"
                         android:text="지원사업"/>
 

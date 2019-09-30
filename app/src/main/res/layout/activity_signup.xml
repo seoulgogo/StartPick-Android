@@ -35,10 +35,10 @@
                     android:id="@+id/tv_seoulstartupmap_map_frag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
                     android:text="회원가입"
                     android:textColor="#212529"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
             </RelativeLayout>
 
@@ -82,7 +82,7 @@
                     android:layout_marginTop="24dp"
                     android:text="이메일"
                     android:textColor="#212529"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/et_email_signup_act"
@@ -92,7 +92,7 @@
                     android:hint="example@gmail.com"
                     android:inputType="textEmailAddress"
                     android:textColorHint="#868e96"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,7 +100,7 @@
                     android:layout_marginTop="24dp"
                     android:text="비밀번호"
                     android:textColor="#212529"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/et_password_signup_act"
@@ -110,7 +110,7 @@
                     android:hint="영문, 숫자 혼합 6자 이상"
                     android:inputType="textPassword"
                     android:textColorHint="#868e96"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -118,7 +118,7 @@
                     android:layout_marginTop="24dp"
                     android:text="이름"
                     android:textColor="#212529"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/et_name_signup_act"
@@ -129,7 +129,7 @@
                     android:inputType="text"
                     android:privateImeOptions="defaultInputmode=korean"
                     android:textColorHint="#868e96"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -137,7 +137,7 @@
                     android:layout_marginTop="24dp"
                     android:text="휴대폰 번호"
                     android:textColor="#212529"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/et_phone_signup_act"
@@ -147,7 +147,7 @@
                     android:hint="‘-’ 구분없이 입력해주세요."
                     android:inputType="number"
                     android:textColorHint="#868e96"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -156,7 +156,7 @@
                     android:inputType="number"
                     android:text="생년월일"
                     android:textColor="#212529"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/et_birth_signup_act"
@@ -166,7 +166,7 @@
                     android:inputType="number"
                     android:hint="YYYY년 MM월 DD일"
                     android:textColorHint="#868e96"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -174,7 +174,7 @@
                     android:layout_marginTop="24dp"
                     android:text="성별"
                     android:textColor="#212529"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <RadioGroup
                     android:id="@+id/rg_sex_signup_act"
@@ -189,7 +189,7 @@
                         android:layout_height="wrap_content"
                         android:text="여성"
                         android:textColor="#212529"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                     <RadioButton
                         android:id="@+id/rb_man_signup_act"
@@ -198,7 +198,7 @@
                         android:layout_marginLeft="24dp"
                         android:text="남성"
                         android:textColor="#212529"
-                        android:textSize="16sp" />
+                        android:textSize="18sp" />
 
                 </RadioGroup>
 
@@ -208,7 +208,7 @@
                     android:layout_marginTop="24dp"
                     android:text="직무"
                     android:textColor="#212529"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
                 <com.isapanah.awesomespinner.AwesomeSpinner
                     android:id="@+id/awesomeSpinner_spinner2"
@@ -216,14 +216,6 @@
                     android:layout_height="49dp"
                     app:spinnerDirection="ltr"
                     app:spinnerHint="직무를 선택해주세요." />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="*직무는 마이페이지에서 변경할 수 있습니다."
-                    android:textColor="#868e96"
-                    android:textSize="12sp" />
 
                 <RelativeLayout
                     android:id="@+id/rl_btn_intent_signup_act"
@@ -240,7 +232,7 @@
                         android:fontFamily="@font/notosanscjkkr_bold"
                         android:text="회원가입 완료"
                         android:textColor="#FFFFFF"
-                        android:textSize="18sp" />
+                        android:textSize="20sp" />
 
                 </RelativeLayout>
 

@@ -19,18 +19,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:fontFamily="@font/notosanscjkkr_bold"
+        android:textStyle="bold"
         android:textColor="#22b573"
-        android:textSize="20sp"
-        android:layout_gravity="center_horizontal"
+        android:textSize="22sp"
+        android:layout_gravity="center_horizontal|center_vertical"
         android:text="스타트픽"
         />
 
     <RelativeLayout
         android:id="@+id/btn_intent_sign_up"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="124dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="118dp"
         android:layout_marginHorizontal="16dp"
         android:background="@drawable/sign_green_round_box"
         >
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/notosanscjkkr_bold"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textColor="#FFFFFF"
             android:layout_centerHorizontal="true"
             android:text="스타트픽 회원가입"
@@ -58,7 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="#212529"
             android:text="이미 가입하셨나요?"/>
 
@@ -69,6 +69,7 @@
             android:layout_marginLeft="8dp"
             android:textColor="#22b573"
             android:text="로그인하기"
+            android:textSize="16sp"
             />
 
 
