@@ -59,9 +59,9 @@ class MypageSupportStateFragment : Fragment() {
         email = SharedPreferenceController.MY_EMAIL
        // email = "soso1@gmail.com"
 
-      //  selector()
-       // setOnClickListener()
-        //setRecyclerView()
+        selector()
+        setOnClickListener()
+        setRecyclerView()
     }
 
     fun setOnClickListener() {

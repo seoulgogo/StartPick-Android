@@ -98,9 +98,9 @@ class MyapageResumeActivity : AppCompatActivity() {
 
         UserInfo()
 
+        getid = intent.getIntExtra("getid", -1)
         if(getid == 1)
         {
-            getid = intent.getIntExtra("getid", -1)
             resume_name = intent.getStringExtra("name")
             getShowResumeResponse()
         }
@@ -296,15 +296,17 @@ class MyapageResumeActivity : AppCompatActivity() {
             override fun onResponse(call: Call<GetShowResumeResponse>, response: Response<GetShowResumeResponse>
             ) {
                 Log.e("이력서 detail get success", response.body().toString())
-
-                val temp: showResumeData = response.body()!!.data
                 val status = response.body()!!.status
-
                 if (status == 200) {
+
+                    val temp: showResumeData = response.body()!!.data
+
                     makeResumeShowView(temp)
                 }
-                else
-                { }
+                else if(status == 400)
+                {
+
+                }
             }
         })
     }
