@@ -12,7 +12,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.DIAL_PHONE" />
 
-
     <application
         android:name=".network.ApplicationController"
         android:allowBackup="true"
@@ -24,6 +23,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:appComponentFactory">
+        <activity android:name=".util.CustomDialogReady"></activity>
         <activity android:name=".ui.WebViewActivity" />
         <activity android:name=".ui.StartupDivActivity" />
         <activity android:name=".ui.SupportDetailActivity" />
@@ -36,9 +36,8 @@
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.SignupActivity" />
         <activity android:name=".ui.WriteActivity" />
-        <activity android:name=".ui.SignMainActivity"/>
+        <activity android:name=".ui.SignMainActivity" />
         <activity android:name=".ui.SplashActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

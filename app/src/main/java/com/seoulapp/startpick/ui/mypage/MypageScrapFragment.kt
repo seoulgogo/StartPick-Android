@@ -70,8 +70,6 @@ class MypageScrapFragment : Fragment() {
             selector()
             setRecyclerView()
         }
-
-
     }
 
     fun selector() {

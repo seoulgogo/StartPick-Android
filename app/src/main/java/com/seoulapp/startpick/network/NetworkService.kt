@@ -128,9 +128,9 @@ interface NetworkService {
     ):Call<PostSignupResponse>
 
     //이력서선택-->이력서 뿌려주기
-    @GET("resume/showResume/{resumeName}")
+    @GET("resume/showResume")
     fun getResumeShow(
-            @Path("resumeName") resumeName : String
+        @Query("resumeName") resumeName : String
     ):Call<GetShowResumeResponse>
 
     //내가 올린 공고

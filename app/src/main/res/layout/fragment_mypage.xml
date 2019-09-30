@@ -26,11 +26,12 @@
             android:textSize="18sp" />
 
         <ImageView
+            android:id="@+id/btn_setting_mypage_frag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="16dp"
+            android:paddingRight="16dp"
             android:src="@drawable/icon_setting" />
 
     </RelativeLayout>

@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.seoulapp.startpick.R
 import android.widget.RelativeLayout
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.seoulapp.startpick.data.UserInfoData
 import com.seoulapp.startpick.db.SharedPreferenceController
@@ -23,6 +24,7 @@ import com.seoulapp.startpick.network.NetworkService
 import com.seoulapp.startpick.network.get.GetMypageUserInfoResponse
 import com.seoulapp.startpick.network.post.PostSignupResponse
 import com.seoulapp.startpick.ui.adapter.MypagenaviAdapter
+import com.seoulapp.startpick.util.CustomDialogReady
 import kotlinx.android.synthetic.main.fragment_mypage.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -48,6 +50,12 @@ class MypageFragment : Fragment() {
 
     private var img: MultipartBody.Part? = null
 
+    val readycustomDialog: CustomDialogReady by lazy {
+        CustomDialogReady(
+                ctx,  "준비중인 기능입니다.", completefailConfirmListener, "확인"
+        )
+    }
+
     val networkService: NetworkService by lazy {
         ApplicationController.instance.networkService
     }
@@ -67,6 +75,11 @@ class MypageFragment : Fragment() {
         rootView = inflater.inflate(R.layout.fragment_mypage, container, false)
 
         return rootView
+    }
+
+    private val completefailConfirmListener = View.OnClickListener {
+        readycustomDialog.dismiss()
+        Log.v("다이얼로그", "되라!!!")
     }
 
     private fun UserInfo() {
@@ -188,7 +201,10 @@ class MypageFragment : Fragment() {
         img_my_uploadnotice_mypage_frg.setOnClickListener {
             startActivity<MyPostedNoticeActivity>()
         }
+        btn_setting_mypage_frag.setOnClickListener {
 
+            Toast.makeText(ctx, "준비중인 기능입니다", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
